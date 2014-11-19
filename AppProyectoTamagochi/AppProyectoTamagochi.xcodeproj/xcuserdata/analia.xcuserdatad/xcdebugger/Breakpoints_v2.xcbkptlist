@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AppProyectoTamagochi/ViewControllerInicio.m"
-            timestampString = "438033407.015167"
+            timestampString = "438035106.791751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-initWithNibName:bundle:nombre:"
             landmarkType = "5">
          </BreakpointContent>

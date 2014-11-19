@@ -11,6 +11,13 @@
 @interface ViewControllerSeleccion ()
 @property (strong,nonatomic) NSString * Nombremascota;
 @property (weak, nonatomic) IBOutlet UILabel *LabelTitulo;
+@property (weak, nonatomic) IBOutlet UIButton *ButtonGato;
+@property (weak, nonatomic) IBOutlet UIButton *ButtonLeon;
+@property (weak, nonatomic) IBOutlet UIButton *Buttonjirafa;
+@property (weak, nonatomic) IBOutlet UIButton *ButtonCiervo;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *ImagenElegida;
 
 @end
 
@@ -18,8 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.LabelTitulo.text=@"%@",self.Nombremascota;
-    
+    //self.LabelTitulo.text=@"%@",self.Nombremascota;
+    self.ScrollView.contentSize = CGSizeMake(660, 211) ;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -29,12 +36,46 @@
 }
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota
 {
+    //Sobreescribo el metodo para pasar el nombre de la mascota
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self!=nil) {
         self.Nombremascota = nombredemascota;
     }
     return self;
 }
+
+-(IBAction)ButtonAnimal:(UIButton *)sender
+{
+    switch (sender.tag)
+    
+    {
+        case 0:
+            
+            self.ImagenElegida.image = [UIImage imageNamed:@"gato_comiendo_1"];
+            
+            break;
+            
+        case 1:
+            
+            self.ImagenElegida.image = [UIImage imageNamed:@"leon_comiendo_1"];
+            
+            break;
+        case 2:
+            self.ImagenElegida.image = [UIImage imageNamed:@"jirafa_comiendo_1"];
+
+            break;
+            
+        default:
+            
+          self.ImagenElegida.image = [UIImage imageNamed:@"ciervo_comiendo_1"];
+            
+            break;
+            
+    }
+    
+}
+
+
 
 /*
 #pragma mark - Navigation
