@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewControllerInicio : UIViewController
+@interface ViewControllerInicio : UIViewController <UITextFieldDelegate>
 @property (strong,nonatomic) NSString * Nombremascota;
 
 

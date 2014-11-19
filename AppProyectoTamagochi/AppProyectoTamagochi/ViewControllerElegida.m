@@ -9,13 +9,20 @@
 #import "ViewControllerElegida.h"
 
 @interface ViewControllerElegida ()
+@property (weak, nonatomic) IBOutlet UIImageView *ImagenMascota;
+@property (weak, nonatomic) IBOutlet UILabel *NombreMascota;
 
+@property (weak, nonatomic) IBOutlet UIProgressView *Progressbar;
 @end
 
 @implementation ViewControllerElegida
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  self.ImagenMascota.image = self.Imagen.image;
+  
+    self.NombreMascota.text =self.Nombremascota;
+    [self setTitle:@"Energia de su mascota"];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -30,7 +37,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self!=nil) {
         self.Nombremascota = nombredemascota;
-        self.ImagenElegida = imagenmascota;
+        self.Imagen = imagenmascota;
     }
     return self;
 }

@@ -25,9 +25,14 @@
 @implementation ViewControllerSeleccion
 
 - (void)viewDidLoad {
+    //lo que carga cuando cuando arranca
     [super viewDidLoad];
-    self.LabelTitulo.text=self.Nombremascota;
-    self.ScrollView.contentSize = CGSizeMake(660, 211) ;
+    self.LabelTitulo.text=[NSString stringWithFormat: @"El nombre de tu mascota es %@",self.Nombremascota];
+    self.ScrollView.contentSize = CGSizeMake(660, 129) ;
+    [self setTitle:@"Seleccione su mascota"];
+    
+    self.ImagenElegida.image = [UIImage imageNamed:@"gato_comiendo_1"];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -48,7 +53,7 @@
 }
 - (IBAction)Continuar:(id)sender {
     
-    ViewControllerElegida * controlelegida = [[ViewControllerElegida alloc] initWithNibName:@"ViewControllerElegida" bundle:[NSBundle mainBundle] nombre:self.Nombremascota imagen:self.imagenmascota];
+    ViewControllerElegida * controlelegida = [[ViewControllerElegida alloc] initWithNibName:@"ViewControllerElegida" bundle:[NSBundle mainBundle] nombre:self.Nombremascota imagen:self.ImagenElegida];
     [self.navigationController pushViewController:controlelegida animated:YES];
     
 }
