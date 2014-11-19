@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewControllerInicio : UIViewController
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota;
+@property (strong,nonatomic) NSString * Nombremascota;
+
+
 
 @end

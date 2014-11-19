@@ -24,6 +24,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *)nombredemascota imagen:(UIImageView *)imagenmascota
+{
+    //Sobreescribo el metodo para pasar el nombre de la mascota y la imagen
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self!=nil) {
+        self.Nombremascota = nombredemascota;
+        self.ImagenElegida = imagenmascota;
+    }
+    return self;
+}
 /*
 #pragma mark - Navigation
 

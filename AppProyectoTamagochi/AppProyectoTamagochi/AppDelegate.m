@@ -20,10 +20,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     
-  //  ViewControllerInicio * ControlerInicio =[[ViewControllerInicio alloc] initWithNibName:@"ViewControllerInicio" bundle:nil];
-    ViewControllerSeleccion * ControlSeleccion=[[ViewControllerSeleccion alloc]initWithNibName:@"ViewControllerSeleccion" bundle:nil];
+    ViewControllerInicio * ControlerInicio =[[ViewControllerInicio alloc] initWithNibName:@"ViewControllerInicio" bundle:nil];
    
-    self.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:ControlSeleccion];
+   
+    self.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:ControlerInicio];
     
     [self.window makeKeyAndVisible];
     

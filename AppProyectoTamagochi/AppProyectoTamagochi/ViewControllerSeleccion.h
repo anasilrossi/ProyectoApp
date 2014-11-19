@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewControllerSeleccion : UIViewController
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota;
+@property (strong,nonatomic) NSString * Nombremascota;
+@property (strong,nonatomic) UIImageView * imagenmascota;
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota ;
 @end

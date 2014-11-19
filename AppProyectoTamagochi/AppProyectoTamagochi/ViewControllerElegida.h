@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewControllerElegida : UIViewController
+@property (strong,nonatomic) NSString * Nombremascota;
+@property (strong,nonatomic) UIImageView * imagenmascota;
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota imagen:(UIImageView *) imagenmascota;
 
 @end

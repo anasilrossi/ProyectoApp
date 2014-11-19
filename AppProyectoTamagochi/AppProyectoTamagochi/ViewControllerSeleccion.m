@@ -7,9 +7,9 @@
 //
 
 #import "ViewControllerSeleccion.h"
-
+#import "ViewControllerElegida.h"
 @interface ViewControllerSeleccion ()
-@property (strong,nonatomic) NSString * Nombremascota;
+
 @property (weak, nonatomic) IBOutlet UILabel *LabelTitulo;
 @property (weak, nonatomic) IBOutlet UIButton *ButtonGato;
 @property (weak, nonatomic) IBOutlet UIButton *ButtonLeon;
@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenElegida;
+@property (weak, nonatomic) IBOutlet UIButton *Continuar;
 
 @end
 
@@ -25,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.LabelTitulo.text=@"%@",self.Nombremascota;
+    self.LabelTitulo.text=self.Nombremascota;
     self.ScrollView.contentSize = CGSizeMake(660, 211) ;
     // Do any additional setup after loading the view from its nib.
 }
@@ -34,16 +35,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota
+
+-(instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *)nombredemascota 
 {
-    //Sobreescribo el metodo para pasar el nombre de la mascota
+    //Sobreescribo el metodo para pasar el nombre de la mascota y la imagen
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self!=nil) {
         self.Nombremascota = nombredemascota;
+        
     }
     return self;
 }
-
+- (IBAction)Continuar:(id)sender {
+    
+    ViewControllerElegida * controlelegida = [[ViewControllerElegida alloc] initWithNibName:@"ViewControllerElegida" bundle:[NSBundle mainBundle] nombre:self.Nombremascota imagen:self.imagenmascota];
+    [self.navigationController pushViewController:controlelegida animated:YES];
+    
+}
 -(IBAction)ButtonAnimal:(UIButton *)sender
 {
     switch (sender.tag)

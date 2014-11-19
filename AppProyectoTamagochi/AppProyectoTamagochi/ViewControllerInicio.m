@@ -7,13 +7,14 @@
 //
 
 #import "ViewControllerInicio.h"
+#import "ViewControllerSeleccion.h"
 
 @interface ViewControllerInicio ()
 @property (weak, nonatomic) IBOutlet UILabel *LabelBienvenida;
 @property (weak, nonatomic) IBOutlet UILabel *LabelMascota;
 @property (weak, nonatomic) IBOutlet UITextField *TextFieldNombreMascota;
 @property (weak, nonatomic) IBOutlet UIButton *ButtonContinuar1;
-@property (strong,nonatomic) NSString * Nombremascota;
+
 @end
 
 @implementation ViewControllerInicio
@@ -32,16 +33,12 @@
     NSString * NombreMascota =[[NSString alloc]initWithFormat:@"%@",self.TextFieldNombreMascota.text];
     NSLog(@"%@",NombreMascota);
     
+    ViewControllerSeleccion * controlselecion =[[ViewControllerSeleccion alloc] initWithNibName:@"ViewControllerSeleccion" bundle:[NSBundle mainBundle] nombre:NombreMascota];
+    [self.navigationController pushViewController:controlselecion animated:YES];
+
+    
     
 }
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota
-    {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-        if (self!=nil) {
-            self.Nombremascota = nombredemascota;
-        }
-    return self;
-    }
 
 /*
 #pragma mark - Navigation
