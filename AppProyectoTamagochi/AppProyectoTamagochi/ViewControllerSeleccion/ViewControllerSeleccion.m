@@ -8,6 +8,7 @@
 
 #import "ViewControllerSeleccion.h"
 #import "ViewControllerElegida.h"
+#import "Animales.h"
 @interface ViewControllerSeleccion ()
 
 @property (weak, nonatomic) IBOutlet UILabel *LabelTitulo;
@@ -15,11 +16,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *ButtonLeon;
 @property (weak, nonatomic) IBOutlet UIButton *Buttonjirafa;
 @property (weak, nonatomic) IBOutlet UIButton *ButtonCiervo;
-
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenElegida;
 @property (weak, nonatomic) IBOutlet UIButton *Continuar;
-
+@property (nonatomic) int tagImagen;
+@property (strong,nonatomic) Animales *animal;
 @end
 
 @implementation ViewControllerSeleccion
@@ -30,10 +31,13 @@
     self.LabelTitulo.text=[NSString stringWithFormat: @"El nombre de tu mascota es %@",self.Nombremascota];
     self.ScrollView.contentSize = CGSizeMake(580, 129) ;
     [self setTitle:@"Seleccione su mascota"];
-    
     self.ImagenElegida.image = [UIImage imageNamed:@"gato_comiendo_1"];
+ 
+   
     
-    // Do any additional setup after loading the view from its nib.
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,40 +57,16 @@
 }
 - (IBAction)Continuar:(id)sender {
     
-    ViewControllerElegida * controlelegida = [[ViewControllerElegida alloc] initWithNibName:@"ViewControllerElegida" bundle:[NSBundle mainBundle] nombre:self.Nombremascota imagen:self.ImagenElegida];
+    ViewControllerElegida * controlelegida = [[ViewControllerElegida alloc]initWithNibName:@"ViewControllerElegida" bundle:[NSBundle mainBundle] nombre:self.Nombremascota imagen:self.animal];
     [self.navigationController pushViewController:controlelegida animated:YES];
     
 }
 
 -(IBAction)ButtonAnimal:(UIButton *)sender
 {
-    switch (sender.tag)
-    
-    {
-        case 0:
-            
-            self.ImagenElegida.image = [UIImage imageNamed:@"gato_comiendo_1"];
-            
-            break;
-            
-        case 1:
-            
-            self.ImagenElegida.image = [UIImage imageNamed:@"leon_comiendo_1"];
-            
-            break;
-        case 2:
-            self.ImagenElegida.image = [UIImage imageNamed:@"jirafa_comiendo_1"];
-
-            break;
-            
-        default:
-            
-          self.ImagenElegida.image = [UIImage imageNamed:@"ciervo_comiendo_1"];
-            
-            break;
-            
-    }
-    
+    self.animal = [[Animales alloc ]initWithTag:sender.tag];
+    [self.ImagenElegida setImage:[UIImage imageNamed:self.animal.imagenAnimal]];
+    self.tagImagen = sender.tag ;
 }
 
 
