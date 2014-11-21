@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewControllerComida.h"
 
-@interface ViewControllerElegida : UIViewController
+@interface ViewControllerElegida : UIViewController <Foot>
+
 @property (strong,nonatomic) NSString * Nombremascota;
 @property (strong,nonatomic) UIImageView * Imagen;
 

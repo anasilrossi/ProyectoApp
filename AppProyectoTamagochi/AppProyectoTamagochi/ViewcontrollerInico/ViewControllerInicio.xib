@@ -18,8 +18,8 @@
             <rect key="frame" x="0.0" y="94" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bievenido al Reino de la Tierra Media" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZu-8h-EmY">
-                    <rect key="frame" x="45" y="87" width="304" height="95"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mascota virtual" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZu-8h-EmY">
+                    <rect key="frame" x="35" y="95" width="304" height="95"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -30,8 +30,17 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TSj-FF-PqZ">
+                    <rect key="frame" x="45" y="355" width="284" height="30"/>
+                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" spellCheckingType="no"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="eR2-1V-LKq"/>
+                    </connections>
+                </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ah-kP-Smv">
-                    <rect key="frame" x="239" y="540" width="90" height="57"/>
+                    <rect key="frame" x="239" y="535" width="90" height="57"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <state key="normal" title="Continuar">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,15 +49,6 @@
                         <action selector="ContinuarGuardarNombre:" destination="-1" eventType="touchUpInside" id="wWm-vj-zTB"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TSj-FF-PqZ">
-                    <rect key="frame" x="45" y="353" width="284" height="30"/>
-                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" spellCheckingType="no"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="eR2-1V-LKq"/>
-                    </connections>
-                </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="0.82966178843624583" blue="0.43043659336750328" alpha="1" colorSpace="calibratedRGB"/>
             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

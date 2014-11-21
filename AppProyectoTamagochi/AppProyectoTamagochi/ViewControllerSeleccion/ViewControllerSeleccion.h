@@ -10,6 +10,6 @@
 
 @interface ViewControllerSeleccion : UIViewController
 @property (strong,nonatomic) NSString * Nombremascota;
-@property (strong,nonatomic) UIImageView * imagenmascota;
+//@property (strong,nonatomic) UIImageView * imagenmascota;
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota ;
 @end

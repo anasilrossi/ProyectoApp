@@ -28,7 +28,7 @@
     //lo que carga cuando cuando arranca
     [super viewDidLoad];
     self.LabelTitulo.text=[NSString stringWithFormat: @"El nombre de tu mascota es %@",self.Nombremascota];
-    self.ScrollView.contentSize = CGSizeMake(660, 129) ;
+    self.ScrollView.contentSize = CGSizeMake(580, 129) ;
     [self setTitle:@"Seleccione su mascota"];
     
     self.ImagenElegida.image = [UIImage imageNamed:@"gato_comiendo_1"];
@@ -57,6 +57,7 @@
     [self.navigationController pushViewController:controlelegida animated:YES];
     
 }
+
 -(IBAction)ButtonAnimal:(UIButton *)sender
 {
     switch (sender.tag)

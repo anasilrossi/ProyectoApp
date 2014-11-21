@@ -7,10 +7,13 @@
 //
 
 #import "ViewControllerElegida.h"
+#import "ViewControllerComida.h"
 
 @interface ViewControllerElegida ()
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenMascota;
 @property (weak, nonatomic) IBOutlet UILabel *NombreMascota;
+@property (weak, nonatomic) IBOutlet UIButton *alimentar;
+@property (weak, nonatomic) IBOutlet UIImageView *ImagenComida;
 
 @property (weak, nonatomic) IBOutlet UIProgressView *Progressbar;
 @end
@@ -23,7 +26,13 @@
   
     self.NombreMascota.text =self.Nombremascota;
     [self setTitle:@"Energia de su mascota"];
+    
     // Do any additional setup after loading the view from its nib.
+}
+-(void)DevolverComida:(Comidas*)comidas
+{
+    [self.ImagenComida setImage:[UIImage imageNamed:comidas.imagencomida]];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +49,14 @@
         self.Imagen = imagenmascota;
     }
     return self;
+}
+- (IBAction)AlimentarMascota:(id)sender {
+    
+   
+    ViewControllerComida * controlcomida = [[ViewControllerComida alloc]initWithNibName:@"ViewControllerComida" bundle:[NSBundle mainBundle] ];
+     [controlcomida setDelegate:self];
+    [self.navigationController pushViewController:controlcomida animated:YES];
+    
 }
 /*
 #pragma mark - Navigation
