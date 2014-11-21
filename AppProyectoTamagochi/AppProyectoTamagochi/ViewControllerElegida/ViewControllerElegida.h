@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewControllerComida.h"
+#import "Animales.h"
 
-@interface ViewControllerElegida : UIViewController <Foot>
+@interface ViewControllerElegida : UIViewController <Foot,UIGestureRecognizerDelegate>
 
 @property (strong,nonatomic) NSString * Nombremascota;
 @property (strong,nonatomic) UIImageView * Imagen;
 
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota imagen:(UIImageView *) imagenmascota;
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota imagen:(Animales *) imagenmascota;
 
 @end

@@ -22,6 +22,7 @@
 		A47B3A4D1A1BCA950099B9B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A4C1A1BCA950099B9B2 /* AppDelegate.m */; };
 		A47B3A551A1BCA950099B9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47B3A541A1BCA950099B9B2 /* Images.xcassets */; };
 		A47B3A641A1BCA950099B9B2 /* AppProyectoTamagochiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */; };
+		A49DD7AA1A1FC3D10022E9D3 /* Animales.m in Sources */ = {isa = PBXBuildFile; fileRef = A49DD7A91A1FC3D10022E9D3 /* Animales.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		A47B3A5D1A1BCA950099B9B2 /* AppProyectoTamagochiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppProyectoTamagochiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47B3A621A1BCA950099B9B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppProyectoTamagochiTests.m; sourceTree = "<group>"; };
+		A49DD7A81A1FC3D10022E9D3 /* Animales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animales.h; sourceTree = "<group>"; };
+		A49DD7A91A1FC3D10022E9D3 /* Animales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animales.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,7 @@
 		A44E58FC1A1E5E6F00611E4D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A49DD7A71A1FC3B00022E9D3 /* Animales */,
 				A44E58FD1A1E5E6F00611E4D /* Comida */,
 			);
 			path = Model;
@@ -209,6 +213,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A49DD7A71A1FC3B00022E9D3 /* Animales */ = {
+			isa = PBXGroup;
+			children = (
+				A49DD7A81A1FC3D10022E9D3 /* Animales.h */,
+				A49DD7A91A1FC3D10022E9D3 /* Animales.m */,
+			);
+			path = Animales;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,6 +327,7 @@
 			files = (
 				A47B3A4D1A1BCA950099B9B2 /* AppDelegate.m in Sources */,
 				A44E59111A1E5E6F00611E4D /* ViewControllerComida.m in Sources */,
+				A49DD7AA1A1FC3D10022E9D3 /* Animales.m in Sources */,
 				A44E59761A1E706A00611E4D /* CellCustom.m in Sources */,
 				A47B3A4A1A1BCA950099B9B2 /* main.m in Sources */,
 				A44E59101A1E5E6F00611E4D /* Comida.m in Sources */,
