@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Analia. All rights reserved.
 //
 
-#import <MessageUI/MessageUI.h>
 #import "ViewControllerElegida.h"
 #import "ViewControllerComida.h"
 #import "animalIdentificador.h"
@@ -186,7 +185,7 @@
 -(IBAction)senderMail:(id)sender
 {
 
-    NSString * body = @ "Buenas! Soy <Nombre_de_mi _mascota>, cómo va? Quería comentarte que estuve usando la App <Nombre_de_la_app> para comerme todo y está genial. Bajatela YA!!   Saludos!";
+     NSString * const body = @ "Buenas! Soy <Nombre_de_mi _mascota>, cómo va? Quería comentarte que estuve usando la App <Nombre_de_la_app> para comerme todo y está genial. Bajatela YA!!   Saludos!";
     
     //creacion del msj
     MFMailComposeViewController * composer = [[MFMailComposeViewController alloc]init ];
