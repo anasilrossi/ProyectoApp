@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A449C21F1A20E8BF0026B08C /* Animales.m in Sources */ = {isa = PBXBuildFile; fileRef = A449C21B1A20E8BF0026B08C /* Animales.m */; };
+		A449C2201A20E8BF0026B08C /* CargarImagenes.m in Sources */ = {isa = PBXBuildFile; fileRef = A449C21E1A20E8BF0026B08C /* CargarImagenes.m */; };
 		A44E59101A1E5E6F00611E4D /* Comida.m in Sources */ = {isa = PBXBuildFile; fileRef = A44E58FF1A1E5E6F00611E4D /* Comida.m */; };
 		A44E59111A1E5E6F00611E4D /* ViewControllerComida.m in Sources */ = {isa = PBXBuildFile; fileRef = A44E59021A1E5E6F00611E4D /* ViewControllerComida.m */; };
 		A44E59121A1E5E6F00611E4D /* ViewControllerComida.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44E59031A1E5E6F00611E4D /* ViewControllerComida.xib */; };
@@ -22,7 +24,6 @@
 		A47B3A4D1A1BCA950099B9B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A4C1A1BCA950099B9B2 /* AppDelegate.m */; };
 		A47B3A551A1BCA950099B9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47B3A541A1BCA950099B9B2 /* Images.xcassets */; };
 		A47B3A641A1BCA950099B9B2 /* AppProyectoTamagochiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */; };
-		A49DD7AA1A1FC3D10022E9D3 /* Animales.m in Sources */ = {isa = PBXBuildFile; fileRef = A49DD7A91A1FC3D10022E9D3 /* Animales.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A449C2181A20E8BF0026B08C /* animalIdentificador.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animalIdentificador.h; sourceTree = "<group>"; };
+		A449C21A1A20E8BF0026B08C /* Animales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animales.h; sourceTree = "<group>"; };
+		A449C21B1A20E8BF0026B08C /* Animales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animales.m; sourceTree = "<group>"; };
+		A449C21D1A20E8BF0026B08C /* CargarImagenes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargarImagenes.h; sourceTree = "<group>"; };
+		A449C21E1A20E8BF0026B08C /* CargarImagenes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargarImagenes.m; sourceTree = "<group>"; };
 		A44E58FE1A1E5E6F00611E4D /* Comida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comida.h; sourceTree = "<group>"; };
 		A44E58FF1A1E5E6F00611E4D /* Comida.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comida.m; sourceTree = "<group>"; };
 		A44E59011A1E5E6F00611E4D /* ViewControllerComida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerComida.h; sourceTree = "<group>"; };
@@ -62,8 +68,6 @@
 		A47B3A5D1A1BCA950099B9B2 /* AppProyectoTamagochiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppProyectoTamagochiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47B3A621A1BCA950099B9B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppProyectoTamagochiTests.m; sourceTree = "<group>"; };
-		A49DD7A81A1FC3D10022E9D3 /* Animales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animales.h; sourceTree = "<group>"; };
-		A49DD7A91A1FC3D10022E9D3 /* Animales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animales.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +88,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A449C2171A20E8BF0026B08C /* clases */ = {
+			isa = PBXGroup;
+			children = (
+				A449C2181A20E8BF0026B08C /* animalIdentificador.h */,
+				A449C2191A20E8BF0026B08C /* Entidades */,
+				A449C21C1A20E8BF0026B08C /* util */,
+			);
+			name = clases;
+			path = ../clases;
+			sourceTree = "<group>";
+		};
+		A449C2191A20E8BF0026B08C /* Entidades */ = {
+			isa = PBXGroup;
+			children = (
+				A449C21A1A20E8BF0026B08C /* Animales.h */,
+				A449C21B1A20E8BF0026B08C /* Animales.m */,
+			);
+			path = Entidades;
+			sourceTree = "<group>";
+		};
+		A449C21C1A20E8BF0026B08C /* util */ = {
+			isa = PBXGroup;
+			children = (
+				A449C21D1A20E8BF0026B08C /* CargarImagenes.h */,
+				A449C21E1A20E8BF0026B08C /* CargarImagenes.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		A44E58FC1A1E5E6F00611E4D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A49DD7A71A1FC3B00022E9D3 /* Animales */,
+				A449C2171A20E8BF0026B08C /* clases */,
 				A44E58FD1A1E5E6F00611E4D /* Comida */,
 			);
 			path = Model;
@@ -213,15 +246,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A49DD7A71A1FC3B00022E9D3 /* Animales */ = {
-			isa = PBXGroup;
-			children = (
-				A49DD7A81A1FC3D10022E9D3 /* Animales.h */,
-				A49DD7A91A1FC3D10022E9D3 /* Animales.m */,
-			);
-			path = Animales;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -327,9 +351,10 @@
 			files = (
 				A47B3A4D1A1BCA950099B9B2 /* AppDelegate.m in Sources */,
 				A44E59111A1E5E6F00611E4D /* ViewControllerComida.m in Sources */,
-				A49DD7AA1A1FC3D10022E9D3 /* Animales.m in Sources */,
 				A44E59761A1E706A00611E4D /* CellCustom.m in Sources */,
+				A449C2201A20E8BF0026B08C /* CargarImagenes.m in Sources */,
 				A47B3A4A1A1BCA950099B9B2 /* main.m in Sources */,
+				A449C21F1A20E8BF0026B08C /* Animales.m in Sources */,
 				A44E59101A1E5E6F00611E4D /* Comida.m in Sources */,
 				A44E59131A1E5E6F00611E4D /* ViewControllerElegida.m in Sources */,
 				A44E59151A1E5E6F00611E4D /* ViewControllerInicio.m in Sources */,

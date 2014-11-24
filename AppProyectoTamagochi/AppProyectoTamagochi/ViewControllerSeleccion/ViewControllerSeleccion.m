@@ -8,7 +8,8 @@
 
 #import "ViewControllerSeleccion.h"
 #import "ViewControllerElegida.h"
-#import "Animales.h"
+#import "animalIdentificador.h"
+#import "CargarImagenes.h"
 @interface ViewControllerSeleccion ()
 
 @property (weak, nonatomic) IBOutlet UILabel *LabelTitulo;
@@ -19,8 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenElegida;
 @property (weak, nonatomic) IBOutlet UIButton *Continuar;
-@property (nonatomic) int tagImagen;
-@property (strong,nonatomic) Animales *animal;
+@property (nonatomic) animalIdentificador animal;
+//@property (strong,nonatomic) Animales *animal;
 @end
 
 @implementation ViewControllerSeleccion
@@ -32,12 +33,7 @@
     self.ScrollView.contentSize = CGSizeMake(580, 129) ;
     [self setTitle:@"Seleccione su mascota"];
     self.ImagenElegida.image = [UIImage imageNamed:@"gato_comiendo_1"];
- 
    
-    
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,29 +52,21 @@
     return self;
 }
 - (IBAction)Continuar:(id)sender {
+    //vamos a la otra vista
     
     ViewControllerElegida * controlelegida = [[ViewControllerElegida alloc]initWithNibName:@"ViewControllerElegida" bundle:[NSBundle mainBundle] nombre:self.Nombremascota imagen:self.animal];
     [self.navigationController pushViewController:controlelegida animated:YES];
     
 }
 
--(IBAction)ButtonAnimal:(UIButton *)sender
+-(IBAction)mascotaElegida:(id)sender
 {
-    self.animal = [[Animales alloc ]initWithTag:sender.tag];
-    [self.ImagenElegida setImage:[UIImage imageNamed:self.animal.imagenAnimal]];
-    self.tagImagen = sender.tag ;
+    self.animal= (animalIdentificador)[sender tag];
+    
+    self.ImagenElegida.image = [CargarImagenes Cargarimagen:self.animal];
+    
+
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

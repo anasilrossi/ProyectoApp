@@ -8,7 +8,8 @@
 
 #import "ViewControllerElegida.h"
 #import "ViewControllerComida.h"
-#import "Animales.h"
+#import "animalIdentificador.h"
+#import "CargarImagenes.h"
 
 @interface ViewControllerElegida ()
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenMascota;
@@ -18,21 +19,16 @@
 @property (nonatomic) CGPoint tapLocation;
 @property (nonatomic) CGPoint locacionImagen;
 @property (nonatomic) int tagImagen;
-@property (nonatomic,strong) Animales * animal;
+@property (strong , nonatomic) IBOutlet UIProgressView * threadProgressView;
 @property (weak, nonatomic) IBOutlet UIProgressView *Progressbar;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *gestoTap;
-
+@property (strong,nonatomic) NSTimer * timer;
 @end
 
 @implementation ViewControllerElegida
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    //self.tagImagen = self.animal.tagImagen;
-    //self.animal = [[Animales alloc ]initWithTag:self.tagImagen];
-    self.ImagenMascota.image = [UIImage imageNamed:self.animal.imagenAnimal];
     self.locacionImagen = self.ImagenComida.center;
     self.NombreMascota.text =self.Nombremascota;
     [self setTitle:@"Energia de su mascota"];
@@ -42,22 +38,30 @@
     recognizer.delegate = self;
     //Lo agregamos a la Vista donde debe detectar el tap
     [self.view addGestureRecognizer:recognizer];
-
+     self.ImagenMascota.image = [CargarImagenes Cargarimagen:self.animal];
+    
     
 }
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 -(void)DevolverComida:(Comidas*)comidas
 {
+    //devuelve la comida en la pantalla
     [self.ImagenComida setImage:[UIImage imageNamed:comidas.imagencomida]];
     [self.ImagenComida setHidden:NO];
     [self.ImagenComida setCenter:self.locacionImagen];
-    //CGRect posicionOriginal = self.I
 }
 
 -(IBAction)darDeComer:(UITapGestureRecognizer*)sender
     {
          self.tapLocation = [sender locationInView: self.view];
        
-        [UIView animateWithDuration:1.0
+        [UIView animateWithDuration:0.1
                               delay:0.0
                             options:UIViewAnimationOptionAllowAnimatedContent
                          animations:^{ [self.ImagenComida setCenter:_tapLocation];}
@@ -65,46 +69,60 @@
                              UIView * vista = [self.view hitTest:_tapLocation withEvent:nil];
                              if ([vista isEqual:self.ImagenMascota]) {
                                  [self.ImagenComida setHidden:YES];
+                                 [self.ImagenComida startAnimating];
                                  
                              }
                          }];
-     
-      
+        [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:self.animal estado:self.estado]];
+        [self.ImagenMascota startAnimating];
+        //[self CargarProgress];
+        
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+-(void)CargarProgress
+{
+    //manejo del tiempo
+    self.threadProgressView.progress = 0.0;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(CargarProgress) userInfo:nil repeats:NO];
+    
+    if (self.threadProgressView.progress < 1)
+    {
+        self.threadProgressView.progress += 0.5;
+        [self.ImagenMascota stopAnimating];
+        
+    }
+    else
+    {
+        [self.ImagenMascota stopAnimating];
+        [self.timer invalidate];
+        
+    }
 
--(instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *)nombredemascota imagen:(Animales * )imagenmascota
+}
+-(instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *)nombredemascota imagen:(animalIdentificador)imagenmascota
 {
     //Sobreescribo el metodo para pasar el nombre de la mascota y la imagen
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self!=nil) {
         self.Nombremascota = nombredemascota;
-        [self.ImagenMascota setImage:[UIImage imageNamed:self.animal.imagenAnimal]];
-        self.animal= imagenmascota;
+        self.ImagenMascota.image = [CargarImagenes Cargarimagen:imagenmascota];
+//        self.ImagenMascota.image = [CargarImagenes Cargarimagen:self.animal];
+         self.animal= imagenmascota;
+        self.estado = animal_comiendo;
     }
     return self;
 }
 - (IBAction)AlimentarMascota:(id)sender {
-    
-   
+
     ViewControllerComida * controlcomida = [[ViewControllerComida alloc]initWithNibName:@"ViewControllerComida" bundle:[NSBundle mainBundle] ];
      [controlcomida setDelegate:self];
     
     [self.navigationController pushViewController:controlcomida animated:YES];
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.timer invalidate];
 }
-*/
 
 @end
