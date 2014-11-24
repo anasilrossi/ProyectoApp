@@ -21,7 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenElegida;
 @property (weak, nonatomic) IBOutlet UIButton *Continuar;
 @property (nonatomic) animalIdentificador animal;
-//@property (strong,nonatomic) Animales *animal;
+
+
 @end
 
 @implementation ViewControllerSeleccion
