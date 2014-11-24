@@ -20,6 +20,7 @@
 		A44E59181A1E5E6F00611E4D /* ViewControllerSeleccion.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44E590F1A1E5E6F00611E4D /* ViewControllerSeleccion.xib */; };
 		A44E59761A1E706A00611E4D /* CellCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A44E59741A1E706A00611E4D /* CellCustom.m */; };
 		A44E59771A1E706A00611E4D /* CellCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44E59751A1E706A00611E4D /* CellCustom.xib */; };
+		A45BF6801A237ABA0099C994 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45BF67F1A237ABA0099C994 /* MessageUI.framework */; };
 		A47B3A4A1A1BCA950099B9B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A491A1BCA950099B9B2 /* main.m */; };
 		A47B3A4D1A1BCA950099B9B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A4C1A1BCA950099B9B2 /* AppDelegate.m */; };
 		A47B3A551A1BCA950099B9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47B3A541A1BCA950099B9B2 /* Images.xcassets */; };
@@ -59,6 +60,7 @@
 		A44E59731A1E706A00611E4D /* CellCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCustom.h; sourceTree = "<group>"; };
 		A44E59741A1E706A00611E4D /* CellCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCustom.m; sourceTree = "<group>"; };
 		A44E59751A1E706A00611E4D /* CellCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCustom.xib; sourceTree = "<group>"; };
+		A45BF67F1A237ABA0099C994 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A47B3A441A1BCA950099B9B2 /* AppProyectoTamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppProyectoTamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47B3A481A1BCA950099B9B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A47B3A491A1BCA950099B9B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A45BF6801A237ABA0099C994 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +191,7 @@
 		A47B3A3B1A1BCA950099B9B2 = {
 			isa = PBXGroup;
 			children = (
+				A45BF67F1A237ABA0099C994 /* MessageUI.framework */,
 				A47B3A461A1BCA950099B9B2 /* AppProyectoTamagochi */,
 				A47B3A601A1BCA950099B9B2 /* AppProyectoTamagochiTests */,
 				A47B3A451A1BCA950099B9B2 /* Products */,

@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Analia. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
 #import "ViewControllerElegida.h"
 #import "ViewControllerComida.h"
 #import "animalIdentificador.h"
@@ -43,12 +44,22 @@
     [self.view addGestureRecognizer:recognizer];
     self.animal=[[Animales sharedInstance] tipoAnimal];
      self.ImagenMascota.image = [CargarImagenes Cargarimagen:self.animal];
-    
-    
-    
+  
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    UIButton *buttonMail = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    
+    [buttonMail addTarget:self action:@selector(senderMail:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [buttonMail setBackgroundImage:[UIImage imageNamed:@"mail_iphone"] forState:UIControlStateNormal];
+    
 
+    UIBarButtonItem* button = [[UIBarButtonItem alloc] initWithCustomView:buttonMail];
+    
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:button, nil];
 
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -97,7 +108,6 @@
             UIAlertView * alerta = [[UIAlertView alloc]initWithTitle:@"" message:@"Su mascota esta llena,Dele de comer mas tarde" delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
             [alerta show];
         }
-        
         
         
         
@@ -170,11 +180,59 @@
     [[Animales sharedInstance] masEnergia];
 }
 
+//Realizacion del Weackly
+
+
+-(IBAction)senderMail:(id)sender
+{
+
+    NSString * body = @ "Buenas! Soy <Nombre_de_mi _mascota>, cómo va? Quería comentarte que estuve usando la App <Nombre_de_la_app> para comerme todo y está genial. Bajatela YA!!   Saludos!";
+    
+    //creacion del msj
+    MFMailComposeViewController * composer = [[MFMailComposeViewController alloc]init ];
+    
+    composer.mailComposeDelegate= self;
+    [composer setSubject:@"Que app copada"];
+    [composer setMessageBody:body isHTML:NO];
+    
+    
+    //crear present
+    [self presentViewController:composer animated:YES completion:nil];
+
+    
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    UIAlertView * alerta = nil;
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            
+           alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton Cancelar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+            [alerta show];
+            break;
+        case MFMailComposeResultSaved:
+            alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton guardar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+            [alerta show];
+            break;
+            case MFMailComposeResultFailed:
+            alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"Hubo un problema" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+            [alerta show];
+            break;
+            case MFMailComposeResultSent:
+            alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario Envio el mensaje" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+            [alerta show];
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     if(self.timer && [self.timer isValid]) { [self.timer invalidate];
         self.timer = nil; }
 }
+
 
 @end

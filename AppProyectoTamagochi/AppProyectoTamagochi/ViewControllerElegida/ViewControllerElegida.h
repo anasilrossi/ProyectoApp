@@ -10,7 +10,7 @@
 #import "ViewControllerComida.h"
 #import "animalIdentificador.h"
 
-@interface ViewControllerElegida : UIViewController <Foot,UIGestureRecognizerDelegate>
+@interface ViewControllerElegida : UIViewController <Foot,UIGestureRecognizerDelegate,UIPageViewControllerDelegate>
 
 @property (strong,nonatomic) NSString * Nombremascota;
 @property (assign,nonatomic) animalIdentificador animal;
