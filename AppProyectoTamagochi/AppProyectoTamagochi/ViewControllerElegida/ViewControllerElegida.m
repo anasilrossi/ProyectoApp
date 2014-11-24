@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Analia. All rights reserved.
 //
 
-#import <MessageUI/MessageUI.h>
 #import "ViewControllerElegida.h"
 #import "ViewControllerComida.h"
 #import "animalIdentificador.h"
