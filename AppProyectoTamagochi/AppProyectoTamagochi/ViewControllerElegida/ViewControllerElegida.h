@@ -15,7 +15,6 @@
 @property (strong,nonatomic) NSString * Nombremascota;
 @property (assign,nonatomic) animalIdentificador animal;
 @property (assign,nonatomic) animalEstado estado ;
-//metodo nuevo
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota imagen:(animalIdentificador) imagenmascota;
+
 
 @end

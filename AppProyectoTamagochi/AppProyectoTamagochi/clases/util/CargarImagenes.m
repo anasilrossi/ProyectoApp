@@ -75,6 +75,7 @@
         case animal_ejercitando:
             estado = @"ejercicio";
             break;
+            
     }
       const int ammountOfImages = estadoAnimal == animal_ejercitando ? 5 : 4;
     for(int i = 1; i <= ammountOfImages; ++i)

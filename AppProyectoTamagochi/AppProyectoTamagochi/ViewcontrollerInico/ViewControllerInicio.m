@@ -8,6 +8,8 @@
 
 #import "ViewControllerInicio.h"
 #import "ViewControllerSeleccion.h"
+#import "Animales.h"
+
 
 @interface ViewControllerInicio ()
 
@@ -56,6 +58,7 @@
 - (IBAction)ContinuarGuardarNombre:(id)sender {
 //boton
     NSString * NombreMascota =[[NSString alloc]initWithString:self.TextFieldNombreMascota.text];
+    [[Animales sharedInstance] setAnimalNombre:NombreMascota ];
      NSUInteger  longitud = [NombreMascota length];
     
     BOOL aux =[self.TextFieldNombreMascota.text rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789-,.:;}{[]^`´+*¨¡?=))(&%$#!><_"]].location != NSNotFound;
@@ -87,7 +90,7 @@
       
         NSLog(@"%@",self.TextFieldNombreMascota.text);
         
-        ViewControllerSeleccion * controlselecion =[[ViewControllerSeleccion alloc] initWithNibName:@"ViewControllerSeleccion" bundle:[NSBundle mainBundle] nombre:NombreMascota];
+        ViewControllerSeleccion * controlselecion =[[ViewControllerSeleccion alloc] initWithNibName:@"ViewControllerSeleccion" bundle:[NSBundle mainBundle]];
         [self.navigationController pushViewController:controlselecion animated:YES];
        
 

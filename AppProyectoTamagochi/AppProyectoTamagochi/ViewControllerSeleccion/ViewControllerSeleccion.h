@@ -11,5 +11,5 @@
 @interface ViewControllerSeleccion : UIViewController
 @property (strong,nonatomic) NSString * Nombremascota;
 //metodo custom
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *) nombredemascota ;
+
 @end

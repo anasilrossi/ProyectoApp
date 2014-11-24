@@ -11,11 +11,16 @@
 
 @interface Animales : NSObject
 @property (strong,nonatomic) NSString * animalNombre;
-@property (assign,nonatomic) animalIdentificador animalIdentificador;
+@property (nonatomic,assign) animalIdentificador tipoAnimal;
+@property (nonatomic,assign) animalEstado estadoAnimal;
 
 //Constructor
--(instancetype) init;
--(instancetype)initWithName:(NSString *)animalnombre identificador:(animalIdentificador)identificador;
 
++ (instancetype) sharedInstance;
 
+//metodos propios
+-(int)menosEnergia;
+-(int)masEnergia;
+-(BOOL)puedeejercitar;
+-(int)devolverEnergia;
 @end

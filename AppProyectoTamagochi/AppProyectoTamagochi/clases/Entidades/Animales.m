@@ -8,24 +8,72 @@
 
 #import "Animales.h"
 
+@interface Animales ()
+
+@property (nonatomic,assign) int  energia;
+@property (nonatomic,assign) int  nivel;
+
+
+
+@end
 @implementation Animales
 
 #pragma mark - Constructors
--(instancetype) init
+
+-(instancetype) initEnergia: (int) cambiarEnergia niveles:(int) cambiarNivel
 {
+    self.energia=100;
+
     self = [super init];
-    [self setAnimalNombre:@""];
-    [self setAnimalIdentificador:animal_gato];
-    
+    if (self!=nil) {
+        self.energia = cambiarEnergia;
+        self.nivel = cambiarNivel;
+    }
     return self;
 }
 
--(instancetype)initWithName:(NSString *)animalnombre identificador:(animalIdentificador)identificador
++ (instancetype) sharedInstance
 {
-    self = [super init];
-    [self setAnimalIdentificador:animal_gato];
-    [self setAnimalNombre:_animalNombre];
-      return self;
+    static dispatch_once_t pred = 0;
+    __strong static id _sharedObject = nil;
+    //Garantiza que lo que se encuentre dentro solo se ejecutará una vez.
+    dispatch_once(&pred, ^{
+        _sharedObject = [[self alloc] initEnergia:100 niveles:1];
+    });
+    return _sharedObject;
 }
+
+-(int)menosEnergia
+{
+    self.energia = self.energia - 10;
+    NSLog(@"%d",self.energia);
+    return self.energia;
+}
+-(int)masEnergia
+{
+    self.energia = self.energia + 10;
+    NSLog(@"%d",self.energia);
+    return self.energia;
+}
+
+-(BOOL)puedeejercitar
+{
+    BOOL consulta ;
+    if (self.energia != 0 )
+    {
+        return  consulta = YES;
+    }
+    else
+    {
+        return consulta = NO;
+    }
+}
+
+-(int)devolverEnergia
+    {
+    
+    return self.energia;
+    }
+
 
 @end
