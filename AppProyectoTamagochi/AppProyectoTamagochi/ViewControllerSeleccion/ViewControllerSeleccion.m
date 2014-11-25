@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *Continuar;
 @property (nonatomic) animalIdentificador animal;
 
+
 @end
 
 @implementation ViewControllerSeleccion

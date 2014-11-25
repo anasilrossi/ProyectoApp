@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ViewControllerComida.h"
 #import "animalIdentificador.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ViewControllerElegida : UIViewController <Foot,UIGestureRecognizerDelegate>
+
+@interface ViewControllerElegida : UIViewController <Foot,UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate>
 
 @property (strong,nonatomic) NSString * Nombremascota;
 @property (assign,nonatomic) animalIdentificador animal;
