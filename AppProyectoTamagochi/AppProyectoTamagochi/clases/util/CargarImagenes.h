@@ -14,5 +14,6 @@
 + (UIImage*) Cargarimagen: (animalIdentificador) tipoanimal;
 //+ (UIImage*) CargarComida: (FoodIdentifier) foodType;
 + (NSArray*) Cargararray: (animalIdentificador) tipoanimal estado: (animalEstado) estadoAnimal ;
++ (UIImage*) CargarimagenCansado:(animalIdentificador)tipoanimal;
 
 @end

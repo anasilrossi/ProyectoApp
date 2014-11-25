@@ -18,8 +18,11 @@
 //imagenes
 @property (strong,nonatomic)  NSString * imagencomida;
 
+//valor
+@property (assign,nonatomic) int valor;
 
-- (instancetype) init:(NSString *)nombredelacomida imagen:(NSString *) imagendelacomida;
+
+- (instancetype) init:(NSString *)nombredelacomida imagen:(NSString *) imagendelacomida valor:(int)valorComida;
 
 
 @end

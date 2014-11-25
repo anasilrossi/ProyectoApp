@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Analia. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "animalIdentificador.h"
 
@@ -20,7 +21,10 @@
 
 //metodos propios
 -(int)menosEnergia;
--(int)masEnergia;
+-(int)masEnergia: (int)valor;
 -(BOOL)puedeejercitar;
 -(int)devolverEnergia;
+-(int)aumentarExperiencia:(int)valor;
+-(int)subirNivel : (int)experiencia;
+-(int)devolverExperiencia;
 @end

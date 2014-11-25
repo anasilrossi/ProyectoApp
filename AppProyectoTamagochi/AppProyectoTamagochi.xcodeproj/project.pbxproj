@@ -25,6 +25,7 @@
 		A47B3A4D1A1BCA950099B9B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A4C1A1BCA950099B9B2 /* AppDelegate.m */; };
 		A47B3A551A1BCA950099B9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47B3A541A1BCA950099B9B2 /* Images.xcassets */; };
 		A47B3A641A1BCA950099B9B2 /* AppProyectoTamagochiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */; };
+		A4B6A16A1A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B6A1691A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		A47B3A5D1A1BCA950099B9B2 /* AppProyectoTamagochiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppProyectoTamagochiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47B3A621A1BCA950099B9B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppProyectoTamagochiTests.m; sourceTree = "<group>"; };
+		A4B6A1681A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+TimerSafeInvalidate.h"; sourceTree = "<group>"; };
+		A4B6A1691A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+TimerSafeInvalidate.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 			children = (
 				A449C21D1A20E8BF0026B08C /* CargarImagenes.h */,
 				A449C21E1A20E8BF0026B08C /* CargarImagenes.m */,
+				A4B6A1681A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.h */,
+				A4B6A1691A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				A44E59761A1E706A00611E4D /* CellCustom.m in Sources */,
 				A449C2201A20E8BF0026B08C /* CargarImagenes.m in Sources */,
 				A47B3A4A1A1BCA950099B9B2 /* main.m in Sources */,
+				A4B6A16A1A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m in Sources */,
 				A449C21F1A20E8BF0026B08C /* Animales.m in Sources */,
 				A44E59101A1E5E6F00611E4D /* Comida.m in Sources */,
 				A44E59131A1E5E6F00611E4D /* ViewControllerElegida.m in Sources */,

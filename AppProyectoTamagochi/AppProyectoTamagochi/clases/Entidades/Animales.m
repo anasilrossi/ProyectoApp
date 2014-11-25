@@ -12,6 +12,7 @@
 
 @property (nonatomic,assign) int  energia;
 @property (nonatomic,assign) int  nivel;
+@property (nonatomic,assign) int  experiencia;
 
 
 
@@ -20,7 +21,7 @@
 
 #pragma mark - Constructors
 
--(instancetype) initEnergia: (int) cambiarEnergia niveles:(int) cambiarNivel
+-(instancetype) initEnergia: (int) cambiarEnergia niveles:(int) cambiarNivel experiencia:(int)cambiarExperiencia
 {
     self.energia=100;
 
@@ -28,6 +29,7 @@
     if (self!=nil) {
         self.energia = cambiarEnergia;
         self.nivel = cambiarNivel;
+        self.experiencia = cambiarExperiencia;
     }
     return self;
 }
@@ -38,7 +40,7 @@
     __strong static id _sharedObject = nil;
     //Garantiza que lo que se encuentre dentro solo se ejecutará una vez.
     dispatch_once(&pred, ^{
-        _sharedObject = [[self alloc] initEnergia:100 niveles:1];
+        _sharedObject = [[self alloc] initEnergia:100 niveles:1 experiencia:0];
     });
     return _sharedObject;
 }
@@ -49,11 +51,13 @@
     NSLog(@"%d",self.energia);
     return self.energia;
 }
--(int)masEnergia
+
+-(int)masEnergia: (int)valor
 {
-    self.energia = self.energia + 10;
+   self.energia  = MIN(100, self.energia + valor);
     NSLog(@"%d",self.energia);
     return self.energia;
+       
 }
 
 -(BOOL)puedeejercitar
@@ -75,5 +79,35 @@
     return self.energia;
     }
 
+-(int)aumentarExperiencia:(int)valor
+{
+    if (self.energia!=0) {
+        self.experiencia += valor;
+        self.nivel =[self subirNivel:self.experiencia];
+        NSLog([NSString stringWithFormat:@"experiencia:%d nivel:%d ",self.experiencia, self.nivel]);
+    }
+   return self.experiencia;
+}
+
+-(int)devolverExperiencia
+{
+    return self.experiencia;
+}
+
+-(int)subirNivel : (int)experiencia
+{
+    int valor = self.nivel * self.nivel;
+    int formula = 100 * valor;
+   
+    if (self.experiencia >= formula)
+    {
+        self.nivel +=1;
+        NSString * mensaje = [NSString stringWithFormat: @"Su mascota llego a nivel %d",self.nivel];
+        UIAlertView * alerta =[[UIAlertView alloc] initWithTitle:@"Mascota Virtual" message:mensaje delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+        [alerta show];
+        
+    }
+    return  self.nivel;
+}
 
 @end

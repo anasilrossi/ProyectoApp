@@ -10,13 +10,13 @@
 
 @implementation Comidas
 
-- (instancetype) init :(NSString *)nombredelacomida imagen:(NSString *) imagendelacomida
+- (instancetype) init:(NSString *)nombredelacomida imagen:(NSString *) imagendelacomida valor:(int)valorComida;
 {
     self = [super init];
     if (self!=nil) {
         self.nombrecomida = nombredelacomida;
         self.imagencomida = imagendelacomida;
-       
+        self.valor = valorComida;
     }
     return self;
 

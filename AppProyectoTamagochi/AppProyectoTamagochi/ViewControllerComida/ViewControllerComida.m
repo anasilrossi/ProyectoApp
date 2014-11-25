@@ -31,23 +31,23 @@
     
      self.ComidasArray = [[NSMutableArray alloc]init];
 
-     [self.ComidasArray addObject:[[Comidas alloc]init:@"Pastel" imagen:@"comida_0"]];
+     [self.ComidasArray addObject:[[Comidas alloc]init:@"Pastel" imagen:@"comida_0" valor:20]];
     
-     [self.ComidasArray addObject:[[Comidas alloc]init:@"Tarta" imagen:@"comida_1"]];
+     [self.ComidasArray addObject:[[Comidas alloc]init:@"Tarta" imagen:@"comida_1" valor:20]];
     
-     [self.ComidasArray addObject:[[Comidas alloc]init:@"Helado" imagen:@"comida_2"]];
+     [self.ComidasArray addObject:[[Comidas alloc]init:@"Helado" imagen:@"comida_2" valor:20]];
     
-     [self.ComidasArray addObject:[[Comidas alloc]init:@"Pollo" imagen:@"comida_3"]];
+     [self.ComidasArray addObject:[[Comidas alloc]init:@"Pollo" imagen:@"comida_3" valor:50]];
     
-     [self.ComidasArray addObject:[[Comidas alloc]init:@"Hamburguesa" imagen:@"comida_4"]];
+     [self.ComidasArray addObject:[[Comidas alloc]init:@"Hamburguesa" imagen:@"comida_4" valor:40]];
     
-     [self.ComidasArray addObject:[[Comidas alloc]init:@"Pescado" imagen:@"comida_5"]];
+     [self.ComidasArray addObject:[[Comidas alloc]init:@"Pescado" imagen:@"comida_5" valor:10]];
     
-     [self.ComidasArray addObject:[[Comidas alloc]init:@"Fruta" imagen:@"comida_6"]];
+     [self.ComidasArray addObject:[[Comidas alloc]init:@"Fruta" imagen:@"comida_6" valor:20]];
     
-     [self.ComidasArray addObject:[[Comidas alloc]init:@"Salchicha" imagen:@"comida_7"]];
+     [self.ComidasArray addObject:[[Comidas alloc]init:@"Salchicha" imagen:@"comida_7" valor:30]];
     
-     [self.ComidasArray addObject:[[Comidas alloc]init:@"Pan" imagen:@"comida_8"]];
+     [self.ComidasArray addObject:[[Comidas alloc]init:@"Pan" imagen:@"comida_8"valor:20]];
     
       //self.cantidad =[self.ComidasArray count];
     
