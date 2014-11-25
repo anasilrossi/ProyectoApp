@@ -9,7 +9,7 @@
 #import "ViewControllerInicio.h"
 #import "ViewControllerSeleccion.h"
 #import "Animales.h"
-
+#import "NSString+CustonString.h"
 
 @interface ViewControllerInicio ()
 
@@ -59,26 +59,22 @@
 //boton
     NSString * NombreMascota =[[NSString alloc]initWithString:self.TextFieldNombreMascota.text];
     [[Animales sharedInstance] setAnimalNombre:NombreMascota ];
-     NSUInteger  longitud = [NombreMascota length];
-    
-    BOOL aux =[self.TextFieldNombreMascota.text rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789-,.:;}{[]^`´+*¨¡?=))(&%$#!><_"]].location != NSNotFound;
-    
   
     //consultas
     
-    if ([[self.TextFieldNombreMascota text] isEqualToString:@""])
+    if ([[self.TextFieldNombreMascota text] EsVacio ])
     {
         //validamos si esta vacio
         UIAlertView * alerta = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No ingresaste ningun nombre" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
         [alerta show];
     }
-    else if (longitud < 4)
+    else if ([[self.TextFieldNombreMascota text] MayorCuatroLetras ])
     {
         //valida la longitud -4
         UIAlertView * alerta = [[UIAlertView alloc] initWithTitle:@"Error" message:@"El nombre tiene que tener mas de 4 letras" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
         [alerta show];
     }
-    else if (aux)
+    else if ([[self.TextFieldNombreMascota text] Sololetras])
         
     {
         //valida que sean solo letras
