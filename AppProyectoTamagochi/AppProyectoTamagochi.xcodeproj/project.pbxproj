@@ -26,6 +26,7 @@
 		A47B3A551A1BCA950099B9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47B3A541A1BCA950099B9B2 /* Images.xcassets */; };
 		A47B3A641A1BCA950099B9B2 /* AppProyectoTamagochiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */; };
 		A4B6A16A1A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B6A1691A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m */; };
+		A4B6A16D1A251FA5006405A8 /* NSString+CustonString.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B6A16C1A251FA5006405A8 /* NSString+CustonString.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppProyectoTamagochiTests.m; sourceTree = "<group>"; };
 		A4B6A1681A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+TimerSafeInvalidate.h"; sourceTree = "<group>"; };
 		A4B6A1691A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+TimerSafeInvalidate.m"; sourceTree = "<group>"; };
+		A4B6A16B1A251FA5006405A8 /* NSString+CustonString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CustonString.h"; sourceTree = "<group>"; };
+		A4B6A16C1A251FA5006405A8 /* NSString+CustonString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CustonString.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				A449C21E1A20E8BF0026B08C /* CargarImagenes.m */,
 				A4B6A1681A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.h */,
 				A4B6A1691A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m */,
+				A4B6A16B1A251FA5006405A8 /* NSString+CustonString.h */,
+				A4B6A16C1A251FA5006405A8 /* NSString+CustonString.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				A4B6A16A1A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m in Sources */,
 				A449C21F1A20E8BF0026B08C /* Animales.m in Sources */,
 				A44E59101A1E5E6F00611E4D /* Comida.m in Sources */,
+				A4B6A16D1A251FA5006405A8 /* NSString+CustonString.m in Sources */,
 				A44E59131A1E5E6F00611E4D /* ViewControllerElegida.m in Sources */,
 				A44E59151A1E5E6F00611E4D /* ViewControllerInicio.m in Sources */,
 				A44E59171A1E5E6F00611E4D /* ViewControllerSeleccion.m in Sources */,
