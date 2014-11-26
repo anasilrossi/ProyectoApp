@@ -27,4 +27,5 @@
 -(int)aumentarExperiencia:(int)valor;
 -(int)subirNivel : (int)experiencia;
 -(int)devolverExperiencia;
+-(int)devolverNivel;
 @end

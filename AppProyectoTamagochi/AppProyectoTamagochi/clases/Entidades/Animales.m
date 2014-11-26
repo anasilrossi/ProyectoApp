@@ -94,6 +94,11 @@
     return self.experiencia;
 }
 
+-(int)devolverNivel
+{
+    return self.nivel;
+}
+
 -(int)subirNivel : (int)experiencia
 {
     int valor = self.nivel * self.nivel;
@@ -102,9 +107,9 @@
     if (self.experiencia >= formula)
     {
         self.nivel +=1;
-        NSString * mensaje = [NSString stringWithFormat: @"Su mascota llego a nivel %d",self.nivel];
-        UIAlertView * alerta =[[UIAlertView alloc] initWithTitle:@"Mascota Virtual" message:mensaje delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-        [alerta show];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESCAR_NIVEL" object:nil];
+        self.experiencia=0;
+        
         
     }
     return  self.nivel;

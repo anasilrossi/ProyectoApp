@@ -45,6 +45,7 @@
     recognizer.delegate = self;
     //Lo agregamos a la Vista donde debe detectar el tap
     [self.view addGestureRecognizer:recognizer];
+    
     self.animal=[[Animales sharedInstance] tipoAnimal];
      self.ImagenMascota.image = [CargarImagenes Cargarimagen:self.animal];
   
@@ -70,9 +71,24 @@
     
 
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refrescarNivel)
+                                                 name:@"REFRESCAR_NIVEL"
+                                               object:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)refrescarNivel
+{
+    int valor =[[Animales sharedInstance] devolverNivel];
+    NSString * mensaje = [NSString stringWithFormat: @"Su mascota llego a nivel %d",valor];
+    UIAlertView * alerta =[[UIAlertView alloc] initWithTitle:@"Mascota Virtual" message:mensaje delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil, nil];
+    [alerta show];
 }
 
 -(void)DevolverComida:(Comidas*)comidas
