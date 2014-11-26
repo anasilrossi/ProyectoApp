@@ -11,9 +11,6 @@
 
 @interface Animales ()
 
-@property (nonatomic,assign) int  energia;
-@property (nonatomic,assign) int  nivel;
-@property (nonatomic,assign) int  experiencia;
 
 @end
 
@@ -146,9 +143,18 @@
     }     failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
 }
-
+-(void)decodificardic:(NSDictionary*)diccionario
+{
+    self.energia = [[diccionario valueForKey:@"energy"] intValue];
+  
+    self.experiencia = [[diccionario valueForKey:@"experience"] intValue];
+    
+    self.nivel=[[diccionario valueForKey:@"level"] intValue];
+    
+    self.animalNombre =[diccionario valueForKey:@"name"];
+ 
+}
 
 
 @end

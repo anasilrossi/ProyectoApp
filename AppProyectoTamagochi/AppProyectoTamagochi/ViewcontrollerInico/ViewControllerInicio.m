@@ -11,6 +11,7 @@
 #import "Animales.h"
 #import "NSString+CustonString.h"
 #import "NetworkManager.h"
+#import "TamagochiNetwork.h"
 
 @interface ViewControllerInicio ()
 //propiedades
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *TextFieldNombreMascota;
 @property (weak, nonatomic) IBOutlet UIButton *ButtonContinuar1;
 @property (weak, nonatomic) IBOutlet UIButton *bPruebaRed;
+@property (weak, nonatomic) IBOutlet UIButton *Recuperar;
 @end
 
 @implementation ViewControllerInicio
@@ -90,17 +92,25 @@
     
 }
 
-- (IBAction)accesoNetwork:(id)sender{
+
+- (IBAction)recuperar:(id)sender {
     
-    [[NetworkManager sharedInstance]GET:(@"/key/value/one/two")
-                            parameters:nil
+    [[TamagochiNetwork sharedInstance]GET:@"/pet/AR7666"
+                             parameters:nil
                                 success:^(NSURLSessionDataTask *task, id responseObject)
-                                    {
-                                            NSLog(@"JSON: %@", responseObject);
-                                    }
+                                        {
+                                            NSDictionary * responseDict = responseObject;
+                                            [[Animales sharedInstance]decodificardic:responseDict];
+                                            NSLog(@"JSON array: %@", responseDict);
+                                            ViewControllerSeleccion * controlselecion =[[ViewControllerSeleccion alloc] initWithNibName:@"ViewControllerSeleccion" bundle:[NSBundle mainBundle]];
+                                            [self.navigationController pushViewController:controlselecion animated:YES];
+
+                                        }
                                 failure:^(NSURLSessionDataTask *task, NSError *error) {
                                     NSLog(@"Error: %@", error);}
-                                    ];
+     ];
+
+
 }
 
 

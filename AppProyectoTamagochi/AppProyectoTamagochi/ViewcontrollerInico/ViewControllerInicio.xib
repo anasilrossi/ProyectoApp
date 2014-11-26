@@ -10,6 +10,7 @@
                 <outlet property="ButtonContinuar1" destination="1ah-kP-Smv" id="omH-JL-5Cf"/>
                 <outlet property="LabelBienvenida" destination="IZu-8h-EmY" id="aui-5f-GPp"/>
                 <outlet property="LabelMascota" destination="hdF-76-APz" id="GDz-cR-DmX"/>
+                <outlet property="Recuperar" destination="DIv-rv-vGE" id="1k6-98-etz"/>
                 <outlet property="TextFieldNombreMascota" destination="TSj-FF-PqZ" id="I2L-rT-wyF"/>
                 <outlet property="bPruebaRed" destination="UUy-gK-U21" id="FiN-1Q-mSS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -48,6 +49,15 @@
                     </state>
                     <connections>
                         <action selector="accesoNetwork:" destination="-1" eventType="touchUpInside" id="Veg-dP-8Dt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIv-rv-vGE">
+                    <rect key="frame" x="88" y="442" width="180" height="43"/>
+                    <state key="normal" title="Recuperar Mascota">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="recuperar:" destination="-1" eventType="touchUpInside" id="yHz-rg-C9T"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ah-kP-Smv">
