@@ -45,6 +45,7 @@
 		A4D6DC391A262AD200F9F91C /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6DC271A262AD200F9F91C /* UIRefreshControl+AFNetworking.m */; };
 		A4D6DC3A1A262AD200F9F91C /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6DC291A262AD200F9F91C /* UIWebView+AFNetworking.m */; };
 		A4D6DC3D1A26400A00F9F91C /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6DC3C1A26400A00F9F91C /* NetworkManager.m */; };
+		A4D6DC401A266B8E00F9F91C /* TamagochiNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6DC3F1A266B8E00F9F91C /* TamagochiNetwork.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,8 @@
 		A4D6DC291A262AD200F9F91C /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		A4D6DC3B1A26400A00F9F91C /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		A4D6DC3C1A26400A00F9F91C /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		A4D6DC3E1A266B8E00F9F91C /* TamagochiNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TamagochiNetwork.h; sourceTree = "<group>"; };
+		A4D6DC3F1A266B8E00F9F91C /* TamagochiNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TamagochiNetwork.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 				A4B6A16C1A251FA5006405A8 /* NSString+CustonString.m */,
 				A4D6DC3B1A26400A00F9F91C /* NetworkManager.h */,
 				A4D6DC3C1A26400A00F9F91C /* NetworkManager.m */,
+				A4D6DC3E1A266B8E00F9F91C /* TamagochiNetwork.h */,
+				A4D6DC3F1A266B8E00F9F91C /* TamagochiNetwork.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 				A4D6DC351A262AD200F9F91C /* UIAlertView+AFNetworking.m in Sources */,
 				A4D6DC371A262AD200F9F91C /* UIImageView+AFNetworking.m in Sources */,
 				A4D6DC361A262AD200F9F91C /* UIButton+AFNetworking.m in Sources */,
+				A4D6DC401A266B8E00F9F91C /* TamagochiNetwork.m in Sources */,
 				A4D6DC2A1A262AD200F9F91C /* AFHTTPRequestOperation.m in Sources */,
 				A47B3A4D1A1BCA950099B9B2 /* AppDelegate.m in Sources */,
 				A44E59111A1E5E6F00611E4D /* ViewControllerComida.m in Sources */,

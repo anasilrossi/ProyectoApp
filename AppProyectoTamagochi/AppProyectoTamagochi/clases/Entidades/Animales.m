@@ -7,6 +7,7 @@
 //
 
 #import "Animales.h"
+#import "TamagochiNetwork.h"
 
 @interface Animales ()
 
@@ -84,6 +85,7 @@
         self.experiencia += valor;
         self.nivel =[self subirNivel:self.experiencia];
         NSLog([NSString stringWithFormat:@"experiencia:%d nivel:%d ",self.experiencia, self.nivel]);
+       
     }
    return self.experiencia;
 }
@@ -106,9 +108,47 @@
     {
         self.nivel +=1;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESCAR_NIVEL" object:nil];
+         [self update];
         self.experiencia=0;
     }
     return  self.nivel;
 }
+
+-(void)update
+{
+    NSString const * code =@"AR7666";
+    NSString * sEnergia = [NSString stringWithFormat:@"%d",self.energia ];
+    NSString * sNivel = [NSString stringWithFormat:@"%d",self.nivel ];
+    NSString * sExperiencia = [NSString stringWithFormat:@"%d",self.experiencia ];
+    NSMutableDictionary * datos = [NSMutableDictionary dictionaryWithDictionary:@{ @"code":code,
+                                                                                   @"name":self.animalNombre,
+                                                                                   @"energia":sEnergia,
+                                                                                   @"level":sNivel,
+                                                                                   @"experience":sExperiencia}];
+    TamagochiNetwork * manager = [TamagochiNetwork sharedInstance];
+    [manager POST:@"/pet"
+       parameters:datos
+          success:^(NSURLSessionDataTask *task, id responseObject) {
+              NSDictionary * responseDict = responseObject;
+              NSString * valor = [responseDict valueForKey:@"status"];
+              if ([valor isEqualToString: @"ok"]) {
+                  NSLog(@"Perfecto! JSON: %@", responseObject);
+                  UIAlertView * alerta =[[UIAlertView alloc]initWithTitle: @"alerta" message: @"Perfecto subido al servidor" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil ];
+                  [alerta show];
+
+              }
+              else
+              {
+                  UIAlertView * alerta =[[UIAlertView alloc]initWithTitle: @"alerta" message: @"Error " delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil ];
+                  [alerta show];
+              }
+              
+    }     failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+}
+
+
 
 @end

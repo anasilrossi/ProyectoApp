@@ -37,7 +37,7 @@
               NSLog(@"JSON array: %@", responseArray);
              /* do something with responseArray */
          } else if ([responseObject isKindOfClass:[NSDictionary class]]) {
-             NSDictionary *responseDict = responseObject;
+             NSDictionary * responseDict = responseObject;
              NSString * valor = [responseDict valueForKey:@"key"];
             UIAlertView *alerta= [[UIAlertView alloc]initWithTitle: @"alerta" message: valor delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil ];
             [alerta show];
