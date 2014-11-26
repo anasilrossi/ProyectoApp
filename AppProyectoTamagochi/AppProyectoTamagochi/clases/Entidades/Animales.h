@@ -16,7 +16,6 @@
 @property (nonatomic,assign) animalEstado estadoAnimal;
 
 //Constructor
-
 + (instancetype) sharedInstance;
 
 //metodos propios
@@ -28,4 +27,5 @@
 -(int)subirNivel : (int)experiencia;
 -(int)devolverExperiencia;
 -(int)devolverNivel;
+
 @end

@@ -20,8 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *alimentar;
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenComida;
 @property (weak, nonatomic) IBOutlet UIProgressView *Progressbar;
-@property (strong,nonatomic) NSTimer * timer;
 @property (weak, nonatomic) IBOutlet UIButton *bEjercitar;
+@property (strong,nonatomic) NSTimer * timer;
 @property (nonatomic) BOOL estadoEjercicio;
 @property (nonatomic) CGPoint tapLocation;
 @property (nonatomic) CGPoint locacionImagen;
@@ -67,20 +67,14 @@
     float valor =[[Animales sharedInstance] devolverEnergia];
     valor = valor / 100;
     [self.Progressbar setProgress:valor animated:YES];
-
-    
-
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refrescarNivel)
                                                  name:@"REFRESCAR_NIVEL"
                                                object:nil];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)refrescarNivel
@@ -119,8 +113,7 @@
                                  [self.ImagenComida setHidden:YES];
                                 
                                  [self.ImagenComida startAnimating];
-                                 
-                             }
+                                 }
                          }];
         [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:self.animal estado:self.estado]];
 

@@ -12,8 +12,8 @@
 
 @interface CargarImagenes : NSObject
 + (UIImage*) Cargarimagen: (animalIdentificador) tipoanimal;
-//+ (UIImage*) CargarComida: (FoodIdentifier) foodType;
-+ (NSArray*) Cargararray: (animalIdentificador) tipoanimal estado: (animalEstado) estadoAnimal ;
 + (UIImage*) CargarimagenCansado:(animalIdentificador)tipoanimal;
++ (NSArray*) Cargararray: (animalIdentificador) tipoanimal estado: (animalEstado) estadoAnimal ;
+
 
 @end

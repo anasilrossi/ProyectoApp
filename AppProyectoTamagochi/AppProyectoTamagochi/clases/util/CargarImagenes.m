@@ -10,7 +10,6 @@
 
 @implementation CargarImagenes
 
-
 + (UIImage*) Cargarimagen:(animalIdentificador)tipoanimal
 {
     NSString* nombreimagen;
@@ -20,15 +19,12 @@
         case animal_gato:
             nombreimagen = @"gato_comiendo_1";
             break;
-            
         case animal_ciervo:
             nombreimagen = @"ciervo_comiendo_1";
             break;
-            
         case animal_jirafa:
             nombreimagen = @"jirafa_comiendo_1";
             break;
-            
         case animal_leon:
             nombreimagen = @"leon_comiendo_1";
             break;
@@ -36,6 +32,7 @@
     UIImage* imagenAnimal = [UIImage imageNamed:nombreimagen];
     return imagenAnimal;
 }
+
 + (UIImage*) CargarimagenCansado:(animalIdentificador)tipoanimal
 {
     NSString* nombreimagen;
@@ -45,15 +42,12 @@
         case animal_gato:
             nombreimagen = @"gato_exhausto_4";
             break;
-            
         case animal_ciervo:
             nombreimagen = @"ciervo_exhausto_4";
             break;
-            
         case animal_jirafa:
             nombreimagen = @"jirafa_exhausto_4";
             break;
-            
         case animal_leon:
             nombreimagen = @"leon_exhausto_4";
             break;
@@ -61,6 +55,7 @@
     UIImage* imagenAnimal = [UIImage imageNamed:nombreimagen];
     return imagenAnimal;
 }
+
 + (NSArray*) Cargararray:(animalIdentificador)tipoanimal estado:(animalEstado)estadoAnimal
 {
     NSMutableArray* Listaimagenes = [[NSMutableArray alloc] init];
@@ -84,12 +79,10 @@
         case animal_leon:
             nombreimagen = @"leon";
             break;
-            
     }
     
     switch (estadoAnimal)
     {
-       
         case animal_comiendo:
             estado = @"comiendo";
             break;
@@ -99,9 +92,8 @@
         case animal_ejercitando:
             estado = @"ejercicio";
             break;
-            
     }
-      const int ammountOfImages = estadoAnimal == animal_ejercitando ? 5 : 4;
+    const int ammountOfImages = estadoAnimal == animal_ejercitando ? 5 : 4;
     for(int i = 1; i <= ammountOfImages; ++i)
     {
         NSString* nombre = [NSString stringWithFormat:formato, nombreimagen, estado, i];

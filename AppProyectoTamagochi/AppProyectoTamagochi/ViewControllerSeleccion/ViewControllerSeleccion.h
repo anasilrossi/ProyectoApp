@@ -10,6 +10,5 @@
 
 @interface ViewControllerSeleccion : UIViewController
 @property (strong,nonatomic) NSString * Nombremascota;
-//metodo custom
 
 @end

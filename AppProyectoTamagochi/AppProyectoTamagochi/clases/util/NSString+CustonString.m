@@ -15,7 +15,7 @@
     BOOL respuesta ;
     if ([self isEqualToString:@""])
     {
-         BOOL respuesta = YES;
+         respuesta = YES;
         //validamos si esta vacio
      }
     else
@@ -24,6 +24,7 @@
     }
     return respuesta;
 }
+
 -(BOOL)MayorCuatroLetras
 {
     BOOL respuesta;
@@ -35,6 +36,7 @@
 
     return respuesta;
 }
+
 -(BOOL)Sololetras
 {
     BOOL respuesta;
@@ -45,4 +47,5 @@
     {respuesta= NO;}
     return respuesta;
 }
+
 @end

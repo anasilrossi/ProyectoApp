@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewControllerInicio.h"
 #import "ViewControllerSeleccion.h"
+#import "NetworkManager.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,29 @@
     self.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:ControlerInicio];
     
     [self.window makeKeyAndVisible];
+    
+    [[NetworkManager sharedInstance]GET:(@"/key/value/one/two")
+                             parameters:nil
+                                success:^(NSURLSessionDataTask *task, id responseObject)
+     {
+         if ([responseObject isKindOfClass:[NSArray class]]) {
+             NSArray *responseArray = responseObject;
+              NSLog(@"JSON array: %@", responseArray);
+             /* do something with responseArray */
+         } else if ([responseObject isKindOfClass:[NSDictionary class]]) {
+             NSDictionary *responseDict = responseObject;
+             NSString * valor = [responseDict valueForKey:@"key"];
+            UIAlertView *alerta= [[UIAlertView alloc]initWithTitle: @"alerta" message: valor delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil ];
+            [alerta show];
+//             [responseDict valueForKey:@"key"]
+              NSLog(@"JSON diccionario: %@", responseDict);
+             /* do something with responseDict */
+         }
+     }
+            failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                    NSLog(@"Error: %@", error);}
+     ];
+
     
     // Override point for customization after application launch.
     return YES;

@@ -14,12 +14,22 @@
 @property (nonatomic,assign) int  nivel;
 @property (nonatomic,assign) int  experiencia;
 
-
-
 @end
+
 @implementation Animales
 
 #pragma mark - Constructors
+
++ (instancetype) sharedInstance
+{
+    static dispatch_once_t pred = 0;
+    __strong static id _sharedObject = nil;
+    //Garantiza que lo que se encuentre dentro solo se ejecutará una vez.
+    dispatch_once(&pred, ^{
+        _sharedObject = [[self alloc] initEnergia:100 niveles:1 experiencia:0];
+    });
+    return _sharedObject;
+}
 
 -(instancetype) initEnergia: (int) cambiarEnergia niveles:(int) cambiarNivel experiencia:(int)cambiarExperiencia
 {
@@ -32,17 +42,6 @@
         self.experiencia = cambiarExperiencia;
     }
     return self;
-}
-
-+ (instancetype) sharedInstance
-{
-    static dispatch_once_t pred = 0;
-    __strong static id _sharedObject = nil;
-    //Garantiza que lo que se encuentre dentro solo se ejecutará una vez.
-    dispatch_once(&pred, ^{
-        _sharedObject = [[self alloc] initEnergia:100 niveles:1 experiencia:0];
-    });
-    return _sharedObject;
 }
 
 -(int)menosEnergia
@@ -103,14 +102,11 @@
 {
     int valor = self.nivel * self.nivel;
     int formula = 100 * valor;
-   
     if (self.experiencia >= formula)
     {
         self.nivel +=1;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESCAR_NIVEL" object:nil];
         self.experiencia=0;
-        
-        
     }
     return  self.nivel;
 }

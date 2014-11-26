@@ -10,7 +10,4 @@
 
 @interface ViewControllerInicio : UIViewController <UITextFieldDelegate>
 @property (strong,nonatomic) NSString * Nombremascota;
-
-
-
 @end

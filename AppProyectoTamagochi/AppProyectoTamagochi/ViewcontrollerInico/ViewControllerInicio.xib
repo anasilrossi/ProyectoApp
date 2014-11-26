@@ -10,6 +10,7 @@
                 <outlet property="LabelBienvenida" destination="IZu-8h-EmY" id="aui-5f-GPp"/>
                 <outlet property="LabelMascota" destination="hdF-76-APz" id="GDz-cR-DmX"/>
                 <outlet property="TextFieldNombreMascota" destination="TSj-FF-PqZ" id="I2L-rT-wyF"/>
+                <outlet property="bPruebaRed" destination="UUy-gK-U21" id="FiN-1Q-mSS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -47,6 +48,15 @@
                     </state>
                     <connections>
                         <action selector="ContinuarGuardarNombre:" destination="-1" eventType="touchUpInside" id="wWm-vj-zTB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUy-gK-U21">
+                    <rect key="frame" x="14" y="629" width="106" height="38"/>
+                    <state key="normal" title="Prueba de Red">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="accesoNetwork:" destination="-1" eventType="touchUpInside" id="Veg-dP-8Dt"/>
                     </connections>
                 </button>
             </subviews>
