@@ -11,6 +11,8 @@
 #import "animalIdentificador.h"
 #import "CargarImagenes.h"
 #import "Animales.h"
+#import "Comida.h"
+#import "NSTimer+TimerSafeInvalidate.h"
 
 @interface ViewControllerElegida ()
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenMascota;
@@ -18,12 +20,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *alimentar;
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenComida;
 @property (weak, nonatomic) IBOutlet UIProgressView *Progressbar;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *gestoTap;
 @property (strong,nonatomic) NSTimer * timer;
 @property (weak, nonatomic) IBOutlet UIButton *bEjercitar;
 @property (nonatomic) BOOL estadoEjercicio;
 @property (nonatomic) CGPoint tapLocation;
 @property (nonatomic) CGPoint locacionImagen;
+@property (assign,nonatomic) int valor;
+@property (strong,nonatomic) Comidas * comidaActual;
+
 @end
 
 @implementation ViewControllerElegida
@@ -45,6 +49,7 @@
      self.ImagenMascota.image = [CargarImagenes Cargarimagen:self.animal];
   
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
     UIButton *buttonMail = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
@@ -53,9 +58,16 @@
     
     [buttonMail setBackgroundImage:[UIImage imageNamed:@"mail_iphone"] forState:UIControlStateNormal];
     
+
     UIBarButtonItem* button = [[UIBarButtonItem alloc] initWithCustomView:buttonMail];
     
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:button, nil];
+    
+    float valor =[[Animales sharedInstance] devolverEnergia];
+    valor = valor / 100;
+    [self.Progressbar setProgress:valor animated:YES];
+
+    
 
 }
 - (void)didReceiveMemoryWarning {
@@ -66,14 +78,18 @@
 -(void)DevolverComida:(Comidas*)comidas
 {
     //devuelve la comida en la pantalla
-    [self.ImagenComida setImage:[UIImage imageNamed:comidas.imagencomida]];
+    self.comidaActual = comidas;
+    [self.ImagenComida setImage:[UIImage imageNamed:self.comidaActual.imagencomida]];
     [self.ImagenComida setHidden:NO];
     [self.ImagenComida setCenter:self.locacionImagen];
+    [self.ImagenMascota setImage:[CargarImagenes Cargarimagen:self.animal]];
+    
 }
 
 -(IBAction)darDeComer:(UITapGestureRecognizer*)sender
     {
         
+        [self.ImagenMascota setImage:[CargarImagenes Cargarimagen:self.animal]];
          self.tapLocation = [sender locationInView: self.view];
           self.estado = animal_comiendo;
         [UIView animateWithDuration:0.2
@@ -83,8 +99,9 @@
                          completion:^(BOOL finished) {
                              UIView * vista = [self.view hitTest:_tapLocation withEvent:nil];
                              if ([vista isEqual:self.ImagenMascota]) {
-                               
+                                
                                  [self.ImagenComida setHidden:YES];
+                                
                                  [self.ImagenComida startAnimating];
                                  
                              }
@@ -93,14 +110,13 @@
 
         int valor = [[Animales sharedInstance]devolverEnergia];
         if (valor !=100) {
-            
             [self.ImagenMascota setAnimationDuration:0.5];
             [self.ImagenMascota setAnimationRepeatCount:2];
             [self.ImagenMascota startAnimating];
             
-            float valor =[[Animales sharedInstance] masEnergia ];
-            valor = valor / 100;
-            [self.Progressbar setProgress:valor animated:YES];
+            int valor =[[Animales sharedInstance] masEnergia:self.comidaActual.valor];
+          
+            [self.Progressbar setProgress:valor/100.0f animated:YES];
         }
         else
         {
@@ -113,36 +129,28 @@
 
     ViewControllerComida * controlcomida = [[ViewControllerComida alloc]initWithNibName:@"ViewControllerComida" bundle:[NSBundle mainBundle] ];
      [controlcomida setDelegate:self];
-    
     [self.navigationController pushViewController:controlcomida animated:YES];
-    
 }
-
 
 //Ejercitar!
 - (IBAction)hacerEjercicio:(id)sender {
     
     if (self.estadoEjercicio) {
-        
         //tiempo para ejercitar
         self.timer= [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(disminuirEnergia) userInfo:nil repeats:YES];
-        
-         self.estado = animal_ejercitando;
-        
+        self.estado = animal_ejercitando;
         [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:self.animal estado:self.estado]];
         [self.ImagenMascota setAnimationDuration:0.5];
+        [self.ImagenMascota setAnimationRepeatCount:20];
         [self.ImagenMascota startAnimating];
         [self.bEjercitar setTitle:@"Parar" forState:UIControlStateNormal ];
         [self disminuirEnergia];
         self.estadoEjercicio=NO;
-       
-
     }
     else
     {
         [self.ImagenMascota stopAnimating];
-        if(self.timer && [self.timer isValid]) { [self.timer invalidate];
-            self.timer = nil; }
+        [self.timer invalidartimer];
         [self.bEjercitar setTitle:@"Ejercitar" forState:UIControlStateNormal ];
         self.estadoEjercicio=YES;
     }
@@ -150,30 +158,38 @@
 
 -(void) disminuirEnergia
 {
+    [[Animales sharedInstance] aumentarExperiencia:15];
+   
     if ([[Animales sharedInstance] puedeejercitar]) {
+        [[Animales sharedInstance] menosEnergia];
         float valor =[[Animales sharedInstance] devolverEnergia ];
               valor = valor / 100;
         [self.Progressbar setProgress:valor animated:YES];
-   
-     [[Animales sharedInstance] menosEnergia];
+        
+
     }
     else{
-        if(self.timer && [self.timer isValid]) { [self.timer invalidate];
-            self.timer = nil; }
+        [self.timer invalidartimer];
         [self.ImagenMascota stopAnimating];
         [self.bEjercitar setTitle:@"Ejercitar" forState:UIControlStateNormal ];
-        
-        UIAlertView * alerta = [[UIAlertView alloc]initWithTitle:@"" message:@"Su mascota se murio" delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-        [alerta show];
-        
-    }
-
+        self.estadoEjercicio=YES;
+        [self exauto];
+        }
 }
 
--(void) energiaMaxima
+-(void) exauto
 {
-    [[Animales sharedInstance] masEnergia];
+    self.estado = animal_exhauto;
+    [self.ImagenMascota stopAnimating ];
+    [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:self.animal estado:self.estado]];
+    [self.ImagenMascota setAnimationDuration:1];
+    [self.ImagenMascota setAnimationRepeatCount:1];
+    [self.ImagenMascota setImage:[CargarImagenes CargarimagenCansado:self.animal]];
+    [self.ImagenMascota startAnimating];
+    
 }
+
+
 
 //Realizacion del Weackly
 
@@ -225,8 +241,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    if(self.timer && [self.timer isValid]) { [self.timer invalidate];
-        self.timer = nil; }
+    [self.timer invalidartimer];
 }
 
 

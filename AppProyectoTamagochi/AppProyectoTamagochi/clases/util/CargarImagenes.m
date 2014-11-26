@@ -36,7 +36,31 @@
     UIImage* imagenAnimal = [UIImage imageNamed:nombreimagen];
     return imagenAnimal;
 }
-
++ (UIImage*) CargarimagenCansado:(animalIdentificador)tipoanimal
+{
+    NSString* nombreimagen;
+    switch (tipoanimal)
+    {
+        default: //Default value is just for avoid crashes
+        case animal_gato:
+            nombreimagen = @"gato_exhausto_4";
+            break;
+            
+        case animal_ciervo:
+            nombreimagen = @"ciervo_exhausto_4";
+            break;
+            
+        case animal_jirafa:
+            nombreimagen = @"jirafa_exhausto_4";
+            break;
+            
+        case animal_leon:
+            nombreimagen = @"leon_exhausto_4";
+            break;
+    }
+    UIImage* imagenAnimal = [UIImage imageNamed:nombreimagen];
+    return imagenAnimal;
+}
 + (NSArray*) Cargararray:(animalIdentificador)tipoanimal estado:(animalEstado)estadoAnimal
 {
     NSMutableArray* Listaimagenes = [[NSMutableArray alloc] init];

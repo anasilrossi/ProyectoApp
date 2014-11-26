@@ -368,6 +368,7 @@
 				A44E59761A1E706A00611E4D /* CellCustom.m in Sources */,
 				A449C2201A20E8BF0026B08C /* CargarImagenes.m in Sources */,
 				A47B3A4A1A1BCA950099B9B2 /* main.m in Sources */,
+				A4B6A16A1A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m in Sources */,
 				A449C21F1A20E8BF0026B08C /* Animales.m in Sources */,
 				A44E59101A1E5E6F00611E4D /* Comida.m in Sources */,
 				A4B6A16D1A251FA5006405A8 /* NSString+CustonString.m in Sources */,
