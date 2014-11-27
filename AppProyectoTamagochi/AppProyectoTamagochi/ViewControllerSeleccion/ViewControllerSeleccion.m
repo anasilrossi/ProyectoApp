@@ -33,7 +33,7 @@
     [super viewDidLoad];
     self.Nombremascota =[[Animales sharedInstance] animalNombre];
     self.LabelTitulo.text=[NSString stringWithFormat: @"El nombre de tu mascota es %@",self.Nombremascota];
-    self.ScrollView.contentSize = CGSizeMake(580, 129) ;
+    self.ScrollView.contentSize = CGSizeMake(700, 186) ;
     [self setTitle:@"Seleccione su mascota"];
     self.ImagenElegida.image = [UIImage imageNamed:@"gato_comiendo_1"];
 }
