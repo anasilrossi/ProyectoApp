@@ -45,7 +45,7 @@
     recognizer.delegate = self;
     //Lo agregamos a la Vista donde debe detectar el tap
     [self.view addGestureRecognizer:recognizer];
-    
+    self.ImagenComida.image = nil;
     self.animal=[[Animales sharedInstance] tipoAnimal];
      self.ImagenMascota.image = [CargarImagenes Cargarimagen:self.animal];
   
@@ -98,7 +98,8 @@
 
 -(IBAction)darDeComer:(UITapGestureRecognizer*)sender
     {
-        
+        if (self.ImagenComida.image != nil)
+        {
         [self.ImagenMascota setImage:[CargarImagenes Cargarimagen:self.animal]];
          self.tapLocation = [sender locationInView: self.view];
           self.estado = animal_comiendo;
@@ -111,7 +112,7 @@
                              if ([vista isEqual:self.ImagenMascota]) {
                                 
                                  [self.ImagenComida setHidden:YES];
-                                
+                                 self.ImagenComida.image= nil;
                                  [self.ImagenComida startAnimating];
                                  }
                          }];
@@ -131,6 +132,7 @@
         {
             UIAlertView * alerta = [[UIAlertView alloc]initWithTitle:@"" message:@"Su mascota esta llena,Dele de comer mas tarde" delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
             [alerta show];
+        }
         }
 }
 
