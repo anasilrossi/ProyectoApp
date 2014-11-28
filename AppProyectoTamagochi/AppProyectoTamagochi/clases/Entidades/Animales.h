@@ -31,5 +31,6 @@
 -(int)devolverExperiencia;
 -(int)devolverNivel;
 -(void)decodificardic:(NSDictionary*)diccionario;
-
+-(NSDictionary *)devolverMascota;
+-(void)PushRemoto;
 @end

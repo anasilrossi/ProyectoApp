@@ -14,6 +14,7 @@
 #import "Comida.h"
 #import "NSTimer+TimerSafeInvalidate.h"
 
+
 @interface ViewControllerElegida ()
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenMascota;
 @property (weak, nonatomic) IBOutlet UILabel *NombreMascota;
@@ -28,9 +29,16 @@
 @property (assign,nonatomic) int valor;
 @property (strong,nonatomic) Comidas * comidaActual;
 
+@property (weak, nonatomic) IBOutlet UIButton *PRUEBA;
 @end
 
 @implementation ViewControllerElegida
+
+
+- (IBAction)PRUEBA:(id)sender {
+    [[Animales sharedInstance] PushRemoto];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -80,9 +88,30 @@
 -(void)refrescarNivel
 {
     int valor =[[Animales sharedInstance] devolverNivel];
+    [self pushLocal];
+    /*
     NSString * mensaje = [NSString stringWithFormat: @"Su mascota llego a nivel %d",valor];
     UIAlertView * alerta =[[UIAlertView alloc] initWithTitle:@"Mascota Virtual" message:mensaje delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil, nil];
     [alerta show];
+     */
+}
+
+-(void)pushLocal
+{
+    UILocalNotification *localNotification =[[UILocalNotification alloc]init];
+    
+    // Notification details
+    localNotification.fireDate = [[NSDate alloc]init];
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.repeatCalendar = [NSCalendar currentCalendar];
+    localNotification.alertBody = @"Nivel";
+    localNotification.alertAction = @"Subio Nivel";
+    localNotification.userInfo = [[Animales sharedInstance] devolverMascota];
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.applicationIconBadgeNumber = 1;
+    
+    // Schedule the notification
+    [[UIApplication sharedApplication]scheduleLocalNotification:localNotification];
 }
 
 -(void)DevolverComida:(Comidas*)comidas

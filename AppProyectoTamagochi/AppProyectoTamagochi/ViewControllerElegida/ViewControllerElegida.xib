@@ -11,6 +11,7 @@
                 <outlet property="ImagenComida" destination="blq-I1-EcX" id="MQd-Ea-3xr"/>
                 <outlet property="ImagenMascota" destination="EcI-4u-Cbn" id="p8p-n1-lU2"/>
                 <outlet property="NombreMascota" destination="GvV-Sy-VZF" id="lv6-AT-lhp"/>
+                <outlet property="PRUEBA" destination="GiL-sB-jAr" id="4zv-wM-1c1"/>
                 <outlet property="Progressbar" destination="2hR-or-AVw" id="jHI-gP-pWL"/>
                 <outlet property="alimentar" destination="lv1-gI-vmU" id="KeO-rC-1sT"/>
                 <outlet property="bEjercitar" destination="5tq-uN-4mF" id="fUz-tj-TsY"/>
@@ -103,6 +104,15 @@
                         </mask>
                     </variation>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiL-sB-jAr">
+                    <rect key="frame" x="161" y="180" width="46" height="30"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="PRUEBA:" destination="-1" eventType="touchUpInside" id="f84-JT-oDc"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.82966178840000004" blue="0.43043659340000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>

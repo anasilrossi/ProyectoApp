@@ -10,7 +10,7 @@
 #import "ViewControllerInicio.h"
 #import "ViewControllerSeleccion.h"
 #import "NetworkManager.h"
-
+#import <Parse/Parse.h>
 @interface AppDelegate ()
 
 @end
@@ -19,6 +19,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes: (UIUserNotificationTypeAlert |UIUserNotificationTypeBadge | UIUserNotificationTypeSound) categories:nil]];
+    }
+    else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                                               UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)]; }
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
+#endif
+    
+    UILocalNotification *localNotif =
+    [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (localNotif) {
+    }
+    
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     
     ViewControllerInicio * ControlerInicio =[[ViewControllerInicio alloc] initWithNibName:@"ViewControllerInicio" bundle:nil];
@@ -28,31 +45,40 @@
     
     [self.window makeKeyAndVisible];
     
-    [[NetworkManager sharedInstance]GET:(@"/key/value/one/two")
-                             parameters:nil
-                                success:^(NSURLSessionDataTask *task, id responseObject)
-     {
-         if ([responseObject isKindOfClass:[NSArray class]]) {
-             NSArray *responseArray = responseObject;
-              NSLog(@"JSON array: %@", responseArray);
-             /* do something with responseArray */
-         } else if ([responseObject isKindOfClass:[NSDictionary class]]) {
-             NSDictionary * responseDict = responseObject;
-             NSString * valor = [responseDict valueForKey:@"key"];
-            UIAlertView *alerta= [[UIAlertView alloc]initWithTitle: @"alerta" message: valor delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil ];
-            [alerta show];
-//             [responseDict valueForKey:@"key"]
-              NSLog(@"JSON diccionario: %@", responseDict);
-             /* do something with responseDict */
-         }
-     }
-            failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                    NSLog(@"Error: %@", error);}
-     ];
-
+    [Parse setApplicationId:@"guhchukKgURzzZVCHBFOxyD35VHeMQm3EUZEdJvD" clientKey:@"SnnbrQ9yOemJspA7LRt1MCACFFUYNkbQ1k2IM1vH"];
+    
+    
+    
     
     // Override point for customization after application launch.
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"Successfully got a push token: %@", deviceToken);
+    //Este token es el que utilizara nuestro servidor para enviarnos pushes remotas :).
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation addUniqueObject:@"PeleaDeMascotas" forKey:@"channels"];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Failed to register for push notifications! Error was: %@", [error localizedDescription]);
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICACION_NIVEL" object:nil userInfo:notification.userInfo];
+    
+    application.applicationIconBadgeNumber = notification.applicationIconBadgeNumber - 1;
+    NSLog(@"llego la notificacion local en fore");
+    
+}
+
+- (void)application:(UIApplication *)app didReceiveRemoteNotification:(UILocalNotification *)notif {
+    UIAlertView * alerta = [[UIAlertView alloc]initWithTitle:@"Alerta" message:@"llego" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    [alerta show];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -8,7 +8,7 @@
 
 #import "Animales.h"
 #import "TamagochiNetwork.h"
-
+#import <Parse/Parse.h>
 @interface Animales ()
 
 
@@ -106,9 +106,19 @@
         self.nivel +=1;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESCAR_NIVEL" object:nil];
          [self update];
+        // Send a notification to all devices subscribed to the "Giants" channel.
+        [self PushRemoto];
         self.experiencia=0;
     }
     return  self.nivel;
+}
+-(void)PushRemoto
+{
+    PFPush *push = [[PFPush alloc] init];
+    [push setChannel:@"PeleaDeMascotas"];
+    [push setMessage: [NSString stringWithFormat: @"La mascota subio de nivel Level:%d",self.nivel]];
+    [push setData:[self devolverMascota]];
+    [push sendPushInBackground];
 }
 
 -(void)update
@@ -156,5 +166,19 @@
  
 }
 
+-(NSDictionary *)devolverMascota
+{
+    NSString * sEnergia = [NSString stringWithFormat:@"%d",self.energia ];
+    NSString * sNivel = [NSString stringWithFormat:@"%d",self.nivel ];
+    NSString * sExperiencia = [NSString stringWithFormat:@"%d",self.experiencia ];
+    NSString * sAnimal = [NSString stringWithFormat:@"%d",self.tipoAnimal];
+    NSDictionary * mascota = @{ @"name":self.animalNombre,
+                                @"energia": sEnergia ,
+                                @"level": sNivel,
+                                @"experience":sExperiencia,
+                                @"Animal":sAnimal,
+                                @"Code":@"AR7666",} ;
+    return mascota;
+}
 
 @end
