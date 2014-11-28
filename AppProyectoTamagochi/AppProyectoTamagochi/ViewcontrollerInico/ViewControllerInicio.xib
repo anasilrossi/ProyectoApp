@@ -13,7 +13,6 @@
                 <outlet property="LabelMascota" destination="hdF-76-APz" id="GDz-cR-DmX"/>
                 <outlet property="Recuperar" destination="DIv-rv-vGE" id="1k6-98-etz"/>
                 <outlet property="TextFieldNombreMascota" destination="TSj-FF-PqZ" id="I2L-rT-wyF"/>
-                <outlet property="bPruebaRed" destination="UUy-gK-U21" id="FiN-1Q-mSS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,15 +25,6 @@
                     <rect key="frame" x="24" y="95" width="343" height="95"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="231" placeholderIntrinsicHeight="44" text="Nombre de su mascota" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdF-76-APz">
-                    <rect key="frame" x="58" y="246" width="246" height="46"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="246" id="Joi-Jk-Ex5"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TSj-FF-PqZ">
@@ -74,34 +64,32 @@
                         <action selector="ContinuarGuardarNombre:" destination="-1" eventType="touchUpInside" id="wWm-vj-zTB"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUy-gK-U21">
-                    <rect key="frame" x="15" y="624" width="103" height="30"/>
-                    <state key="normal" title="Prueba de Red">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="accesoNetwork:" destination="-1" eventType="touchUpInside" id="Veg-dP-8Dt"/>
-                    </connections>
-                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="231" placeholderIntrinsicHeight="44" text="Nombre de su mascota" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdF-76-APz">
+                    <rect key="frame" x="84" y="247" width="246" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="246" id="Joi-Jk-Ex5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="0.82966178843624583" blue="0.43043659336750328" alpha="1" colorSpace="calibratedRGB"/>
             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="TSj-FF-PqZ" secondAttribute="trailing" constant="45" id="0yh-w0-vCS"/>
-                <constraint firstAttribute="bottom" secondItem="UUy-gK-U21" secondAttribute="bottom" constant="13" id="4Zx-ut-V7r"/>
                 <constraint firstItem="IZu-8h-EmY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="95" id="73D-hq-2UT"/>
-                <constraint firstItem="hdF-76-APz" firstAttribute="top" secondItem="IZu-8h-EmY" secondAttribute="bottom" constant="56" id="AMj-d2-Acb"/>
-                <constraint firstItem="hdF-76-APz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="246" id="CaF-Or-eJQ"/>
-                <constraint firstItem="UUy-gK-U21" firstAttribute="top" secondItem="TSj-FF-PqZ" secondAttribute="bottom" constant="270" id="EbU-ns-ymD"/>
+                <constraint firstItem="hdF-76-APz" firstAttribute="top" secondItem="IZu-8h-EmY" secondAttribute="bottom" constant="57" id="AMj-d2-Acb"/>
+                <constraint firstItem="hdF-76-APz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="247" id="CaF-Or-eJQ"/>
                 <constraint firstItem="DIv-rv-vGE" firstAttribute="top" secondItem="1ah-kP-Smv" secondAttribute="bottom" constant="8" id="Gc2-Am-wuK"/>
                 <constraint firstItem="IZu-8h-EmY" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="M35-VY-jCb"/>
                 <constraint firstItem="IZu-8h-EmY" firstAttribute="leading" relation="lessThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="PKo-7S-xQl"/>
                 <constraint firstItem="TSj-FF-PqZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="324" id="Qtk-wk-qqT"/>
                 <constraint firstItem="1ah-kP-Smv" firstAttribute="top" secondItem="TSj-FF-PqZ" secondAttribute="bottom" constant="61" id="VC1-om-HwX"/>
-                <constraint firstItem="TSj-FF-PqZ" firstAttribute="top" secondItem="hdF-76-APz" secondAttribute="bottom" constant="32" id="YbU-I0-8Cd"/>
-                <constraint firstAttribute="centerX" secondItem="hdF-76-APz" secondAttribute="centerX" constant="6.5" id="ZhX-qA-sDA"/>
+                <constraint firstItem="DIv-rv-vGE" firstAttribute="top" secondItem="1ah-kP-Smv" secondAttribute="bottom" constant="8" id="Y0I-mw-hhc"/>
+                <constraint firstItem="TSj-FF-PqZ" firstAttribute="top" secondItem="hdF-76-APz" secondAttribute="bottom" constant="31" id="YbU-I0-8Cd"/>
+                <constraint firstAttribute="centerX" secondItem="hdF-76-APz" secondAttribute="centerX" constant="-19.5" id="ZhX-qA-sDA"/>
                 <constraint firstItem="TSj-FF-PqZ" firstAttribute="trailing" secondItem="DIv-rv-vGE" secondAttribute="trailing" id="dgO-0y-hbv"/>
-                <constraint firstItem="UUy-gK-U21" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="gto-is-Cge"/>
                 <constraint firstItem="TSj-FF-PqZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="vMI-2P-Wdb"/>
                 <constraint firstItem="TSj-FF-PqZ" firstAttribute="trailing" secondItem="1ah-kP-Smv" secondAttribute="trailing" id="w2b-q8-bCF"/>
             </constraints>
