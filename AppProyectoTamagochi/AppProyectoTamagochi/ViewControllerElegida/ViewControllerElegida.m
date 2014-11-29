@@ -13,6 +13,7 @@
 #import "Animales.h"
 #import "Comida.h"
 #import "NSTimer+TimerSafeInvalidate.h"
+#import "ViewControllerRanking.h"
 
 
 @interface ViewControllerElegida ()
@@ -28,17 +29,11 @@
 @property (nonatomic) CGPoint locacionImagen;
 @property (assign,nonatomic) int valor;
 @property (strong,nonatomic) Comidas * comidaActual;
+@property (weak, nonatomic) IBOutlet UIButton *bRanking;
 
-@property (weak, nonatomic) IBOutlet UIButton *PRUEBA;
 @end
 
 @implementation ViewControllerElegida
-
-
-- (IBAction)PRUEBA:(id)sender {
-    [[Animales sharedInstance] PushRemoto];
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -229,9 +224,16 @@
     
 }
 
+//Realizacion del WeeklyTwo
 
+- (IBAction)ranking_pet:(id)sender {
+    
+    ViewControllerRanking * controlranking = [[ViewControllerRanking alloc]initWithNibName:@"ViewControllerRanking" bundle:[NSBundle mainBundle] ];
+    [self.navigationController pushViewController:controlranking animated:YES];
+    
+}
 
-//Realizacion del Weackly
+//Realizacion del WeeklyOne
 
 
 -(IBAction)senderMail:(id)sender

@@ -11,6 +11,8 @@
 #import <Parse/Parse.h>
 @interface Animales ()
 
+@property (nonatomic,assign) int  energia;
+@property (nonatomic,assign) int  experiencia;
 
 @end
 
@@ -123,15 +125,17 @@
 
 -(void)update
 {
-    NSString const * code =@"AR7666";
+    self.code =@"AR7666";
     NSString * sEnergia = [NSString stringWithFormat:@"%d",self.energia ];
     NSString * sNivel = [NSString stringWithFormat:@"%d",self.nivel ];
     NSString * sExperiencia = [NSString stringWithFormat:@"%d",self.experiencia ];
-    NSMutableDictionary * datos = [NSMutableDictionary dictionaryWithDictionary:@{ @"code":code,
+    NSString * tipomascota = [NSString stringWithFormat:@"%d",self.tipoAnimal];
+    NSMutableDictionary * datos = [NSMutableDictionary dictionaryWithDictionary:@{ @"code":_code,
                                                                                    @"name":self.animalNombre,
                                                                                    @"energia":sEnergia,
                                                                                    @"level":sNivel,
-                                                                                   @"experience":sExperiencia}];
+                                                                                   @"experience":sExperiencia,
+                                                                                   @"tipomascota":tipomascota}];
     TamagochiNetwork * manager = [TamagochiNetwork sharedInstance];
     [manager POST:@"/pet"
        parameters:datos
@@ -163,6 +167,8 @@
     self.nivel=[[diccionario valueForKey:@"level"] intValue];
     
     self.animalNombre =[diccionario valueForKey:@"name"];
+    
+    self.tipoAnimal = [diccionario valueForKey:@"tipo_pet"];
  
 }
 
@@ -179,6 +185,18 @@
                                 @"Animal":sAnimal,
                                 @"Code":@"AR7666",} ;
     return mascota;
+}
+
+-(instancetype)initWithDic:(NSString *)nombre nivel:(int)nivel tipo:(animalIdentificador)tipo code:(NSString *)codigo
+{
+    self = [super init];
+    if (self) {
+        self.animalNombre = nombre;
+        self.nivel = nivel;
+        self.code = codigo;
+        self.tipoAnimal = tipo;
+    }
+    return self;
 }
 
 @end
