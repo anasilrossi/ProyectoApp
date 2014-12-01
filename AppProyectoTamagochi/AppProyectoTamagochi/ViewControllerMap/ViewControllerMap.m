@@ -7,18 +7,19 @@
 //
 
 #import "ViewControllerMap.h"
-
+#import <CoreLocation/CoreLocation.h>
 
 @interface ViewControllerMap ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
+@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 @end
 
 @implementation ViewControllerMap
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.mapView setDelegate:self];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -27,14 +28,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)devolverLocalizacion:(Animales*)mascota
+{
+    self.coordinate = CLLocationCoordinate2DMake(mascota.altitude, mascota.altitude);
 }
-*/
+
+-(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
+{
+    
+    MKCoordinateRegion region;
+    region.center = self.coordinate;
+    region.span.latitudeDelta = 0.1;
+    region.span.longitudeDelta = 0.1;
+    [mapView setRegion:region animated:YES];
+}
+
 
 @end

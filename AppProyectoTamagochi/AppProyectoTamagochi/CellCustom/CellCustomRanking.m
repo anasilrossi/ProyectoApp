@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *Name_pet;
 @property (weak, nonatomic) IBOutlet UILabel *level_pet;
 
+@property (weak, nonatomic) IBOutlet UIButton *bMap;
 @end
 
 @implementation CellCustomRanking

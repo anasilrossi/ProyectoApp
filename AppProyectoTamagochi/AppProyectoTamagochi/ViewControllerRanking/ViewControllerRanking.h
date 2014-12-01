@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "Animales.h"
 
-@interface ViewControllerRanking : UIViewController <UITableViewDataSource>
+@protocol Map <NSObject>
 
+-(void)devolverLocalizacion:(Animales *)mascota;
+
+
+@end
+
+
+@interface ViewControllerRanking : UIViewController <UITableViewDataSource,UITabBarDelegate,Map>
+
+@property(assign, nonatomic) CLLocationDistance altitude;
+@property(assign, nonatomic) CLLocationDistance longitud;
+@property (nonatomic, weak)id <Map> delegate;
 @end

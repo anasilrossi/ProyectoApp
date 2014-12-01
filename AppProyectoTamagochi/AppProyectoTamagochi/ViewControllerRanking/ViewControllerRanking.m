@@ -11,6 +11,8 @@
 #import "CellCustomRanking.h"
 #import "ViewControllerElegida.h"
 #import "TamagochiNetwork.h"
+#import "ViewControllerMap.h"
+
 @interface ViewControllerRanking ()
 @property (weak, nonatomic) IBOutlet UITableView *table_pet;
 @property(strong,nonatomic)NSMutableArray * array_pet;
@@ -105,6 +107,26 @@
     return self.sortedArray;
 
 }
+
+#pragma mark-UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Animales * mascotaElegida;
+    mascotaElegida=[self.sortedArray objectAtIndex:indexPath.row];
+    
+    [self devolverLocalizacion:mascotaElegida];
+    ViewControllerMap * controlmap = [[ViewControllerMap alloc]initWithNibName:@"ViewControllerMap" bundle:[NSBundle mainBundle] ];
+    [self.navigationController pushViewController:controlmap animated:YES];
+}
+#pragma mark-foot
+-(void)devolverLocalizacion:(id)mascota
+{
+    self.altitude = [mascota altitude];
+    self.longitud = [mascota longitud];
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

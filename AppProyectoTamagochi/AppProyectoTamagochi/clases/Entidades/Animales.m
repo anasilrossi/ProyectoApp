@@ -151,8 +151,7 @@ NSString  * const  code =@"AR7666";
               NSString * valor = [responseDict valueForKey:@"status"];
               if ([valor isEqualToString: @"ok"]) {
                   NSLog(@"Perfecto! JSON: %@", responseObject);
-                  UIAlertView * alerta =[[UIAlertView alloc]initWithTitle: @"alerta" message: @"Perfecto subido al servidor" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil ];
-                  [alerta show];
+                
 
               }
               else
@@ -193,23 +192,9 @@ NSString  * const  code =@"AR7666";
                                 @"Code":@"AR7666",} ;
     return mascota;
 }
-/*
--(instancetype)initWithDic:(NSString *)nombre nivel:(int)nivel tipo:(animalIdentificador)tipo code:(NSString *)codigo
-{
-    self = [super init];
-    if (self) {
-        self.animalNombre = nombre;
-        self.nivel = nivel;
-        self.tipoAnimal = tipo;
-        self.codigoAnimal = codigo;
-    }
-    return self;
-}
- */
 
 -(instancetype)initwithDici:(NSDictionary *) dic
 {
-    
     Animales * animal = [super init];
     if(animal){
         animal.animalNombre = [dic valueForKey:@"name"];
