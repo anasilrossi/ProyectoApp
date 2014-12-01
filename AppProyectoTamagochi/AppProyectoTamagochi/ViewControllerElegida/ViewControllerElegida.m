@@ -13,6 +13,7 @@
 #import "Animales.h"
 #import "Comida.h"
 #import "NSTimer+TimerSafeInvalidate.h"
+#import "ViewControllerRanking.h"
 
 
 @interface ViewControllerElegida ()
@@ -31,16 +32,12 @@
 @property (nonatomic, retain) CLLocation *  locacion  ;
 @property (nonatomic, retain) CLLocationManager * locationManager;
 @property (weak, nonatomic) IBOutlet UIButton *PRUEBA;
+@property (weak, nonatomic) IBOutlet UIButton *bRanking;
+
 
 @end
 
 @implementation ViewControllerElegida
-
-
-- (IBAction)PRUEBA:(id)sender {
-    [[Animales sharedInstance] PushRemoto];
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,7 +89,7 @@
 
 -(void)refrescarNivel
 {
-    int valor =[[Animales sharedInstance] devolverNivel];
+   // int valor =[[Animales sharedInstance] devolverNivel];
     [self pushLocal];
     /*
     NSString * mensaje = [NSString stringWithFormat: @"Su mascota llego a nivel %d",valor];
@@ -234,6 +231,7 @@
     
 }
 
+
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
@@ -264,8 +262,17 @@
 
 
 
+//Realizacion del WeeklyTwo
 
-//Realizacion del Weackly
+
+- (IBAction)ranking_pet:(id)sender {
+    
+    ViewControllerRanking * controlranking = [[ViewControllerRanking alloc]initWithNibName:@"ViewControllerRanking" bundle:[NSBundle mainBundle] ];
+    [self.navigationController pushViewController:controlranking animated:YES];
+    
+}
+
+//Realizacion del WeeklyOne
 
 
 -(IBAction)senderMail:(id)sender

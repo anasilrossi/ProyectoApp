@@ -32,7 +32,7 @@
         [sessionConfiguration setRequestCachePolicy:NSURLRequestReloadIgnoringCacheData];
 
         // Initialize the session
-        NSURL const * url = [NSURL URLWithString:@"http://echo.jsontest.com"];
+        NSURL * const url = [NSURL URLWithString:@"http://echo.jsontest.com"];
         _sharedInstance = [[NetworkManager alloc] initWithBaseURL: url sessionConfiguration:sessionConfiguration];
         
         //Setup a default JSONSerializer for all request/responses.

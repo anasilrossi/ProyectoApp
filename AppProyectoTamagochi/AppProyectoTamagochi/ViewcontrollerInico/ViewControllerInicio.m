@@ -8,6 +8,7 @@
 
 #import "ViewControllerInicio.h"
 #import "ViewControllerSeleccion.h"
+#import "ViewControllerElegida.h"
 #import "Animales.h"
 #import "NSString+CustonString.h"
 #import "NetworkManager.h"
@@ -102,8 +103,8 @@
                                             NSDictionary * responseDict = responseObject;
                                             [[Animales sharedInstance]decodificardic:responseDict];
                                             NSLog(@"JSON array: %@", responseDict);
-                                            ViewControllerSeleccion * controlselecion =[[ViewControllerSeleccion alloc] initWithNibName:@"ViewControllerSeleccion" bundle:[NSBundle mainBundle]];
-                                            [self.navigationController pushViewController:controlselecion animated:YES];
+                                            ViewControllerElegida * controlelegida =[[ViewControllerElegida alloc] initWithNibName:@"ViewControllerElegida" bundle:[NSBundle mainBundle]];
+                                            [self.navigationController pushViewController:controlelegida animated:YES];
 
                                         }
                                 failure:^(NSURLSessionDataTask *task, NSError *error) {
