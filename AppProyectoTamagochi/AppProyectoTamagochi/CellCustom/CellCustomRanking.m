@@ -8,6 +8,7 @@
 
 #import "CellCustomRanking.h"
 #import "CargarImagenes.h"
+#import "Animales.h"
 @interface CellCustomRanking ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *Imagen_Pet;
@@ -30,12 +31,26 @@
 
 -(void)configurarCelda:( Animales * )pet
 {
-
+ 
     [self.Imagen_Pet setImage:[CargarImagenes Cargarimagen:pet.tipoAnimal]];
     [self.Name_pet setText:pet.animalNombre];
-    [self.level_pet setText:[NSString stringWithFormat:@"%d",pet.nivel]];
+    [self.level_pet setText:[NSString stringWithFormat:@"%i",pet.nivel]];
     
 }
+
+-(void)configurarColor:(NSString *)codigoAnimal
+{
+    if ( [code isEqualToString:codigoAnimal])
+    {
+        [self.contentView setBackgroundColor:[UIColor purpleColor]];
+    }
+    else
+    {
+        [self.contentView setBackgroundColor:[UIColor whiteColor]];
+    }
+
+}
+
 
 
 @end

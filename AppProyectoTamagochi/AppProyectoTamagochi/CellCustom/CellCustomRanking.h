@@ -10,4 +10,5 @@
 #import "Animales.h"
 @interface CellCustomRanking:UITableViewCell
 -(void)configurarCelda:( Animales * )pet;
+-(void)configurarColor:(NSString *)code;
 @end

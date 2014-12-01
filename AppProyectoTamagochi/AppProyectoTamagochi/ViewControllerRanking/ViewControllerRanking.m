@@ -24,7 +24,7 @@
     
     [self setTitle:@"Ranking de Mascotas"];
     
-    [_table_pet registerNib:[UINib nibWithNibName:@"CellCustomRanking"
+    [self.table_pet registerNib:[UINib nibWithNibName:@"CellCustomRanking"
                                            bundle:[NSBundle mainBundle]]
      forCellReuseIdentifier:@"CellCustomRanking"] ;
     [self listaMascota];
@@ -49,22 +49,17 @@
         cell = [[CellCustomRanking alloc] init];
     }
     [cell configurarCelda:[self.sortedArray objectAtIndex:indexPath.row]];
+   NSString * codigo = [[NSString alloc]init];
     
-    if([((Animales *)self.sortedArray[indexPath.row]).code isEqualToString:@"AR7666"])
-    {
-        [cell setBackgroundColor:[UIColor purpleColor]];
-    }
-    else
-    {
-        [cell setBackgroundColor:[UIColor whiteColor]];
-    }
+    codigo = [((Animales *)self.sortedArray[indexPath.row]) codigoAnimal];
+    [cell configurarColor:codigo];
     
     return cell;
 }
 
 -(void)listaMascota
 {
-    ViewControllerRanking * __weak weakself = self;
+    __weak ViewControllerRanking * weakself = self;
     [[TamagochiNetwork sharedInstance]GET:@"/pet/all"
                                parameters:nil
                                   success:^(NSURLSessionDataTask *task, id responseObject)
@@ -75,24 +70,17 @@
          weakself.array_pet = [[NSMutableArray alloc]init];
          for (NSDictionary * dic in responseObject) {
              
-             NSString * animalNombre = [dic valueForKey:@"name"];
-             int nivel = ((NSNumber *)[dic valueForKey:@"level"]).intValue;
-             NSString * code = [dic valueForKey:@"code"];
-             animalIdentificador tipoAnimal = ((NSNumber *)[dic valueForKey:@"pet_type"]).intValue;
+             Animales * masc =[[Animales alloc]initwithDici:dic];
+             [weakself.array_pet addObject:masc];
              
-             Animales * mascota = [[Animales alloc]initWithDic:animalNombre nivel:nivel tipo:tipoAnimal code:code];
-             
-             [weakself.array_pet addObject:mascota];
-             [self Ordenar];
             }
-         
+         [self Ordenar];
          [weakself.table_pet reloadData];
          
      }
                                   failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      NSString * errores = error;
-                                      UIAlertView * alerta = [[UIAlertView alloc]initWithTitle:@"" message:errores delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
-                                      [alerta show];}
+                                      NSString * errores = [error localizedDescription];
+                                  }
      ];
 }
 
@@ -108,10 +96,10 @@
      */
     
     
-    self.sortedArray = [self.array_pet sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+    self.sortedArray = [self.array_pet sortedArrayUsingComparator:^NSComparisonResult(Animales * a, Animales * b)
                    {
-                       NSNumber *first = [NSNumber numberWithInt:((Animales*)a).nivel];
-                       NSNumber *second = [NSNumber numberWithInt:((Animales*)b).nivel];
+                       NSNumber *first = [NSNumber numberWithInt:a.nivel];
+                       NSNumber *second = [NSNumber numberWithInt:b.nivel];
                        return [second compare:first];
                    }];
     return self.sortedArray;

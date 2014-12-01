@@ -15,7 +15,8 @@
 @property (nonatomic,assign) animalIdentificador tipoAnimal;
 @property (nonatomic,assign) animalEstado estadoAnimal;
 @property (nonatomic,assign) int  nivel;
-@property (nonatomic,strong) NSString * const code;
+@property (nonatomic,strong) NSString *codigoAnimal;
+extern NSString * const code;
 //Constructor
 + (instancetype) sharedInstance;
 
@@ -31,5 +32,6 @@
 -(void)decodificardic:(NSDictionary*)diccionario;
 -(NSDictionary *)devolverMascota;
 -(void)PushRemoto;
--(instancetype)initWithDic:(NSString *)nombre nivel:(int)nivel tipo:(animalIdentificador)tipo code:(NSString *)codigo;
+//-(instancetype)initWithDic:(NSString *)nombre nivel:(int)nivel tipo:(animalIdentificador)tipo code:(NSString *)codigo;
+-(instancetype)initwithDici: (NSDictionary *) dic;
 @end
