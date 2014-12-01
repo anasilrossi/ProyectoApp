@@ -82,7 +82,7 @@
 
 -(void)refrescarNivel
 {
-    int valor =[[Animales sharedInstance] devolverNivel];
+   // int valor =[[Animales sharedInstance] devolverNivel];
     [self pushLocal];
     /*
     NSString * mensaje = [NSString stringWithFormat: @"Su mascota llego a nivel %d",valor];
