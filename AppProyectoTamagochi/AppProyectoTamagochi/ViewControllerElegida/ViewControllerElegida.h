@@ -10,9 +10,10 @@
 #import "ViewControllerComida.h"
 #import "animalIdentificador.h"
 #import <MessageUI/MessageUI.h>
+#import <CoreLocation/CoreLocation.h>
+#import <CoreLocation/CLLocationManagerDelegate.h>
 
-
-@interface ViewControllerElegida : UIViewController <Foot,UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate>
+@interface ViewControllerElegida : UIViewController <Foot,UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate,CLLocationManagerDelegate>
 
 @property (strong,nonatomic) NSString * Nombremascota;
 @property (assign,nonatomic) animalIdentificador animal;

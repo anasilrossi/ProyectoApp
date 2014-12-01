@@ -28,8 +28,10 @@
 @property (nonatomic) CGPoint locacionImagen;
 @property (assign,nonatomic) int valor;
 @property (strong,nonatomic) Comidas * comidaActual;
-
+@property (nonatomic, retain) CLLocation *  locacion  ;
+@property (nonatomic, retain) CLLocationManager * locationManager;
 @property (weak, nonatomic) IBOutlet UIButton *PRUEBA;
+
 @end
 
 @implementation ViewControllerElegida
@@ -56,6 +58,7 @@
     self.ImagenComida.image = nil;
     self.animal=[[Animales sharedInstance] tipoAnimal];
      self.ImagenMascota.image = [CargarImagenes Cargarimagen:self.animal];
+    
   
 }
 
@@ -75,6 +78,8 @@
     float valor =[[Animales sharedInstance] devolverEnergia];
     valor = valor / 100;
     [self.Progressbar setProgress:valor animated:YES];
+    
+    [self locacionMascota];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -228,6 +233,35 @@
     [self.ImagenMascota startAnimating];
     
 }
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+   
+    NSDate* eventDate = newLocation.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 120.0) // Updates de menos de 2 min.
+    {
+        [self.locationManager stopUpdatingLocation]; // Detener el tracking y utilizar la location
+        self.locacion = newLocation;
+        
+        [[Animales sharedInstance]setAltitude: self.locacion.coordinate.latitude];
+        [[Animales sharedInstance]setLongitud: self.locacion.coordinate.longitude];
+        [[Animales sharedInstance]update];
+    }
+}
+
+-(void)locacionMascota
+{
+    if (nil == self.locationManager)
+    self.locationManager =[[CLLocationManager alloc]init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer; // Presición
+    self.locationManager.distanceFilter = 10; // Distancia mínima de updates
+    [self.locationManager startUpdatingLocation];
+    
+}
+
 
 
 

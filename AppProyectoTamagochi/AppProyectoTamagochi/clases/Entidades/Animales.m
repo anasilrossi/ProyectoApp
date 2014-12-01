@@ -127,11 +127,15 @@
     NSString * sEnergia = [NSString stringWithFormat:@"%d",self.energia ];
     NSString * sNivel = [NSString stringWithFormat:@"%d",self.nivel ];
     NSString * sExperiencia = [NSString stringWithFormat:@"%d",self.experiencia ];
+    NSString * saltitud = [NSString stringWithFormat:@"%f",self.altitude];
+    NSString * slongitud = [NSString stringWithFormat:@"%f",self.longitud];
     NSMutableDictionary * datos = [NSMutableDictionary dictionaryWithDictionary:@{ @"code":code,
                                                                                    @"name":self.animalNombre,
                                                                                    @"energia":sEnergia,
                                                                                    @"level":sNivel,
-                                                                                   @"experience":sExperiencia}];
+                                                                                   @"experience":sExperiencia,
+                                                                                   @"position_lat":saltitud,
+                                                                                   @"position_lon":slongitud}];
     TamagochiNetwork * manager = [TamagochiNetwork sharedInstance];
     [manager POST:@"/pet"
        parameters:datos
@@ -172,7 +176,7 @@
     NSString * sNivel = [NSString stringWithFormat:@"%d",self.nivel ];
     NSString * sExperiencia = [NSString stringWithFormat:@"%d",self.experiencia ];
     NSString * sAnimal = [NSString stringWithFormat:@"%d",self.tipoAnimal];
-    NSDictionary * mascota = @{ @"name":self.animalNombre,
+    NSDictionary * mascota = @{@"name":self.animalNombre,
                                 @"energia": sEnergia ,
                                 @"level": sNivel,
                                 @"experience":sExperiencia,

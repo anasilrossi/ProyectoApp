@@ -25,6 +25,7 @@
 		A47B3A4D1A1BCA950099B9B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A4C1A1BCA950099B9B2 /* AppDelegate.m */; };
 		A47B3A551A1BCA950099B9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47B3A541A1BCA950099B9B2 /* Images.xcassets */; };
 		A47B3A641A1BCA950099B9B2 /* AppProyectoTamagochiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */; };
+		A481F8351A2CAF9400F2A605 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A481F8341A2CAF9400F2A605 /* MapKit.framework */; };
 		A4840EB31A28D599008FA35B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4840EAF1A28D599008FA35B /* Bolts.framework */; };
 		A4840EB41A28D599008FA35B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4840EB01A28D599008FA35B /* Parse.framework */; };
 		A4840EB51A28D599008FA35B /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4840EB11A28D599008FA35B /* ParseFacebookUtils.framework */; };
@@ -104,6 +105,7 @@
 		A47B3A5D1A1BCA950099B9B2 /* AppProyectoTamagochiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppProyectoTamagochiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47B3A621A1BCA950099B9B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppProyectoTamagochiTests.m; sourceTree = "<group>"; };
+		A481F8341A2CAF9400F2A605 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A4840EAF1A28D599008FA35B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.5.0/Bolts.framework"; sourceTree = "<group>"; };
 		A4840EB01A28D599008FA35B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.5.0/Parse.framework"; sourceTree = "<group>"; };
 		A4840EB11A28D599008FA35B /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "parse-library-1.5.0/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
@@ -168,12 +170,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A481F8351A2CAF9400F2A605 /* MapKit.framework in Frameworks */,
+				A4840EBE1A28E739008FA35B /* CoreLocation.framework in Frameworks */,
 				A4840ECA1A28E78E008FA35B /* SystemConfiguration.framework in Frameworks */,
 				A4840EC61A28E777008FA35B /* Security.framework in Frameworks */,
 				A4840EC41A28E763008FA35B /* QuartzCore.framework in Frameworks */,
 				A4840EC21A28E75B008FA35B /* MobileCoreServices.framework in Frameworks */,
 				A4840EC01A28E752008FA35B /* libz.dylib in Frameworks */,
-				A4840EBE1A28E739008FA35B /* CoreLocation.framework in Frameworks */,
 				A4840EBC1A28E733008FA35B /* CoreGraphics.framework in Frameworks */,
 				A4840EBA1A28E71C008FA35B /* CFNetwork.framework in Frameworks */,
 				A4840EB81A28E6F9008FA35B /* AudioToolbox.framework in Frameworks */,
@@ -365,6 +368,7 @@
 		A4D6DC031A262AD200F9F91C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				A481F8341A2CAF9400F2A605 /* MapKit.framework */,
 				A4840EC91A28E78E008FA35B /* SystemConfiguration.framework */,
 				A4840EC51A28E777008FA35B /* Security.framework */,
 				A4840EC31A28E763008FA35B /* QuartzCore.framework */,

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "animalIdentificador.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface Animales : NSObject
 @property (strong,nonatomic) NSString * animalNombre;
@@ -17,6 +18,8 @@
 @property (nonatomic,assign) int  energia;
 @property (nonatomic,assign) int  nivel;
 @property (nonatomic,assign) int  experiencia;
+@property(assign, nonatomic) CLLocationDistance altitude;
+@property(assign, nonatomic) CLLocationDistance longitud;
 
 //Constructor
 + (instancetype) sharedInstance;
@@ -33,4 +36,5 @@
 -(void)decodificardic:(NSDictionary*)diccionario;
 -(NSDictionary *)devolverMascota;
 -(void)PushRemoto;
+-(void)update;
 @end
