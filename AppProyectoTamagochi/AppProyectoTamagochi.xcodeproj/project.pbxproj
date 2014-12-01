@@ -60,6 +60,8 @@
 		A4D6DC3A1A262AD200F9F91C /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6DC291A262AD200F9F91C /* UIWebView+AFNetworking.m */; };
 		A4D6DC3D1A26400A00F9F91C /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6DC3C1A26400A00F9F91C /* NetworkManager.m */; };
 		A4D6DC401A266B8E00F9F91C /* TamagochiNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6DC3F1A266B8E00F9F91C /* TamagochiNetwork.m */; };
+		A4D828101A2CDF4000814449 /* ViewControllerMap.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D8280E1A2CDF4000814449 /* ViewControllerMap.m */; };
+		A4D828111A2CDF4000814449 /* ViewControllerMap.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D8280F1A2CDF4000814449 /* ViewControllerMap.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +165,9 @@
 		A4D6DC3C1A26400A00F9F91C /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		A4D6DC3E1A266B8E00F9F91C /* TamagochiNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TamagochiNetwork.h; sourceTree = "<group>"; };
 		A4D6DC3F1A266B8E00F9F91C /* TamagochiNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TamagochiNetwork.m; sourceTree = "<group>"; };
+		A4D8280D1A2CDF4000814449 /* ViewControllerMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerMap.h; sourceTree = "<group>"; };
+		A4D8280E1A2CDF4000814449 /* ViewControllerMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerMap.m; sourceTree = "<group>"; };
+		A4D8280F1A2CDF4000814449 /* ViewControllerMap.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerMap.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +334,7 @@
 				A44E590C1A1E5E6F00611E4D /* ViewControllerSeleccion */,
 				A44E59041A1E5E6F00611E4D /* ViewControllerElegida */,
 				A44E59001A1E5E6F00611E4D /* ViewControllerComida */,
+				A4D8280C1A2CDEFD00814449 /* ViewControllerMap */,
 				A44E59721A1E703500611E4D /* CellCustom */,
 				A4D6DC031A262AD200F9F91C /* Framework */,
 				A47B3A4B1A1BCA950099B9B2 /* AppDelegate.h */,
@@ -439,6 +445,16 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		A4D8280C1A2CDEFD00814449 /* ViewControllerMap */ = {
+			isa = PBXGroup;
+			children = (
+				A4D8280D1A2CDF4000814449 /* ViewControllerMap.h */,
+				A4D8280E1A2CDF4000814449 /* ViewControllerMap.m */,
+				A4D8280F1A2CDF4000814449 /* ViewControllerMap.xib */,
+			);
+			path = ViewControllerMap;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -530,6 +546,7 @@
 			files = (
 				A44E59771A1E706A00611E4D /* CellCustom.xib in Resources */,
 				A47B3A551A1BCA950099B9B2 /* Images.xcassets in Resources */,
+				A4D828111A2CDF4000814449 /* ViewControllerMap.xib in Resources */,
 				A44E59141A1E5E6F00611E4D /* ViewControllerElegida.xib in Resources */,
 				A44E59121A1E5E6F00611E4D /* ViewControllerComida.xib in Resources */,
 				A44E59161A1E5E6F00611E4D /* ViewControllerInicio.xib in Resources */,
@@ -562,6 +579,7 @@
 				A4D6DC331A262AD200F9F91C /* AFNetworkActivityIndicatorManager.m in Sources */,
 				A44E59761A1E706A00611E4D /* CellCustom.m in Sources */,
 				A4D6DC2F1A262AD200F9F91C /* AFURLConnectionOperation.m in Sources */,
+				A4D828101A2CDF4000814449 /* ViewControllerMap.m in Sources */,
 				A4D6DC2B1A262AD200F9F91C /* AFHTTPRequestOperationManager.m in Sources */,
 				A449C2201A20E8BF0026B08C /* CargarImagenes.m in Sources */,
 				A4D6DC2D1A262AD200F9F91C /* AFNetworkReachabilityManager.m in Sources */,
