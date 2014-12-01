@@ -11,10 +11,14 @@
 #import <Parse/Parse.h>
 @interface Animales ()
 
+@property (nonatomic,assign) int  energia;
+@property (nonatomic,assign) int  experiencia;
 
 @end
 
 @implementation Animales
+
+NSString  * const  code =@"AR7666";
 
 #pragma mark - Constructors
 
@@ -81,7 +85,7 @@
     if (self.energia!=0) {
         self.experiencia += valor;
         self.nivel =[self subirNivel:self.experiencia];
-        NSLog([NSString stringWithFormat:@"experiencia:%d nivel:%d ",self.experiencia, self.nivel]);
+       // NSLog([NSString stringWithFormat:@"experiencia:%d nivel:%d ",self.experiencia, self.nivel]);
        
     }
    return self.experiencia;
@@ -123,15 +127,17 @@
 
 -(void)update
 {
-    NSString const * code =@"AR7666";
-    NSString * sEnergia = [NSString stringWithFormat:@"%d",self.energia ];
-    NSString * sNivel = [NSString stringWithFormat:@"%d",self.nivel ];
-    NSString * sExperiencia = [NSString stringWithFormat:@"%d",self.experiencia ];
+    
+    NSNumber * sEnergia = [ NSNumber numberWithInt:self.energia ];
+    NSNumber * sNivel = [ NSNumber numberWithInt:self.nivel ];
+    NSNumber * sExperiencia = [NSNumber numberWithInt:self.experiencia ];
+    NSNumber * tipomascota = [NSNumber numberWithInt:self.tipoAnimal];
     NSMutableDictionary * datos = [NSMutableDictionary dictionaryWithDictionary:@{ @"code":code,
                                                                                    @"name":self.animalNombre,
                                                                                    @"energia":sEnergia,
                                                                                    @"level":sNivel,
-                                                                                   @"experience":sExperiencia}];
+                                                                                   @"experience":sExperiencia,
+                                                                                   @"tipomascota":tipomascota}];
     TamagochiNetwork * manager = [TamagochiNetwork sharedInstance];
     [manager POST:@"/pet"
        parameters:datos
@@ -163,6 +169,8 @@
     self.nivel=[[diccionario valueForKey:@"level"] intValue];
     
     self.animalNombre =[diccionario valueForKey:@"name"];
+    
+    self.tipoAnimal = [[diccionario valueForKey:@"tipo_pet"] intValue];
  
 }
 
@@ -180,5 +188,30 @@
                                 @"Code":@"AR7666",} ;
     return mascota;
 }
+/*
+-(instancetype)initWithDic:(NSString *)nombre nivel:(int)nivel tipo:(animalIdentificador)tipo code:(NSString *)codigo
+{
+    self = [super init];
+    if (self) {
+        self.animalNombre = nombre;
+        self.nivel = nivel;
+        self.tipoAnimal = tipo;
+        self.codigoAnimal = codigo;
+    }
+    return self;
+}
+ */
 
+-(instancetype)initwithDici:(NSDictionary *) dic
+{
+    
+    Animales * animal = [super init];
+    if(animal){
+        animal.animalNombre = [dic valueForKey:@"name"];
+        animal.nivel = ((NSNumber *)[dic valueForKey:@"level"]).intValue;
+        animal.tipoAnimal = ((NSNumber *)[dic valueForKey:@"pet_type"]).intValue;
+        animal.codigoAnimal = [dic valueForKey: @"code"];
+    }
+    return animal;
+}
 @end

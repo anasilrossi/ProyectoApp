@@ -11,10 +11,10 @@
                 <outlet property="ImagenComida" destination="blq-I1-EcX" id="MQd-Ea-3xr"/>
                 <outlet property="ImagenMascota" destination="EcI-4u-Cbn" id="p8p-n1-lU2"/>
                 <outlet property="NombreMascota" destination="GvV-Sy-VZF" id="lv6-AT-lhp"/>
-                <outlet property="PRUEBA" destination="GiL-sB-jAr" id="4zv-wM-1c1"/>
                 <outlet property="Progressbar" destination="2hR-or-AVw" id="jHI-gP-pWL"/>
                 <outlet property="alimentar" destination="lv1-gI-vmU" id="KeO-rC-1sT"/>
                 <outlet property="bEjercitar" destination="5tq-uN-4mF" id="fUz-tj-TsY"/>
+                <outlet property="bRanking" destination="9w6-WE-6EP" id="N0j-nj-zUe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -104,13 +104,17 @@
                         </mask>
                     </variation>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiL-sB-jAr">
-                    <rect key="frame" x="161" y="180" width="46" height="30"/>
-                    <state key="normal" title="Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9w6-WE-6EP">
+                    <rect key="frame" x="77" y="590" width="156" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="wCq-3E-Kxa"/>
+                        <constraint firstAttribute="width" constant="156" id="zvL-tM-dc5"/>
+                    </constraints>
+                    <state key="normal" title="Ranking de Mascotas">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="PRUEBA:" destination="-1" eventType="touchUpInside" id="f84-JT-oDc"/>
+                        <action selector="ranking_pet:" destination="-1" eventType="touchUpInside" id="U1V-pg-li2"/>
                     </connections>
                 </button>
             </subviews>
@@ -124,6 +128,7 @@
                 <constraint firstItem="hc6-cV-T0a" firstAttribute="top" secondItem="EcI-4u-Cbn" secondAttribute="bottom" constant="104" id="7uR-6A-keR"/>
                 <constraint firstAttribute="trailing" secondItem="EcI-4u-Cbn" secondAttribute="trailing" constant="67" id="G2r-C0-Ioa"/>
                 <constraint firstItem="EcI-4u-Cbn" firstAttribute="top" secondItem="lv1-gI-vmU" secondAttribute="bottom" constant="70" id="HGa-Sd-Pzx"/>
+                <constraint firstItem="9w6-WE-6EP" firstAttribute="top" secondItem="2hR-or-AVw" secondAttribute="bottom" constant="30" id="HcD-Bb-gjU"/>
                 <constraint firstItem="5tq-uN-4mF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="88" id="ItM-7s-AFA"/>
                 <constraint firstAttribute="trailing" secondItem="hc6-cV-T0a" secondAttribute="trailing" constant="247" id="J7C-tg-Mal"/>
                 <constraint firstItem="GvV-Sy-VZF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="KED-fy-2Q1"/>
@@ -134,6 +139,8 @@
                 <constraint firstItem="EcI-4u-Cbn" firstAttribute="top" secondItem="5tq-uN-4mF" secondAttribute="bottom" constant="45" id="RJr-Af-fSu"/>
                 <constraint firstItem="lv1-gI-vmU" firstAttribute="top" secondItem="GvV-Sy-VZF" secondAttribute="bottom" constant="8" id="RRe-yg-WHj"/>
                 <constraint firstItem="EcI-4u-Cbn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="77" id="Sre-ld-cbd"/>
+                <constraint firstItem="9w6-WE-6EP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="77" id="TrR-CD-PSH"/>
+                <constraint firstAttribute="bottom" secondItem="9w6-WE-6EP" secondAttribute="bottom" constant="45" id="XpA-7D-Bx2"/>
                 <constraint firstAttribute="trailing" secondItem="EcI-4u-Cbn" secondAttribute="trailing" constant="77" id="Yzh-D5-ipw"/>
                 <constraint firstItem="lv1-gI-vmU" firstAttribute="leading" secondItem="5tq-uN-4mF" secondAttribute="trailing" constant="49" id="adc-yr-Fgk"/>
                 <constraint firstItem="2hR-or-AVw" firstAttribute="top" secondItem="hc6-cV-T0a" secondAttribute="bottom" constant="23" id="gFe-VE-Rem"/>
