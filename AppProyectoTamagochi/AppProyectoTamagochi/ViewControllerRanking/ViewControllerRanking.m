@@ -79,9 +79,8 @@
          
      }
                                   failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      NSString * errores = error;
-                                      UIAlertView * alerta = [[UIAlertView alloc]initWithTitle:@"" message:errores delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
-                                      [alerta show];}
+                                      NSString * errores = [error localizedDescription];
+                                  }
      ];
 }
 

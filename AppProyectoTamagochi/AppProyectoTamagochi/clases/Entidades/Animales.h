@@ -39,5 +39,4 @@ extern NSString * const code;
 -(void)PushRemoto;
 -(void)update;
 -(instancetype)initwithDici: (NSDictionary *) dic;
-
 @end
