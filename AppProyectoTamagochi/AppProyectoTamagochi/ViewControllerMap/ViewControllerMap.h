@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "ViewControllerRanking.h"
+#import "CustomAnnotation.h"
 @interface ViewControllerMap : UIViewController <MKMapViewDelegate>
-
+ @property (strong,nonatomic) Mascotas * mascotaActual;
 @end

@@ -72,7 +72,7 @@
          weakself.array_pet = [[NSMutableArray alloc]init];
          for (NSDictionary * dic in responseObject) {
              
-             Animales * masc =[[Animales alloc]initwithDici:dic];
+             Mascotas * masc =[[Mascotas alloc]initwithDici:dic];
              [weakself.array_pet addObject:masc];
              
             }
@@ -82,6 +82,7 @@
      }
                                   failure:^(NSURLSessionDataTask *task, NSError *error) {
                                       NSString * errores = [error localizedDescription];
+                                      UIAlertView * alerta =[[UIAlertView alloc]initWithTitle:@"Error" message:errores delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:  nil ];[alerta show];
                                   }
      ];
 }
@@ -98,7 +99,7 @@
      */
     
     
-    self.sortedArray = [self.array_pet sortedArrayUsingComparator:^NSComparisonResult(Animales * a, Animales * b)
+    self.sortedArray = [self.array_pet sortedArrayUsingComparator:^NSComparisonResult(Mascotas * a, Mascotas * b)
                    {
                        NSNumber *first = [NSNumber numberWithInt:a.nivel];
                        NSNumber *second = [NSNumber numberWithInt:b.nivel];
@@ -111,22 +112,14 @@
 #pragma mark-UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Animales * mascotaElegida;
-    mascotaElegida=[self.sortedArray objectAtIndex:indexPath.row];
+    Mascotas * mascotaElegida =[[Mascotas alloc] init];
+
+   mascotaElegida=[self.sortedArray objectAtIndex:indexPath.row];
     
-    [self devolverLocalizacion:mascotaElegida];
     ViewControllerMap * controlmap = [[ViewControllerMap alloc]initWithNibName:@"ViewControllerMap" bundle:[NSBundle mainBundle] ];
+    [controlmap setMascotaActual:mascotaElegida];
     [self.navigationController pushViewController:controlmap animated:YES];
 }
-#pragma mark-foot
--(void)devolverLocalizacion:(id)mascota
-{
-    self.altitude = [mascota altitude];
-    self.longitud = [mascota longitud];
-    
-}
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

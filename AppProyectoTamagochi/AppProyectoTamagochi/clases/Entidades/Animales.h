@@ -10,17 +10,10 @@
 #import <Foundation/Foundation.h>
 #import "animalIdentificador.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Mascotas.h"
 
-@interface Animales : NSObject
-@property (strong,nonatomic) NSString * animalNombre;
-@property (nonatomic,assign) animalIdentificador tipoAnimal;
-@property (nonatomic,assign) animalEstado estadoAnimal;
-@property (nonatomic,assign) int  nivel;
-@property (nonatomic,assign) int  experiencia;
-@property(assign, nonatomic) CLLocationDistance altitude;
-@property(assign, nonatomic) CLLocationDistance longitud;
-@property (nonatomic,strong) NSString *codigoAnimal;
-extern NSString * const code;
+@interface Animales : Mascotas
+
 
 //Constructor
 + (instancetype) sharedInstance;
@@ -38,5 +31,5 @@ extern NSString * const code;
 -(NSDictionary *)devolverMascota;
 -(void)PushRemoto;
 -(void)update;
--(instancetype)initwithDici: (NSDictionary *) dic;
+
 @end

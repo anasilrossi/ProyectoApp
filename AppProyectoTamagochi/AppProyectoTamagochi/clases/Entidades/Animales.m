@@ -11,9 +11,6 @@
 #import <Parse/Parse.h>
 @interface Animales ()
 
-@property (nonatomic,assign) int  energia;
-
-
 @end
 
 @implementation Animales
@@ -193,15 +190,5 @@ NSString  * const  code =@"AR7666";
     return mascota;
 }
 
--(instancetype)initwithDici:(NSDictionary *) dic
-{
-    Animales * animal = [super init];
-    if(animal){
-        animal.animalNombre = [dic valueForKey:@"name"];
-        animal.nivel = ((NSNumber *)[dic valueForKey:@"level"]).intValue;
-        animal.tipoAnimal = ((NSNumber *)[dic valueForKey:@"pet_type"]).intValue;
-        animal.codigoAnimal = [dic valueForKey: @"code"];
-    }
-    return animal;
-}
+
 @end
