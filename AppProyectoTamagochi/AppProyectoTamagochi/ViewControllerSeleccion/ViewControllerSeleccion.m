@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenElegida;
 @property (weak, nonatomic) IBOutlet UIButton *Continuar;
 @property (nonatomic) animalIdentificador animal;
+@property (nonatomic,strong)NSUserDefaults * user;
 
 @end
 
@@ -36,11 +37,15 @@
     self.ScrollView.contentSize = CGSizeMake(420, 186) ;
     [self setTitle:@"Seleccione su mascota"];
     self.ImagenElegida.image = [UIImage imageNamed:@"gato_comiendo_1"];
+    
 }
 
 - (IBAction)Continuar:(id)sender {
     //vamos a la otra vista
   ViewControllerElegida * controlelegida = [[ViewControllerElegida alloc]initWithNibName:@"ViewControllerElegida" bundle:[NSBundle mainBundle]];
+    self.user =[NSUserDefaults standardUserDefaults];
+    [self.user setBool:YES forKey:@"ViewTwo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self.navigationController pushViewController:controlelegida animated:YES];
 }
 

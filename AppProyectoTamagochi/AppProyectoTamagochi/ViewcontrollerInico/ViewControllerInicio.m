@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *ButtonContinuar1;
 @property (weak, nonatomic) IBOutlet UIButton *bPruebaRed;
 @property (weak, nonatomic) IBOutlet UIButton *Recuperar;
+@property (nonatomic,strong)NSUserDefaults * user;
 @end
 
 @implementation ViewControllerInicio
@@ -42,6 +43,7 @@
     //Lo que tiene que hacer a la hora de cargar la vista
     [super viewDidLoad];
     [self setTitle:@"Bienvenido"];
+    
     //[self.TextFieldNombreMascota setDelegate:self];
         // Do any additional setup after loading the view from its nib.
 }
@@ -88,10 +90,15 @@
         NSLog(@"%@",self.TextFieldNombreMascota.text);
         
         ViewControllerSeleccion * controlselecion =[[ViewControllerSeleccion alloc] initWithNibName:@"ViewControllerSeleccion" bundle:[NSBundle mainBundle]];
+        self.user =[NSUserDefaults standardUserDefaults];
+        [self.user setBool:YES forKey:@"ViewOne"];
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [self.navigationController pushViewController:controlselecion animated:YES];
     }
     
 }
+
 
 
 - (IBAction)recuperar:(id)sender {

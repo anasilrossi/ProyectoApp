@@ -41,6 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [Animales sharedInstance];
     self.estadoEjercicio=YES;
     self.locacionImagen = self.ImagenComida.center;
     self.Nombremascota = [[Animales sharedInstance] animalNombre];
@@ -76,7 +77,7 @@
     valor = valor / 100;
     [self.Progressbar setProgress:valor animated:YES];
     
-    [self locacionMascota];
+   
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -85,6 +86,7 @@
                                              selector:@selector(refrescarNivel)
                                                  name:@"REFRESCAR_NIVEL"
                                                object:nil];
+     [self locacionMascota];
 }
 
 -(void)refrescarNivel

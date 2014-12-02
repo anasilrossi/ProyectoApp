@@ -9,7 +9,9 @@
 #import "AppDelegate.h"
 #import "ViewControllerInicio.h"
 #import "ViewControllerSeleccion.h"
+#import "ViewControllerElegida.h"
 #import "NetworkManager.h"
+#import "Animales.h"
 #import <Parse/Parse.h>
 @interface AppDelegate ()
 
@@ -37,11 +39,25 @@
     }
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    NSUserDefaults * user= [NSUserDefaults standardUserDefaults];
     
     ViewControllerInicio * ControlerInicio =[[ViewControllerInicio alloc] initWithNibName:@"ViewControllerInicio" bundle:nil];
-   
-   
-    self.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:ControlerInicio];
+    ViewControllerSeleccion * controlerseleccion =[[ViewControllerSeleccion alloc] initWithNibName:@"ViewControllerSelecion" bundle:nil];
+    ViewControllerElegida * controlerelegida =[[ViewControllerElegida alloc] initWithNibName:@"ViewControllerElegida" bundle:nil];
+    
+    if (![user boolForKey:@"ViewOne"])
+    {
+        self.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:ControlerInicio];
+
+    }
+   else if (![user boolForKey:@"ViewTwo"])
+   {
+       self.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:controlerseleccion];
+   }
+   else
+   {
+       self.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:controlerelegida];
+   }
     
     [self.window makeKeyAndVisible];
     
@@ -82,16 +98,20 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    
+    [Animales  saveDataToDisk];
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    [Animales saveDataToDisk];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    [Animales sharedInstance];
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
@@ -100,6 +120,8 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    
+    [Animales  saveDataToDisk];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

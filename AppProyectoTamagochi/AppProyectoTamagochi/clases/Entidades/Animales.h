@@ -13,7 +13,7 @@
 #import "Mascotas.h"
 
 @interface Animales : Mascotas
-
+extern NSString * const code;
 
 //Constructor
 + (instancetype) sharedInstance;
@@ -31,5 +31,6 @@
 -(NSDictionary *)devolverMascota;
 -(void)PushRemoto;
 -(void)update;
++(void)saveDataToDisk;
 
 @end

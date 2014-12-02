@@ -16,22 +16,29 @@
 @implementation Animales
 
 NSString  * const  code =@"AR7666";
+  __strong static id _sharedObject = nil;
 
 #pragma mark - Constructors
 
 + (instancetype) sharedInstance
 {
     static dispatch_once_t pred = 0;
-    __strong static id _sharedObject = nil;
+  
     //Garantiza que lo que se encuentre dentro solo se ejecutará una vez.
     dispatch_once(&pred, ^{
-        _sharedObject = [[self alloc] initEnergia:100 niveles:1 experiencia:0];
+        [Animales loadDataFromDisk];
+        if (_sharedObject == nil) {
+             _sharedObject = [[self alloc] initEnergia:100 niveles:1 experiencia:0 ];
+        }
+    
+       
     });
     return _sharedObject;
 }
 
 -(instancetype) initEnergia: (int) cambiarEnergia niveles:(int) cambiarNivel experiencia:(int)cambiarExperiencia
 {
+
     self.energia=100;
 
     self = [super init];
@@ -190,5 +197,45 @@ NSString  * const  code =@"AR7666";
     return mascota;
 }
 
++(void)saveDataToDisk
+{
+    NSString *path = [self pathForDataFile];
+    NSMutableDictionary *rootObject;
+    rootObject = [NSMutableDictionary dictionary];
+    
+    [rootObject setObject:[Animales sharedInstance]  forKey:@"Animal"];
+    BOOL didEncode = [NSKeyedArchiver archiveRootObject: rootObject toFile: path];
+    if (didEncode) {
+        NSLog(@"Encode ok");
+    }
+}
+
++(void)loadDataFromDisk
+{
+    NSString *path = [self pathForDataFile];
+    NSDictionary *rootObject;
+    rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    _sharedObject=[rootObject objectForKey:@"Animal"];
+    
+}
+
++ (NSString *) pathForDataFile
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString* directory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSError* error;
+    
+    directory = [directory stringByExpandingTildeInPath];
+    
+    if ([fileManager fileExistsAtPath: directory] == NO)
+    {
+        
+        [fileManager createDirectoryAtPath:directory withIntermediateDirectories:YES attributes:nil error:&error];
+    }
+    
+    NSString *fileName = [directory stringByAppendingString:@"/Tamagochi.fnk"];
+    
+    return fileName;
+}
 
 @end

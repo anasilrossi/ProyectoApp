@@ -7,6 +7,7 @@
 //
 
 #import "Mascotas.h"
+#import "Animales.h"
 
 @implementation Mascotas
 
@@ -24,5 +25,39 @@
     }
     return animal;
 }
+
+#pragma mark NSCoder
+
+- (id) initWithCoder: (NSCoder *)coder
+{
+    if (self = [super init])
+    {
+        [self setAnimalNombre:[coder decodeObjectForKey:@"name"]]; //Por cada property.
+        [self setTipoAnimal :[coder decodeIntForKey:@"pet_type"]];
+        [self setEstadoAnimal:[coder decodeIntForKey:@"estado"]];
+        [self setNivel: [coder decodeIntForKey:@"level"]];
+        [self setExperiencia:[coder decodeIntForKey:@"experience"]];
+        [self setAltitude:[coder decodeDoubleForKey:@"position_lat"]];
+        [self setLongitud:[coder decodeDoubleForKey:@"position_lon"]];
+        [self setCodigoAnimal:[coder decodeObjectForKey:@"code"]];
+        [self setEnergia:[coder decodeIntForKey:@"energy"]];
+    }
+    return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *)coder
+{
+    [coder encodeObject: self.animalNombre forKey:@"name"];
+    [coder encodeInt:self.tipoAnimal forKey:@"pet_type"];
+    [coder encodeInt:self.estadoAnimal forKey:@"estado"];
+    [coder encodeInt:self.nivel forKey:@"level"];
+    [coder encodeInt:self.experiencia forKey:@"experience"];
+    [coder encodeDouble:self.altitude forKey:@"position_lat"];
+    [coder encodeDouble:self.longitud forKey:@"position_lon"];
+    [coder encodeObject:self.codigoAnimal forKey:@"code"];
+    [coder encodeInt:self.energia forKey:@"energy"];
+}
+
+
 
 @end

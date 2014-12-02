@@ -10,7 +10,7 @@
 #import "animalIdentificador.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface Mascotas : NSObject
+@interface Mascotas : NSObject <NSCoding>
 
 @property (strong,nonatomic) NSString * animalNombre;
 @property (nonatomic,assign) animalIdentificador tipoAnimal;
@@ -20,7 +20,6 @@
 @property(assign, nonatomic) CLLocationDistance altitude;
 @property(assign, nonatomic) CLLocationDistance longitud;
 @property (nonatomic,strong) NSString *codigoAnimal;
-extern NSString * const code;
 @property (nonatomic,assign) int  energia;
 
 
