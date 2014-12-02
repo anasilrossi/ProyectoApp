@@ -26,8 +26,8 @@
 		A4536C021A2A0D1700CB0823 /* ViewControllerRanking.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4536C001A2A0D1700CB0823 /* ViewControllerRanking.xib */; };
 		A4536C051A2A10C800CB0823 /* TNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = A4536C041A2A10C800CB0823 /* TNetworkService.m */; };
 		A45BF6801A237ABA0099C994 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45BF67F1A237ABA0099C994 /* MessageUI.framework */; };
-		A4749A0B1A2DFCCE00348881 /* Mascotas.m in Sources */ = {isa = PBXBuildFile; fileRef = A4749A0A1A2DFCCE00348881 /* Mascotas.m */; };
-		A4749A0E1A2E03B200348881 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A4749A0D1A2E03B200348881 /* CustomAnnotation.m */; };
+		A4749A111A2E137400348881 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A4749A101A2E137400348881 /* CustomAnnotation.m */; };
+		A4749A141A2E138600348881 /* Mascotas.m in Sources */ = {isa = PBXBuildFile; fileRef = A4749A131A2E138600348881 /* Mascotas.m */; };
 		A47B3A4A1A1BCA950099B9B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A491A1BCA950099B9B2 /* main.m */; };
 		A47B3A4D1A1BCA950099B9B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A4C1A1BCA950099B9B2 /* AppDelegate.m */; };
 		A47B3A551A1BCA950099B9B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47B3A541A1BCA950099B9B2 /* Images.xcassets */; };
@@ -113,10 +113,10 @@
 		A4536C031A2A10C800CB0823 /* TNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNetworkService.h; sourceTree = "<group>"; };
 		A4536C041A2A10C800CB0823 /* TNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNetworkService.m; sourceTree = "<group>"; };
 		A45BF67F1A237ABA0099C994 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		A4749A091A2DFCCE00348881 /* Mascotas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mascotas.h; sourceTree = "<group>"; };
-		A4749A0A1A2DFCCE00348881 /* Mascotas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mascotas.m; sourceTree = "<group>"; };
-		A4749A0C1A2E03B200348881 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
-		A4749A0D1A2E03B200348881 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
+		A4749A0F1A2E137400348881 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
+		A4749A101A2E137400348881 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
+		A4749A121A2E138600348881 /* Mascotas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mascotas.h; sourceTree = "<group>"; };
+		A4749A131A2E138600348881 /* Mascotas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mascotas.m; sourceTree = "<group>"; };
 		A47B3A441A1BCA950099B9B2 /* AppProyectoTamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppProyectoTamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A47B3A481A1BCA950099B9B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A47B3A491A1BCA950099B9B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -236,10 +236,10 @@
 		A449C2191A20E8BF0026B08C /* Entidades */ = {
 			isa = PBXGroup;
 			children = (
+				A4749A121A2E138600348881 /* Mascotas.h */,
+				A4749A131A2E138600348881 /* Mascotas.m */,
 				A449C21A1A20E8BF0026B08C /* Animales.h */,
 				A449C21B1A20E8BF0026B08C /* Animales.m */,
-				A4749A091A2DFCCE00348881 /* Mascotas.h */,
-				A4749A0A1A2DFCCE00348881 /* Mascotas.m */,
 			);
 			path = Entidades;
 			sourceTree = "<group>";
@@ -247,6 +247,8 @@
 		A449C21C1A20E8BF0026B08C /* util */ = {
 			isa = PBXGroup;
 			children = (
+				A4749A0F1A2E137400348881 /* CustomAnnotation.h */,
+				A4749A101A2E137400348881 /* CustomAnnotation.m */,
 				A449C21D1A20E8BF0026B08C /* CargarImagenes.h */,
 				A449C21E1A20E8BF0026B08C /* CargarImagenes.m */,
 				A4B6A1681A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.h */,
@@ -259,8 +261,6 @@
 				A4D6DC3F1A266B8E00F9F91C /* TamagochiNetwork.m */,
 				A4536C031A2A10C800CB0823 /* TNetworkService.h */,
 				A4536C041A2A10C800CB0823 /* TNetworkService.m */,
-				A4749A0C1A2E03B200348881 /* CustomAnnotation.h */,
-				A4749A0D1A2E03B200348881 /* CustomAnnotation.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -609,7 +609,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4749A0B1A2DFCCE00348881 /* Mascotas.m in Sources */,
 				A4D6DC351A262AD200F9F91C /* UIAlertView+AFNetworking.m in Sources */,
 				A4D6DC371A262AD200F9F91C /* UIImageView+AFNetworking.m in Sources */,
 				A4D6DC361A262AD200F9F91C /* UIButton+AFNetworking.m in Sources */,
@@ -633,17 +632,18 @@
 				A4536BFB1A2A0B4C00CB0823 /* CellCustomRanking.m in Sources */,
 				A44E59101A1E5E6F00611E4D /* Comida.m in Sources */,
 				A4D6DC311A262AD200F9F91C /* AFURLResponseSerialization.m in Sources */,
-				A4749A0E1A2E03B200348881 /* CustomAnnotation.m in Sources */,
 				A4B6A16D1A251FA5006405A8 /* NSString+CustonString.m in Sources */,
 				A4D6DC341A262AD200F9F91C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				A4D6DC391A262AD200F9F91C /* UIRefreshControl+AFNetworking.m in Sources */,
 				A4536C051A2A10C800CB0823 /* TNetworkService.m in Sources */,
+				A4749A111A2E137400348881 /* CustomAnnotation.m in Sources */,
 				A4D6DC381A262AD200F9F91C /* UIProgressView+AFNetworking.m in Sources */,
 				A44E59131A1E5E6F00611E4D /* ViewControllerElegida.m in Sources */,
 				A4D6DC3A1A262AD200F9F91C /* UIWebView+AFNetworking.m in Sources */,
 				A4D6DC2C1A262AD200F9F91C /* AFHTTPSessionManager.m in Sources */,
 				A44E59151A1E5E6F00611E4D /* ViewControllerInicio.m in Sources */,
 				A4D6DC3D1A26400A00F9F91C /* NetworkManager.m in Sources */,
+				A4749A141A2E138600348881 /* Mascotas.m in Sources */,
 				A4536C011A2A0D1700CB0823 /* ViewControllerRanking.m in Sources */,
 				A44E59171A1E5E6F00611E4D /* ViewControllerSeleccion.m in Sources */,
 			);
