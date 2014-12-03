@@ -8,22 +8,28 @@
 
 #import "Mascotas.h"
 #import "Animales.h"
+#import "Helper.h"
 
-@implementation Mascotas
 
--(instancetype)initwithDici:(NSDictionary *) dic
+@implementation Mascotas 
+@synthesize animalNombre ,tipoAnimal,estadoAnimal,nivel,experiencia,altitude,longitud,codigoAnimal,energia;
+
+
+- (instancetype) initWithDici:(NSDictionary *) dic
 {
-    Mascotas * animal = [super init];
-    if(animal){
-        animal.animalNombre = [dic valueForKey:@"name"];
-        animal.nivel = ((NSNumber *)[dic valueForKey:@"level"]).intValue;
-        animal.tipoAnimal = ((NSNumber *)[dic valueForKey:@"pet_type"]).intValue;
-        animal.codigoAnimal = [dic valueForKey: @"code"];
-        animal.altitude = ((NSNumber *)[dic valueForKey:@"position_lat"]).intValue;
-        animal.longitud =((NSNumber *)[dic valueForKey:@"position_lon"]).intValue;
-        
+    NSManagedObjectContext *context = [[Helper sharedInstance] managedObjectContext];
+    self = (Mascotas*)[NSEntityDescription insertNewObjectForEntityForName:@"Mascotas" inManagedObjectContext:context];
+    
+    if(self){
+        self.animalNombre = [dic valueForKey:@"name"];
+        self.nivel = ((NSNumber *)[dic valueForKey:@"level"]).intValue;
+        self.tipoAnimal = ((NSNumber *)[dic valueForKey:@"pet_type"]).intValue;
+        self.codigoAnimal = [dic valueForKey: @"code"];
+        self.altitude = ((NSNumber *)[dic valueForKey:@"position_lat"]).intValue;
+        self.longitud =((NSNumber *)[dic valueForKey:@"position_lon"]).intValue;
     }
-    return animal;
+    
+    return self;
 }
 
 #pragma mark NSCoder
@@ -58,6 +64,84 @@
     [coder encodeInt:self.energia forKey:@"energy"];
 }
 
+#pragma mark --Insert
++(void)insertCoreData:(Mascotas *)pet
+{
+    /*Save to Core Data*/
+    NSManagedObjectContext * context = [[Helper sharedInstance] managedObjectContext];
+    
+    
+    NSError *localerror;
+    if (![context save:&localerror]) { //Guardamos los cambios en el contexto.
+        NSLog(@"Error, couldn't save: %@",[localerror localizedDescription]);
+        [context rollback];
+    }
+}
+
+-(void)updateCoreData:(Mascotas *)pet
+{
+    
+    NSManagedObjectContext *context = [[Helper sharedInstance] managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription  entityForName:@"Mascotas" inManagedObjectContext:context];
+    
+    [fetchRequest setEntity:entity];
+    NSError *error;
+//    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+
+    
+    self.animalNombre = [pet valueForKey:@"name"];
+    self.nivel = ((NSNumber *)[pet valueForKey:@"level"]).intValue;
+    self.tipoAnimal = ((NSNumber *)[pet valueForKey:@"pet_type"]).intValue;
+    self.codigoAnimal = [pet valueForKey: @"code"];
+    self.altitude = ((NSNumber *)[pet valueForKey:@"position_lat"]).intValue;
+    self.longitud =((NSNumber *)[pet valueForKey:@"position_lon"]).intValue;
+    
+     if([self.managedObjectContext hasChanges] && ![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        [context rollback];
+     }
+}
+
++(NSArray *)devolverTodo
+{
+    NSManagedObjectContext *context = [[Helper sharedInstance] managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Mascotas"    inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchLimit:200];
+    [fetchRequest setReturnsObjectsAsFaults:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];
+    
+    [fetchRequest setSortDescriptors:[NSMutableArray arrayWithObject:sortDescriptor]];
+    NSError *error;
+    NSArray * fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    if (![context save:&error]) { //Guardamos los cambios en el contexto.
+        NSLog(@"Error, couldn't save: %@",[error localizedDescription]);
+        [context rollback];
+    }
+    return fetchedObjects;
+}
+    
++(void)borrarTodo
+{
+    NSManagedObjectContext *context = [[Helper sharedInstance] managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription                                                                                                entityForName:@"Mascotas" inManagedObjectContext:context];
+    
+    [fetchRequest setEntity:entity];
+    [fetchRequest setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    NSError * error = nil;
+    NSArray * mascot = [context executeFetchRequest:fetchRequest error:&error];
+    //error handling goes here
+    for (NSManagedObject * aux in mascot) {
+        [context deleteObject:aux]; }
+    NSError *saveError = nil;
+    if (![context save:&saveError]) { //Guardamos los cambios en el contexto.
+        NSLog(@"Error, couldn't delete: %@", [saveError localizedDescription]);
+        [context rollback]; }
+}
 
 
 @end

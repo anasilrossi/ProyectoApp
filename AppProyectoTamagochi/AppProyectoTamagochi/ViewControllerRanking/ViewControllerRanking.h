@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "Animales.h"
+#import <CoreData/CoreData.h>
 
 
 @interface ViewControllerRanking : UIViewController <UITableViewDataSource,UITabBarDelegate>

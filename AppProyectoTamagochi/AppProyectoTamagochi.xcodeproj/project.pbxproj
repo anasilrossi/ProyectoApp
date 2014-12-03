@@ -26,6 +26,7 @@
 		A4536C021A2A0D1700CB0823 /* ViewControllerRanking.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4536C001A2A0D1700CB0823 /* ViewControllerRanking.xib */; };
 		A4536C051A2A10C800CB0823 /* TNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = A4536C041A2A10C800CB0823 /* TNetworkService.m */; };
 		A45BF6801A237ABA0099C994 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45BF67F1A237ABA0099C994 /* MessageUI.framework */; };
+		A46496241A2F6555001F0DE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A46496221A2F6555001F0DE6 /* Model.xcdatamodeld */; };
 		A4749A111A2E137400348881 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A4749A101A2E137400348881 /* CustomAnnotation.m */; };
 		A4749A141A2E138600348881 /* Mascotas.m in Sources */ = {isa = PBXBuildFile; fileRef = A4749A131A2E138600348881 /* Mascotas.m */; };
 		A47B3A4A1A1BCA950099B9B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A47B3A491A1BCA950099B9B2 /* main.m */; };
@@ -46,6 +47,8 @@
 		A4840EC41A28E763008FA35B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4840EC31A28E763008FA35B /* QuartzCore.framework */; };
 		A4840EC61A28E777008FA35B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4840EC51A28E777008FA35B /* Security.framework */; };
 		A4840ECA1A28E78E008FA35B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4840EC91A28E78E008FA35B /* SystemConfiguration.framework */; };
+		A49707C81A2F606300C8CCAF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49707C71A2F606300C8CCAF /* CoreData.framework */; };
+		A49707CB1A2F60E300C8CCAF /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = A49707CA1A2F60E300C8CCAF /* Helper.m */; };
 		A4B6A16A1A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B6A1691A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m */; };
 		A4B6A16D1A251FA5006405A8 /* NSString+CustonString.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B6A16C1A251FA5006405A8 /* NSString+CustonString.m */; };
 		A4D6DC2A1A262AD200F9F91C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D6DC061A262AD200F9F91C /* AFHTTPRequestOperation.m */; };
@@ -113,6 +116,7 @@
 		A4536C031A2A10C800CB0823 /* TNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNetworkService.h; sourceTree = "<group>"; };
 		A4536C041A2A10C800CB0823 /* TNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNetworkService.m; sourceTree = "<group>"; };
 		A45BF67F1A237ABA0099C994 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		A46496231A2F6555001F0DE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A4749A0F1A2E137400348881 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		A4749A101A2E137400348881 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		A4749A121A2E138600348881 /* Mascotas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mascotas.h; sourceTree = "<group>"; };
@@ -140,6 +144,9 @@
 		A4840EC31A28E763008FA35B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A4840EC51A28E777008FA35B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A4840EC91A28E78E008FA35B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A49707C71A2F606300C8CCAF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A49707C91A2F60E200C8CCAF /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		A49707CA1A2F60E300C8CCAF /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		A4B6A1681A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+TimerSafeInvalidate.h"; sourceTree = "<group>"; };
 		A4B6A1691A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+TimerSafeInvalidate.m"; sourceTree = "<group>"; };
 		A4B6A16B1A251FA5006405A8 /* NSString+CustonString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CustonString.h"; sourceTree = "<group>"; };
@@ -194,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A49707C81A2F606300C8CCAF /* CoreData.framework in Frameworks */,
 				A481F8351A2CAF9400F2A605 /* MapKit.framework in Frameworks */,
 				A4840EBE1A28E739008FA35B /* CoreLocation.framework in Frameworks */,
 				A4840ECA1A28E78E008FA35B /* SystemConfiguration.framework in Frameworks */,
@@ -261,6 +269,8 @@
 				A4D6DC3F1A266B8E00F9F91C /* TamagochiNetwork.m */,
 				A4536C031A2A10C800CB0823 /* TNetworkService.h */,
 				A4536C041A2A10C800CB0823 /* TNetworkService.m */,
+				A49707C91A2F60E200C8CCAF /* Helper.h */,
+				A49707CA1A2F60E300C8CCAF /* Helper.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -346,6 +356,13 @@
 			path = ViewControllerRanking;
 			sourceTree = "<group>";
 		};
+		A46496211A2F652E001F0DE6 /* DatabaseModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DatabaseModel;
+			sourceTree = "<group>";
+		};
 		A47B3A3B1A1BCA950099B9B2 = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +384,8 @@
 		A47B3A461A1BCA950099B9B2 /* AppProyectoTamagochi */ = {
 			isa = PBXGroup;
 			children = (
+				A46496221A2F6555001F0DE6 /* Model.xcdatamodeld */,
+				A46496211A2F652E001F0DE6 /* DatabaseModel */,
 				A44E58FC1A1E5E6F00611E4D /* Model */,
 				A44E59081A1E5E6F00611E4D /* ViewcontrollerInico */,
 				A44E590C1A1E5E6F00611E4D /* ViewControllerSeleccion */,
@@ -413,6 +432,7 @@
 		A4D6DC031A262AD200F9F91C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				A49707C71A2F606300C8CCAF /* CoreData.framework */,
 				A481F8341A2CAF9400F2A605 /* MapKit.framework */,
 				A4840EC91A28E78E008FA35B /* SystemConfiguration.framework */,
 				A4840EC51A28E777008FA35B /* Security.framework */,
@@ -618,7 +638,9 @@
 				A44E59111A1E5E6F00611E4D /* ViewControllerComida.m in Sources */,
 				A4D6DC321A262AD200F9F91C /* AFURLSessionManager.m in Sources */,
 				A4D6DC331A262AD200F9F91C /* AFNetworkActivityIndicatorManager.m in Sources */,
+				A49707CB1A2F60E300C8CCAF /* Helper.m in Sources */,
 				A44E59761A1E706A00611E4D /* CellCustom.m in Sources */,
+				A46496241A2F6555001F0DE6 /* Model.xcdatamodeld in Sources */,
 				A4D6DC2F1A262AD200F9F91C /* AFURLConnectionOperation.m in Sources */,
 				A4D828101A2CDF4000814449 /* ViewControllerMap.m in Sources */,
 				A4D6DC2B1A262AD200F9F91C /* AFHTTPRequestOperationManager.m in Sources */,
@@ -847,6 +869,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A46496221A2F6555001F0DE6 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A46496231A2F6555001F0DE6 /* Model.xcdatamodel */,
+			);
+			currentVersion = A46496231A2F6555001F0DE6 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = DatabaseModel/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A47B3A3C1A1BCA950099B9B2 /* Project object */;
 }

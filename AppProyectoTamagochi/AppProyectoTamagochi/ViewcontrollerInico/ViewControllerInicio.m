@@ -99,9 +99,13 @@
     
 }
 
-
-
 - (IBAction)recuperar:(id)sender {
+    
+    self.user =[NSUserDefaults standardUserDefaults];
+    [self.user setBool:YES forKey:@"ViewOne"];
+    self.user =[NSUserDefaults standardUserDefaults];
+    [self.user setBool:YES forKey:@"ViewTwo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[TamagochiNetwork sharedInstance]GET:@"/pet/AR7666"
                              parameters:nil
@@ -117,8 +121,6 @@
                                 failure:^(NSURLSessionDataTask *task, NSError *error) {
                                     NSLog(@"Error: %@", error);}
      ];
-
-
 }
 
 

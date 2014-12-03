@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "animalIdentificador.h"
 #import <CoreLocation/CoreLocation.h>
+#import <CoreData/CoreData.h>
 
-@interface Mascotas : NSObject <NSCoding>
+@interface Mascotas : NSManagedObject <NSCoding>
 
-@property (strong,nonatomic) NSString * animalNombre;
+@property (retain,nonatomic) NSString * animalNombre;
 @property (nonatomic,assign) animalIdentificador tipoAnimal;
 @property (nonatomic,assign) animalEstado estadoAnimal;
 @property (nonatomic,assign) int  nivel;
@@ -23,6 +24,9 @@
 @property (nonatomic,assign) int  energia;
 
 
--(instancetype)initwithDici: (NSDictionary *) dic;
-
+- (instancetype) initWithDici:(NSDictionary *) dic;
++(void)borrarTodo;
++(NSArray *)devolverTodo;
+-(void)updateCoreData:(Mascotas *)pet;
++(void)insertCoreData:(Mascotas *)pet;
 @end
