@@ -9,8 +9,12 @@
 #import "Mascotas.h"
 #import "Animales.h"
 #import "Helper.h"
+#import "TamagochiNetwork.h"
+
+@interface Mascotas()
 
 
+@end
 @implementation Mascotas 
 @synthesize animalNombre ,tipoAnimal,estadoAnimal,nivel,experiencia,altitude,longitud,codigoAnimal,energia;
 
@@ -120,6 +124,7 @@
         NSLog(@"Error, couldn't delete: %@", [saveError localizedDescription]);
         [context rollback]; }
 }
+
 
 
 @end

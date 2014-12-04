@@ -10,7 +10,8 @@
 #import "TamagochiNetwork.h"
 #import <Parse/Parse.h>
 @interface Animales ()
-
+@property (nonatomic,strong) NSMutableArray *  respuesta;
+@property (nonatomic,strong) Animales *  animal;
 @end
 
 @implementation Animales
@@ -269,6 +270,33 @@ NSString  * const  code =@"AR7666";
     [coder encodeDouble:((NSNumber *)self.longitud ).intValue forKey:@"position_lon"];
     [coder encodeObject:self.codigoAnimal forKey:@"code"];
     [coder encodeInt:((NSNumber *)self.energia).intValue forKey:@"energy"];
+}
+
+-(void)devolverUnaMascota:(NSString *)porCodigo
+{
+    self.respuesta =[[NSMutableArray alloc] init];
+    
+    Animales * __weak weakself = self;
+    NSString * codigo= [NSString stringWithFormat:@"/pet/%@",porCodigo];
+    [[TamagochiNetwork sharedInstance]GET:codigo
+                               parameters:nil
+                                  success:^(NSURLSessionDataTask *task, id responseObject)
+     {
+           weakself.animal = [[Animales alloc] init];
+           weakself.animal.animalNombre=  [responseObject valueForKey:@"name"];
+           weakself.animal.tipoAnimal=  [responseObject valueForKey:@"pet_type"];
+           weakself.animal.nivel = [responseObject valueForKey:@"level"];
+           weakself.animal.energia = [responseObject valueForKey:@"energia"];
+         
+     }
+                                  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      NSLog(@"Error: %@", error);}
+     ];
+  [weakself DarMascota];
+}
+-(Animales *)DarMascota
+{
+    return  self.animal;
 }
 
 @end

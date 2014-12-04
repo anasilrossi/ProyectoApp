@@ -13,6 +13,7 @@
 #import "NetworkManager.h"
 #import "Animales.h"
 #import <Parse/Parse.h>
+#import "ViewControllerDetalle.h"
 @interface AppDelegate ()
 
 @end
@@ -123,6 +124,23 @@
     
     [Animales  saveDataToDisk];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+/*
+ //Metodo que recibe cuando encuentro una URL
+*/
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    NSString * code = [url lastPathComponent];
+    [[Animales sharedInstance] devolverUnaMascota:code];
+    
+    ViewControllerDetalle * controldetalle = [[ViewControllerDetalle alloc]initWithNibName:@"ViewControllerDetalle" bundle:[NSBundle mainBundle] ];
+  self.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:controldetalle];
+
+    
+       
+    return YES;
 }
 
 @end

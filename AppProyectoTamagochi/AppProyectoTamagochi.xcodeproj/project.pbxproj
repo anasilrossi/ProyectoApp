@@ -20,6 +20,8 @@
 		A44E59181A1E5E6F00611E4D /* ViewControllerSeleccion.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44E590F1A1E5E6F00611E4D /* ViewControllerSeleccion.xib */; };
 		A44E59761A1E706A00611E4D /* CellCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = A44E59741A1E706A00611E4D /* CellCustom.m */; };
 		A44E59771A1E706A00611E4D /* CellCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44E59751A1E706A00611E4D /* CellCustom.xib */; };
+		A452D38D1A30FFF00067F6FF /* ViewControllerDetalle.m in Sources */ = {isa = PBXBuildFile; fileRef = A452D38B1A30FFF00067F6FF /* ViewControllerDetalle.m */; };
+		A452D38E1A30FFF00067F6FF /* ViewControllerDetalle.xib in Resources */ = {isa = PBXBuildFile; fileRef = A452D38C1A30FFF00067F6FF /* ViewControllerDetalle.xib */; };
 		A4536BFB1A2A0B4C00CB0823 /* CellCustomRanking.m in Sources */ = {isa = PBXBuildFile; fileRef = A4536BF91A2A0B4C00CB0823 /* CellCustomRanking.m */; };
 		A4536BFC1A2A0B4C00CB0823 /* CellCustomRanking.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4536BFA1A2A0B4C00CB0823 /* CellCustomRanking.xib */; };
 		A4536C011A2A0D1700CB0823 /* ViewControllerRanking.m in Sources */ = {isa = PBXBuildFile; fileRef = A4536BFF1A2A0D1700CB0823 /* ViewControllerRanking.m */; };
@@ -107,6 +109,9 @@
 		A44E59731A1E706A00611E4D /* CellCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCustom.h; sourceTree = "<group>"; };
 		A44E59741A1E706A00611E4D /* CellCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCustom.m; sourceTree = "<group>"; };
 		A44E59751A1E706A00611E4D /* CellCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCustom.xib; sourceTree = "<group>"; };
+		A452D38A1A30FFF00067F6FF /* ViewControllerDetalle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerDetalle.h; sourceTree = "<group>"; };
+		A452D38B1A30FFF00067F6FF /* ViewControllerDetalle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerDetalle.m; sourceTree = "<group>"; };
+		A452D38C1A30FFF00067F6FF /* ViewControllerDetalle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerDetalle.xib; sourceTree = "<group>"; };
 		A4536BF81A2A0B4C00CB0823 /* CellCustomRanking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCustomRanking.h; sourceTree = "<group>"; };
 		A4536BF91A2A0B4C00CB0823 /* CellCustomRanking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCustomRanking.m; sourceTree = "<group>"; };
 		A4536BFA1A2A0B4C00CB0823 /* CellCustomRanking.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCustomRanking.xib; sourceTree = "<group>"; };
@@ -346,6 +351,16 @@
 			path = CellCustom;
 			sourceTree = "<group>";
 		};
+		A452D3891A30FFCD0067F6FF /* ViewControllerDetalle */ = {
+			isa = PBXGroup;
+			children = (
+				A452D38A1A30FFF00067F6FF /* ViewControllerDetalle.h */,
+				A452D38B1A30FFF00067F6FF /* ViewControllerDetalle.m */,
+				A452D38C1A30FFF00067F6FF /* ViewControllerDetalle.xib */,
+			);
+			path = ViewControllerDetalle;
+			sourceTree = "<group>";
+		};
 		A4536BFD1A2A0D0000CB0823 /* ViewControllerRanking */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +408,7 @@
 				A44E59001A1E5E6F00611E4D /* ViewControllerComida */,
 				A4D8280C1A2CDEFD00814449 /* ViewControllerMap */,
 				A4536BFD1A2A0D0000CB0823 /* ViewControllerRanking */,
+				A452D3891A30FFCD0067F6FF /* ViewControllerDetalle */,
 				A44E59721A1E703500611E4D /* CellCustom */,
 				A4D6DC031A262AD200F9F91C /* Framework */,
 				A47B3A4B1A1BCA950099B9B2 /* AppDelegate.h */,
@@ -611,6 +627,7 @@
 				A44E59121A1E5E6F00611E4D /* ViewControllerComida.xib in Resources */,
 				A44E59161A1E5E6F00611E4D /* ViewControllerInicio.xib in Resources */,
 				A44E59181A1E5E6F00611E4D /* ViewControllerSeleccion.xib in Resources */,
+				A452D38E1A30FFF00067F6FF /* ViewControllerDetalle.xib in Resources */,
 				A4536BFC1A2A0B4C00CB0823 /* CellCustomRanking.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,6 +674,7 @@
 				A4B6A16D1A251FA5006405A8 /* NSString+CustonString.m in Sources */,
 				A4D6DC341A262AD200F9F91C /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				A4D6DC391A262AD200F9F91C /* UIRefreshControl+AFNetworking.m in Sources */,
+				A452D38D1A30FFF00067F6FF /* ViewControllerDetalle.m in Sources */,
 				A4536C051A2A10C800CB0823 /* TNetworkService.m in Sources */,
 				A4749A111A2E137400348881 /* CustomAnnotation.m in Sources */,
 				A4D6DC381A262AD200F9F91C /* UIProgressView+AFNetworking.m in Sources */,

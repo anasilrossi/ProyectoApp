@@ -13,15 +13,15 @@
 
 @interface Mascotas : NSManagedObject 
 
-@property (retain,nonatomic) NSString * animalNombre;
-@property (nonatomic,retain) NSNumber * tipoAnimal;
-@property (nonatomic,retain) NSNumber * estadoAnimal;
-@property (nonatomic,retain) NSNumber *  nivel;
-@property (nonatomic,retain) NSNumber *  experiencia;
-@property(retain, nonatomic) NSNumber * altitude;
-@property(retain, nonatomic) NSNumber * longitud;
+@property (strong,nonatomic) NSString * animalNombre;
+@property (nonatomic,strong) NSNumber * tipoAnimal;
+@property (nonatomic,strong) NSNumber * estadoAnimal;
+@property (nonatomic,strong) NSNumber *  nivel;
+@property (nonatomic,strong) NSNumber *  experiencia;
+@property(strong, nonatomic) NSNumber * altitude;
+@property(strong, nonatomic) NSNumber * longitud;
 @property (nonatomic,strong) NSString * codigoAnimal;
-@property (nonatomic,retain) NSNumber *  energia;
+@property (nonatomic,strong) NSNumber *  energia;
 
 
 - (instancetype) initWithDici:(NSDictionary *) dic;
@@ -29,4 +29,6 @@
 +(NSArray *)devolverTodo;
 -(void)updateCoreData:(Mascotas *)pet;
 +(void)insertCoreData:(Mascotas *)pet;
+
+
 @end
