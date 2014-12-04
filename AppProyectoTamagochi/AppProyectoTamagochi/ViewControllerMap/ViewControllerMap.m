@@ -35,7 +35,7 @@
 
 -(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
-    self.locacion = CLLocationCoordinate2DMake(self.mascotaActual.altitude, self.mascotaActual.longitud);
+    self.locacion = CLLocationCoordinate2DMake([self.mascotaActual.altitude intValue], [self.mascotaActual.longitud intValue]);
     
     MKCoordinateRegion region;
     region.center = self.locacion;

@@ -11,17 +11,17 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreData/CoreData.h>
 
-@interface Mascotas : NSManagedObject <NSCoding>
+@interface Mascotas : NSManagedObject 
 
 @property (retain,nonatomic) NSString * animalNombre;
-@property (nonatomic,assign) animalIdentificador tipoAnimal;
-@property (nonatomic,assign) animalEstado estadoAnimal;
-@property (nonatomic,assign) int  nivel;
-@property (nonatomic,assign) int  experiencia;
-@property(assign, nonatomic) CLLocationDistance altitude;
-@property(assign, nonatomic) CLLocationDistance longitud;
-@property (nonatomic,strong) NSString *codigoAnimal;
-@property (nonatomic,assign) int  energia;
+@property (nonatomic,retain) NSNumber * tipoAnimal;
+@property (nonatomic,retain) NSNumber * estadoAnimal;
+@property (nonatomic,retain) NSNumber *  nivel;
+@property (nonatomic,retain) NSNumber *  experiencia;
+@property(retain, nonatomic) NSNumber * altitude;
+@property(retain, nonatomic) NSNumber * longitud;
+@property (nonatomic,strong) NSString * codigoAnimal;
+@property (nonatomic,retain) NSNumber *  energia;
 
 
 - (instancetype) initWithDici:(NSDictionary *) dic;

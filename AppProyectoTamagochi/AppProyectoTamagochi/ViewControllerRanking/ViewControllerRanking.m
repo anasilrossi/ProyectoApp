@@ -68,9 +68,11 @@
 
 -(void)listaMascota
 {
+    
     if (self.array_pet.count) {
         [self.array_pet removeAllObjects];
     }
+     
     [self.array_pet addObjectsFromArray:[Mascotas devolverTodo]];
     [self Ordenar];
     [self.table_pet reloadData];
@@ -100,6 +102,7 @@
             [self.timer invalidartimer];
              
          }
+         
          [self Ordenar];
          [weakself.table_pet reloadData];
          
@@ -129,8 +132,8 @@
     
     self.sortedArray = [self.array_pet sortedArrayUsingComparator:^NSComparisonResult(Mascotas * a, Mascotas * b)
                    {
-                       NSNumber *first = [NSNumber numberWithInt:a.nivel];
-                       NSNumber *second = [NSNumber numberWithInt:b.nivel];
+                       NSNumber *first = a.nivel;
+                       NSNumber *second = b.nivel;
                        return [second compare:first];
                    }];
     return self.sortedArray;

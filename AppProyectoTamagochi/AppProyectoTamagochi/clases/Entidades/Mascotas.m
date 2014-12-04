@@ -15,6 +15,16 @@
 @synthesize animalNombre ,tipoAnimal,estadoAnimal,nivel,experiencia,altitude,longitud,codigoAnimal,energia;
 
 
+-(instancetype)init
+{
+    NSManagedObjectContext *context = [[Helper sharedInstance] managedObjectContext];
+    self = [NSEntityDescription insertNewObjectForEntityForName:@"Mascotas" inManagedObjectContext:context];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (instancetype) initWithDici:(NSDictionary *) dic
 {
     NSManagedObjectContext *context = [[Helper sharedInstance] managedObjectContext];
@@ -22,46 +32,14 @@
     
     if(self){
         self.animalNombre = [dic valueForKey:@"name"];
-        self.nivel = ((NSNumber *)[dic valueForKey:@"level"]).intValue;
-        self.tipoAnimal = ((NSNumber *)[dic valueForKey:@"pet_type"]).intValue;
+        self.nivel = [dic valueForKey:@"level"];
+        self.tipoAnimal = [dic valueForKey:@"pet_type"];
         self.codigoAnimal = [dic valueForKey: @"code"];
-        self.altitude = ((NSNumber *)[dic valueForKey:@"position_lat"]).intValue;
-        self.longitud =((NSNumber *)[dic valueForKey:@"position_lon"]).intValue;
+        self.altitude = [dic valueForKey:@"position_lat"];
+        self.longitud =[dic valueForKey:@"position_lon"];
     }
     
     return self;
-}
-
-#pragma mark NSCoder
-
-- (id) initWithCoder: (NSCoder *)coder
-{
-    if (self = [super init])
-    {
-        [self setAnimalNombre:[coder decodeObjectForKey:@"name"]]; //Por cada property.
-        [self setTipoAnimal :[coder decodeIntForKey:@"pet_type"]];
-        [self setEstadoAnimal:[coder decodeIntForKey:@"estado"]];
-        [self setNivel: [coder decodeIntForKey:@"level"]];
-        [self setExperiencia:[coder decodeIntForKey:@"experience"]];
-        [self setAltitude:[coder decodeDoubleForKey:@"position_lat"]];
-        [self setLongitud:[coder decodeDoubleForKey:@"position_lon"]];
-        [self setCodigoAnimal:[coder decodeObjectForKey:@"code"]];
-        [self setEnergia:[coder decodeIntForKey:@"energy"]];
-    }
-    return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *)coder
-{
-    [coder encodeObject: self.animalNombre forKey:@"name"];
-    [coder encodeInt:self.tipoAnimal forKey:@"pet_type"];
-    [coder encodeInt:self.estadoAnimal forKey:@"estado"];
-    [coder encodeInt:self.nivel forKey:@"level"];
-    [coder encodeInt:self.experiencia forKey:@"experience"];
-    [coder encodeDouble:self.altitude forKey:@"position_lat"];
-    [coder encodeDouble:self.longitud forKey:@"position_lon"];
-    [coder encodeObject:self.codigoAnimal forKey:@"code"];
-    [coder encodeInt:self.energia forKey:@"energy"];
 }
 
 #pragma mark --Insert
@@ -91,11 +69,11 @@
 
     
     self.animalNombre = [pet valueForKey:@"name"];
-    self.nivel = ((NSNumber *)[pet valueForKey:@"level"]).intValue;
-    self.tipoAnimal = ((NSNumber *)[pet valueForKey:@"pet_type"]).intValue;
+    self.nivel =[pet valueForKey:@"level"];
+    self.tipoAnimal = [pet valueForKey:@"pet_type"];
     self.codigoAnimal = [pet valueForKey: @"code"];
-    self.altitude = ((NSNumber *)[pet valueForKey:@"position_lat"]).intValue;
-    self.longitud =((NSNumber *)[pet valueForKey:@"position_lon"]).intValue;
+    self.altitude = [pet valueForKey:@"position_lat"];
+    self.longitud =[pet valueForKey:@"position_lon"];
     
      if([self.managedObjectContext hasChanges] && ![self.managedObjectContext save:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -111,7 +89,7 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchLimit:200];
     [fetchRequest setReturnsObjectsAsFaults:NO];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"nivel" ascending:YES];
     
     [fetchRequest setSortDescriptors:[NSMutableArray arrayWithObject:sortDescriptor]];
     NSError *error;

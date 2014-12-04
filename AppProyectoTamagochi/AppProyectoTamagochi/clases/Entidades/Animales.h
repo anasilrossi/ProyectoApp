@@ -12,21 +12,31 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Mascotas.h"
 
-@interface Animales : Mascotas
+@interface Animales : NSObject <NSCoding>
 extern NSString * const code;
+
+@property (retain,nonatomic) NSString * animalNombre;
+@property (nonatomic,retain) NSNumber * tipoAnimal;
+@property (nonatomic,retain) NSNumber * estadoAnimal;
+@property (nonatomic,retain) NSNumber *  nivel;
+@property (nonatomic,retain) NSNumber *  experiencia;
+@property(retain, nonatomic) NSNumber * altitude;
+@property(retain, nonatomic) NSNumber * longitud;
+@property (nonatomic,strong) NSString * codigoAnimal;
+@property (nonatomic,retain) NSNumber *  energia;
 
 //Constructor
 + (instancetype) sharedInstance;
 
 //metodos propios
--(int)menosEnergia;
--(int)masEnergia: (int)valor;
+-(NSNumber *)menosEnergia;
+-(NSNumber *)masEnergia: (int)valor;
 -(BOOL)puedeejercitar;
--(int)devolverEnergia;
--(int)aumentarExperiencia:(int)valor;
--(int)subirNivel : (int)experiencia;
--(int)devolverExperiencia;
--(int)devolverNivel;
+-(NSNumber *)devolverEnergia;
+-(NSNumber *)aumentarExperiencia:(int)valor;
+-(NSNumber *)subirNivel : (NSNumber *)experiencia;
+-(NSNumber *)devolverExperiencia;
+-(NSNumber *)devolverNivel;
 -(void)decodificardic:(NSDictionary*)diccionario;
 -(NSDictionary *)devolverMascota;
 -(void)PushRemoto;

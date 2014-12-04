@@ -16,10 +16,10 @@
 {
     if (self = [super init]){
         
-        _coordinate = CLLocationCoordinate2DMake(pet.altitude, pet.longitud);
+        _coordinate = CLLocationCoordinate2DMake([pet.altitude intValue], [pet.longitud intValue]);
         _title = pet.animalNombre;
-        _subtitle = [NSString stringWithFormat:@"%d",pet.nivel];
-        animalIdentificador animal = pet.tipoAnimal;
+        _subtitle = [NSString stringWithFormat:@"%@",pet.nivel];
+        animalIdentificador animal = [pet.tipoAnimal intValue];
         
         self.imagen = [CargarImagenes Cargarimagen:animal];
 

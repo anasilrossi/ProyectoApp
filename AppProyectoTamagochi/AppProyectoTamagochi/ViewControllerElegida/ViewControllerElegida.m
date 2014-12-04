@@ -55,13 +55,14 @@
     [self.view addGestureRecognizer:recognizer];
     self.ImagenComida.image = nil;
     self.animal=[[Animales sharedInstance] tipoAnimal];
-     self.ImagenMascota.image = [CargarImagenes Cargarimagen:self.animal];
+     self.ImagenMascota.image = [CargarImagenes Cargarimagen:[self.animal intValue]];
     
   
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear: animated];
     UIButton *buttonMail = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     
     [buttonMail addTarget:self action:@selector(senderMail:) forControlEvents:UIControlEventTouchUpInside];
@@ -73,8 +74,8 @@
     
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:button, nil];
     
-    float valor =[[Animales sharedInstance] devolverEnergia];
-    valor = valor / 100;
+    int valor =[[[Animales sharedInstance] devolverEnergia] intValue];
+    valor  = valor  / 100;
     [self.Progressbar setProgress:valor animated:YES];
     
    
@@ -82,6 +83,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear: animated];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refrescarNivel)
                                                  name:@"REFRESCAR_NIVEL"
@@ -125,7 +127,7 @@
     [self.ImagenComida setImage:[UIImage imageNamed:self.comidaActual.imagencomida]];
     [self.ImagenComida setHidden:NO];
     [self.ImagenComida setCenter:self.locacionImagen];
-    [self.ImagenMascota setImage:[CargarImagenes Cargarimagen:self.animal]];
+    [self.ImagenMascota setImage:[CargarImagenes Cargarimagen:[self.animal intValue]]];
     
 }
 
@@ -133,9 +135,9 @@
     {
         if (self.ImagenComida.image != nil)
         {
-        [self.ImagenMascota setImage:[CargarImagenes Cargarimagen:self.animal]];
+        [self.ImagenMascota setImage:[CargarImagenes Cargarimagen:[self.animal intValue]]];
          self.tapLocation = [sender locationInView: self.view];
-          self.estado = animal_comiendo;
+        self.estado  = [NSNumber numberWithInt: animal_comiendo];
         [UIView animateWithDuration:0.2
                               delay:0.0
                             options:UIViewAnimationOptionAllowAnimatedContent
@@ -149,17 +151,17 @@
                                  [self.ImagenComida startAnimating];
                                  }
                          }];
-        [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:self.animal estado:self.estado]];
+        [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:[self.animal intValue] estado:[self.estado intValue]]];
 
-        int valor = [[Animales sharedInstance]devolverEnergia];
-        if (valor !=100) {
+        NSNumber * valor = [[Animales sharedInstance]devolverEnergia];
+        if ([valor intValue] !=100) {
             [self.ImagenMascota setAnimationDuration:0.5];
             [self.ImagenMascota setAnimationRepeatCount:2];
             [self.ImagenMascota startAnimating];
             
-            int valor =[[Animales sharedInstance] masEnergia:self.comidaActual.valor];
+            NSNumber * valor =[[Animales sharedInstance] masEnergia:self.comidaActual.valor];
           
-            [self.Progressbar setProgress:valor/100.0f animated:YES];
+            [self.Progressbar setProgress:[valor intValue]/100.0f animated:YES];
         }
         else
         {
@@ -182,8 +184,8 @@
     if (self.estadoEjercicio) {
         //tiempo para ejercitar
         self.timer= [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(disminuirEnergia) userInfo:nil repeats:YES];
-        self.estado = animal_ejercitando;
-        [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:self.animal estado:self.estado]];
+        self.estado = [NSNumber numberWithInt:animal_ejercitando];
+        [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:[self.animal intValue] estado:[self.estado intValue]]];
         [self.ImagenMascota setAnimationDuration:0.5];
         [self.ImagenMascota setAnimationRepeatCount:20];
         [self.ImagenMascota startAnimating];
@@ -206,8 +208,8 @@
    
     if ([[Animales sharedInstance] puedeejercitar]) {
         [[Animales sharedInstance] menosEnergia];
-        float valor =[[Animales sharedInstance] devolverEnergia ];
-              valor = valor / 100;
+        int  valor =[[[Animales sharedInstance] devolverEnergia ] intValue];
+              valor = valor /100;
         [self.Progressbar setProgress:valor animated:YES];
         
 
@@ -223,12 +225,12 @@
 
 -(void) exauto
 {
-    self.estado = animal_exhauto;
+    self.estado = [NSNumber numberWithInt:animal_exhauto];
     [self.ImagenMascota stopAnimating ];
-    [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:self.animal estado:self.estado]];
+    [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:[self.animal intValue] estado:[self.estado intValue]]];
     [self.ImagenMascota setAnimationDuration:1];
     [self.ImagenMascota setAnimationRepeatCount:1];
-    [self.ImagenMascota setImage:[CargarImagenes CargarimagenCansado:self.animal]];
+    [self.ImagenMascota setImage:[CargarImagenes CargarimagenCansado:[self.animal intValue]]];
     [self.ImagenMascota startAnimating];
     
 }
@@ -245,8 +247,8 @@
         [self.locationManager stopUpdatingLocation]; // Detener el tracking y utilizar la location
         self.locacion = newLocation;
         
-        [[Animales sharedInstance]setAltitude: self.locacion.coordinate.latitude];
-        [[Animales sharedInstance]setLongitud: self.locacion.coordinate.longitude];
+        [[Animales sharedInstance]setAltitude:[NSNumber numberWithDouble: self.locacion.coordinate.latitude ]];
+        [[Animales sharedInstance]setLongitud:[NSNumber numberWithDouble: self.locacion.coordinate.longitude]];
         [[Animales sharedInstance]update];
     }
 }

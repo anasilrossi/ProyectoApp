@@ -33,9 +33,9 @@
 -(void)configurarCelda:( Animales * )pet
 {
  
-    [self.Imagen_Pet setImage:[CargarImagenes Cargarimagen:pet.tipoAnimal]];
+    [self.Imagen_Pet setImage:[CargarImagenes Cargarimagen:[pet.tipoAnimal intValue]]];
     [self.Name_pet setText:pet.animalNombre];
-    [self.level_pet setText:[NSString stringWithFormat:@"%i",pet.nivel]];
+    [self.level_pet setText:[NSString stringWithFormat:@"%d",[pet.nivel intValue]]];
     
 }
 

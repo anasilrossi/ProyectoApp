@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *ImagenElegida;
 @property (weak, nonatomic) IBOutlet UIButton *Continuar;
-@property (nonatomic) animalIdentificador animal;
+@property (nonatomic) NSNumber * animal;
 @property (nonatomic,strong)NSUserDefaults * user;
 
 @end
@@ -51,9 +51,9 @@
 
 -(IBAction)mascotaElegida:(id)sender
 {
-    self.animal= (animalIdentificador)[sender tag];
-    self.ImagenElegida.image = [CargarImagenes Cargarimagen:self.animal];
-    [[Animales sharedInstance] setTipoAnimal:self.animal ];
+    self.animal = [NSNumber numberWithInt:[sender tag]];
+    self.ImagenElegida.image = [CargarImagenes Cargarimagen:[self.animal intValue]];
+    [[Animales sharedInstance] setTipoAnimal:self.animal];
 
 }
 
