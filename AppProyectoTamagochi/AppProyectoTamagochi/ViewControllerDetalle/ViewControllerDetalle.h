@@ -10,4 +10,5 @@
 
 @interface ViewControllerDetalle : UIViewController
 
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *)nombrepet nivel:(NSNumber *)nivelpet energia:(NSNumber *)energiapet tipoanimal:(NSNumber *)tipopet;
 @end

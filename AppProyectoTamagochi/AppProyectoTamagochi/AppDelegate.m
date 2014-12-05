@@ -14,6 +14,7 @@
 #import "Animales.h"
 #import <Parse/Parse.h>
 #import "ViewControllerDetalle.h"
+#import "TamagochiNetwork.h"
 @interface AppDelegate ()
 
 @end
@@ -133,14 +134,36 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     NSString * code = [url lastPathComponent];
-    [[Animales sharedInstance] devolverUnaMascota:code];
-    
-    ViewControllerDetalle * controldetalle = [[ViewControllerDetalle alloc]initWithNibName:@"ViewControllerDetalle" bundle:[NSBundle mainBundle] ];
-  self.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:controldetalle];
+
+    [self devolverUnaMascota:code];
+   
 
     
        
     return YES;
 }
+
+-(void)devolverUnaMascota:(NSString *)porCodigo
+{
+    Animales * animal = [[Animales alloc] init];
+    AppDelegate * __weak weakself = self;
+    NSString * codigo= [NSString stringWithFormat:@"/pet/%@",porCodigo];
+    [[TamagochiNetwork sharedInstance]GET:codigo
+                               parameters:nil
+                                  success:^(NSURLSessionDataTask *task, id responseObject)
+     {
+        
+         animal.animalNombre=  [responseObject valueForKey:@"name"];
+         animal.tipoAnimal=  [responseObject valueForKey:@"pet_type"];
+         animal.nivel = [responseObject valueForKey:@"level"];
+         animal.energia = [responseObject valueForKey:@"energia"];
+         
+         ViewControllerDetalle * controldetalle = [[ViewControllerDetalle alloc]initWithNibName:@"ViewControllerDetalle" bundle:[NSBundle mainBundle] nombre:animal.animalNombre nivel:animal.nivel energia:animal.energia tipoanimal:animal.tipoAnimal];
+         weakself.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:controldetalle];
+     }
+                                  failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                      NSLog(@"Error: %@", error);}
+     ];
+   }
 
 @end

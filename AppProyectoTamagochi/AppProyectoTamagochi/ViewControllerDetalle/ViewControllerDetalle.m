@@ -22,9 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.animalito = [[Animales alloc] init];
-    self.animalito =[[Animales sharedInstance]DarMascota];
-    self.nombeLabel.text = self.animalito.animalNombre;
+    self.nombeLabel.text= self.animalito.animalNombre;
     [self.imagenPet setImage:[CargarImagenes Cargarimagen:[self.animalito.tipoAnimal intValue]]];
     int  valor =[self.animalito.energia intValue];
     valor = valor /100;
@@ -39,6 +37,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil nombre:(NSString *)nombrepet nivel:(NSNumber *)nivelpet energia:(NSNumber *)energiapet tipoanimal:(NSNumber *)tipopet
+{
+    self = [super  initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil];
+        if(self) {
+            self.animalito = [[Animales alloc] init];
+            [self.animalito setAnimalNombre: nombrepet];
+            self.animalito.nivel=nivelpet;
+            self.animalito.energia=energiapet;
+            self.animalito.tipoAnimal=tipopet;
+            
+            }
+    
+
+    return self;
+}
 /*
 #pragma mark - Navigation
 

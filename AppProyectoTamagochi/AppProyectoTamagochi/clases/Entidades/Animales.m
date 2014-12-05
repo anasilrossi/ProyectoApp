@@ -272,31 +272,5 @@ NSString  * const  code =@"AR7666";
     [coder encodeInt:((NSNumber *)self.energia).intValue forKey:@"energy"];
 }
 
--(void)devolverUnaMascota:(NSString *)porCodigo
-{
-    self.respuesta =[[NSMutableArray alloc] init];
-    
-    Animales * __weak weakself = self;
-    NSString * codigo= [NSString stringWithFormat:@"/pet/%@",porCodigo];
-    [[TamagochiNetwork sharedInstance]GET:codigo
-                               parameters:nil
-                                  success:^(NSURLSessionDataTask *task, id responseObject)
-     {
-           weakself.animal = [[Animales alloc] init];
-           weakself.animal.animalNombre=  [responseObject valueForKey:@"name"];
-           weakself.animal.tipoAnimal=  [responseObject valueForKey:@"pet_type"];
-           weakself.animal.nivel = [responseObject valueForKey:@"level"];
-           weakself.animal.energia = [responseObject valueForKey:@"energia"];
-         
-     }
-                                  failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      NSLog(@"Error: %@", error);}
-     ];
-  [weakself DarMascota];
-}
--(Animales *)DarMascota
-{
-    return  self.animal;
-}
 
 @end

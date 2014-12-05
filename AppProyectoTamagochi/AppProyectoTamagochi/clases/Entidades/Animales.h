@@ -43,6 +43,6 @@ extern NSString * const code;
 -(void)PushRemoto;
 -(void)update;
 +(void)saveDataToDisk;
--(void)devolverUnaMascota:(NSString *)porCodigo;
--(Animales *)DarMascota ;
+-(Animales *)devolverUnaMascota:(NSString *)porCodigo;
+
 @end
