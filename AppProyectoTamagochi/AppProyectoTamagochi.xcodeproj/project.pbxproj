@@ -10,6 +10,11 @@
 		A449C21F1A20E8BF0026B08C /* Animales.m in Sources */ = {isa = PBXBuildFile; fileRef = A449C21B1A20E8BF0026B08C /* Animales.m */; };
 		A449C2201A20E8BF0026B08C /* CargarImagenes.m in Sources */ = {isa = PBXBuildFile; fileRef = A449C21E1A20E8BF0026B08C /* CargarImagenes.m */; };
 		A44CF5931A321F2900E33054 /* TestAsincronicos.m in Sources */ = {isa = PBXBuildFile; fileRef = A44CF5921A321F2900E33054 /* TestAsincronicos.m */; };
+		A44CF5981A324F6A00E33054 /* ViewControllerContacto.m in Sources */ = {isa = PBXBuildFile; fileRef = A44CF5961A324F6A00E33054 /* ViewControllerContacto.m */; };
+		A44CF5991A324F6A00E33054 /* ViewControllerContacto.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44CF5971A324F6A00E33054 /* ViewControllerContacto.xib */; };
+		A44CF59D1A324FCB00E33054 /* CellCustomContacto.m in Sources */ = {isa = PBXBuildFile; fileRef = A44CF59B1A324FCB00E33054 /* CellCustomContacto.m */; };
+		A44CF59E1A324FCB00E33054 /* CellCustomContacto.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44CF59C1A324FCB00E33054 /* CellCustomContacto.xib */; };
+		A44CF5A01A3253F300E33054 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A44CF59F1A3253F300E33054 /* AddressBook.framework */; };
 		A44E59101A1E5E6F00611E4D /* Comida.m in Sources */ = {isa = PBXBuildFile; fileRef = A44E58FF1A1E5E6F00611E4D /* Comida.m */; };
 		A44E59111A1E5E6F00611E4D /* ViewControllerComida.m in Sources */ = {isa = PBXBuildFile; fileRef = A44E59021A1E5E6F00611E4D /* ViewControllerComida.m */; };
 		A44E59121A1E5E6F00611E4D /* ViewControllerComida.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44E59031A1E5E6F00611E4D /* ViewControllerComida.xib */; };
@@ -94,6 +99,13 @@
 		A449C21D1A20E8BF0026B08C /* CargarImagenes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargarImagenes.h; sourceTree = "<group>"; };
 		A449C21E1A20E8BF0026B08C /* CargarImagenes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargarImagenes.m; sourceTree = "<group>"; };
 		A44CF5921A321F2900E33054 /* TestAsincronicos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAsincronicos.m; sourceTree = "<group>"; };
+		A44CF5951A324F6A00E33054 /* ViewControllerContacto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerContacto.h; sourceTree = "<group>"; };
+		A44CF5961A324F6A00E33054 /* ViewControllerContacto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerContacto.m; sourceTree = "<group>"; };
+		A44CF5971A324F6A00E33054 /* ViewControllerContacto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerContacto.xib; sourceTree = "<group>"; };
+		A44CF59A1A324FCB00E33054 /* CellCustomContacto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellCustomContacto.h; sourceTree = "<group>"; };
+		A44CF59B1A324FCB00E33054 /* CellCustomContacto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellCustomContacto.m; sourceTree = "<group>"; };
+		A44CF59C1A324FCB00E33054 /* CellCustomContacto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCustomContacto.xib; sourceTree = "<group>"; };
+		A44CF59F1A3253F300E33054 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		A44E58FE1A1E5E6F00611E4D /* Comida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comida.h; sourceTree = "<group>"; };
 		A44E58FF1A1E5E6F00611E4D /* Comida.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comida.m; sourceTree = "<group>"; };
 		A44E59011A1E5E6F00611E4D /* ViewControllerComida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerComida.h; sourceTree = "<group>"; };
@@ -208,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A44CF5A01A3253F300E33054 /* AddressBook.framework in Frameworks */,
 				A49707C81A2F606300C8CCAF /* CoreData.framework in Frameworks */,
 				A481F8351A2CAF9400F2A605 /* MapKit.framework in Frameworks */,
 				A4840EBE1A28E739008FA35B /* CoreLocation.framework in Frameworks */,
@@ -282,6 +295,16 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		A44CF5941A324F2100E33054 /* ViewControllerContacto */ = {
+			isa = PBXGroup;
+			children = (
+				A44CF5951A324F6A00E33054 /* ViewControllerContacto.h */,
+				A44CF5961A324F6A00E33054 /* ViewControllerContacto.m */,
+				A44CF5971A324F6A00E33054 /* ViewControllerContacto.xib */,
+			);
+			path = ViewControllerContacto;
+			sourceTree = "<group>";
+		};
 		A44E58FC1A1E5E6F00611E4D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +372,9 @@
 				A4536BF81A2A0B4C00CB0823 /* CellCustomRanking.h */,
 				A4536BF91A2A0B4C00CB0823 /* CellCustomRanking.m */,
 				A4536BFA1A2A0B4C00CB0823 /* CellCustomRanking.xib */,
+				A44CF59A1A324FCB00E33054 /* CellCustomContacto.h */,
+				A44CF59B1A324FCB00E33054 /* CellCustomContacto.m */,
+				A44CF59C1A324FCB00E33054 /* CellCustomContacto.xib */,
 			);
 			path = CellCustom;
 			sourceTree = "<group>";
@@ -411,6 +437,7 @@
 				A4D8280C1A2CDEFD00814449 /* ViewControllerMap */,
 				A4536BFD1A2A0D0000CB0823 /* ViewControllerRanking */,
 				A452D3891A30FFCD0067F6FF /* ViewControllerDetalle */,
+				A44CF5941A324F2100E33054 /* ViewControllerContacto */,
 				A44E59721A1E703500611E4D /* CellCustom */,
 				A4D6DC031A262AD200F9F91C /* Framework */,
 				A47B3A4B1A1BCA950099B9B2 /* AppDelegate.h */,
@@ -452,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				A49707C71A2F606300C8CCAF /* CoreData.framework */,
+				A44CF59F1A3253F300E33054 /* AddressBook.framework */,
 				A481F8341A2CAF9400F2A605 /* MapKit.framework */,
 				A4840EC91A28E78E008FA35B /* SystemConfiguration.framework */,
 				A4840EC51A28E777008FA35B /* Security.framework */,
@@ -623,12 +651,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A44E59771A1E706A00611E4D /* CellCustom.xib in Resources */,
+				A44CF59E1A324FCB00E33054 /* CellCustomContacto.xib in Resources */,
 				A47B3A551A1BCA950099B9B2 /* Images.xcassets in Resources */,
 				A4D828111A2CDF4000814449 /* ViewControllerMap.xib in Resources */,
 				A44E59141A1E5E6F00611E4D /* ViewControllerElegida.xib in Resources */,
 				A4536C021A2A0D1700CB0823 /* ViewControllerRanking.xib in Resources */,
 				A44E59121A1E5E6F00611E4D /* ViewControllerComida.xib in Resources */,
 				A44E59161A1E5E6F00611E4D /* ViewControllerInicio.xib in Resources */,
+				A44CF5991A324F6A00E33054 /* ViewControllerContacto.xib in Resources */,
 				A44E59181A1E5E6F00611E4D /* ViewControllerSeleccion.xib in Resources */,
 				A452D38E1A30FFF00067F6FF /* ViewControllerDetalle.xib in Resources */,
 				A4536BFC1A2A0B4C00CB0823 /* CellCustomRanking.xib in Resources */,
@@ -669,6 +699,7 @@
 				A47B3A4A1A1BCA950099B9B2 /* main.m in Sources */,
 				A4B6A16A1A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m in Sources */,
 				A4D6DC2E1A262AD200F9F91C /* AFSecurityPolicy.m in Sources */,
+				A44CF5981A324F6A00E33054 /* ViewControllerContacto.m in Sources */,
 				A449C21F1A20E8BF0026B08C /* Animales.m in Sources */,
 				A4D6DC301A262AD200F9F91C /* AFURLRequestSerialization.m in Sources */,
 				A4536BFB1A2A0B4C00CB0823 /* CellCustomRanking.m in Sources */,
@@ -687,6 +718,7 @@
 				A44E59151A1E5E6F00611E4D /* ViewControllerInicio.m in Sources */,
 				A4D6DC3D1A26400A00F9F91C /* NetworkManager.m in Sources */,
 				A4749A141A2E138600348881 /* Mascotas.m in Sources */,
+				A44CF59D1A324FCB00E33054 /* CellCustomContacto.m in Sources */,
 				A4536C011A2A0D1700CB0823 /* ViewControllerRanking.m in Sources */,
 				A44E59171A1E5E6F00611E4D /* ViewControllerSeleccion.m in Sources */,
 			);
