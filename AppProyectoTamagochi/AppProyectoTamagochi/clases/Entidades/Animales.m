@@ -9,9 +9,11 @@
 #import "Animales.h"
 #import "TamagochiNetwork.h"
 #import <Parse/Parse.h>
+#import "TNetworkService.h"
 @interface Animales ()
 @property (nonatomic,strong) NSMutableArray *  respuesta;
 @property (nonatomic,strong) Animales *  animal;
+@property (nonatomic,strong) TNetworkService * service;
 @end
 
 @implementation Animales
@@ -59,7 +61,7 @@ NSString  * const  code =@"AR7666";
 
 -(NSNumber *)masEnergia: (int)valor
 {
-   self.energia  = [NSNumber numberWithInt: MIN(100,valor)];
+   self.energia  = [NSNumber numberWithInt:[self.energia intValue] + valor];
     NSLog(@"%@",self.energia);
     return self.energia;
        
@@ -78,10 +80,10 @@ NSString  * const  code =@"AR7666";
     }
 }
 
--(NSNumber*)devolverEnergia
+-(int)devolverEnergia
     {
     
-    return self.energia;
+    return [self.energia intValue];
     }
 
 -(NSNumber *)aumentarExperiencia:(int)valor
@@ -114,7 +116,7 @@ NSString  * const  code =@"AR7666";
         int aux1 = [self.nivel intValue]+1;
         self.nivel = [NSNumber numberWithInt:aux1];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESCAR_NIVEL" object:nil];
-         [self update];
+         [self updates];
         // Send a notification to all devices subscribed to the "Giants" channel.
         [self PushRemoto];
         int aux= [self.experiencia intValue];
@@ -123,6 +125,7 @@ NSString  * const  code =@"AR7666";
     }
     return  self.nivel;
 }
+
 -(void)PushRemoto
 {
     PFPush *push = [[PFPush alloc] init];
@@ -132,48 +135,40 @@ NSString  * const  code =@"AR7666";
     [push sendPushInBackground];
 }
 
--(void)update
+-(void)updates
 {
-
-    NSString * saltitud = [NSString stringWithFormat:@"%@",self.altitude];
-    NSString * slongitud = [NSString stringWithFormat:@"%@",self.longitud];
-    NSNumber * sEnergia = self.energia ;
-    NSNumber * sNivel =self.nivel ;
-    NSNumber * sExperiencia = self.experiencia ;
-    NSNumber * tipomascota = self.tipoAnimal;
-
-    NSMutableDictionary * datos = [NSMutableDictionary dictionaryWithDictionary:@{ @"code":code,
-                                                                                   @"name":self.animalNombre ? self.animalNombre :@"",
-                                                                                   @"energia":sEnergia,
-                                                                                   @"level":sNivel,
-                                                                                   @"experience":sExperiencia,
-                                                                                   @"position_lat":saltitud,
-                                                                                   @"position_lon":slongitud,
-                                                                                   @"tipomascota":tipomascota}];
-    TamagochiNetwork * manager = [TamagochiNetwork sharedInstance];
-    [manager POST:@"/pet"
-       parameters:datos
-          success:^(NSURLSessionDataTask *task, id responseObject) {
-              NSDictionary * responseDict = responseObject;
-              NSString * valor = [responseDict valueForKey:@"status"];
-              if ([valor isEqualToString: @"ok"]) {
-                  NSLog(@"Perfecto! JSON: %@", responseObject);
-                
-
-              }
-              else
-              {
-                  UIAlertView * alerta =[[UIAlertView alloc]initWithTitle: @"alerta" message: @"Error " delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil ];
-                  [alerta show];
-              }
-              
-    }     failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+    self.service =[[TNetworkService alloc]init] ;
+    [self.service postEvents:[self getSucces] failure:[self getFailure]];
 }
 
+-(Success)getSucces
+{
+    return ^(NSMutableArray * array) {
+        NSMutableArray * responseDict = array;
+        NSString * valor = [responseDict valueForKey:@"status"];
+        if ([valor isEqualToString: @"ok"]) {
+            NSLog(@"Perfecto! JSON: %@", array);
+          
+        }
+        else
+        {
+            UIAlertView * alerta =[[UIAlertView alloc]initWithTitle: @"alerta" message: @"Error " delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil ];
+            [alerta show];
+            
+        }
+        self.service=nil;
+    };
+}
 
+-(Failure)getFailure
+     {
+         return ^(NSError *error) {
+             NSLog(@"Error: %@", error);
+             self.service=nil;
+         };
 
+     }
+     
 -(void)decodificardic:(NSDictionary*)diccionario
 {
     self.energia = [diccionario valueForKey:@"energy"];

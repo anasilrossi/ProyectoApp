@@ -10,11 +10,12 @@
 #import "Animales.h"
 #import "CellCustomRanking.h"
 #import "ViewControllerElegida.h"
-#import "TamagochiNetwork.h"
+#import "TNetworkService.h"
 #import "ViewControllerMap.h"
 #import "Helper.h"
 #import "Mascotas.h"
 #import "NSTimer+TimerSafeInvalidate.h"
+
 
 @interface ViewControllerRanking ()
 @property (weak, nonatomic) IBOutlet UITableView *table_pet;
@@ -22,6 +23,7 @@
 @property(strong,nonatomic)NSArray * sortedArray;
 @property(strong,nonatomic)Mascotas *masc;
 @property (strong,nonatomic) NSTimer * timer;
+@property (nonatomic,strong) TNetworkService * service;
 @end
 
 @implementation ViewControllerRanking
@@ -82,41 +84,39 @@
 
 -(void)get
 {
-    __weak ViewControllerRanking * weakself = self;
-    [[TamagochiNetwork sharedInstance]GET:@"/pet/all"
-                               parameters:nil
-                                  success:^(NSURLSessionDataTask *task, id responseObject)
-     {
-         
-         NSArray * responseDict = responseObject;
-         //[[Animales sharedInstance]decodificardic:responseDict];
-         NSLog(@"JSON array: %@", responseDict);
-         weakself.array_pet = [[NSMutableArray alloc]init];
-         [Mascotas borrarTodo];
-         for (NSDictionary * dic in responseObject) {
-             
-             Mascotas* mascota =[[Mascotas alloc]initWithDici:dic];
-             [Mascotas insertCoreData:mascota];
-             [weakself.array_pet addObject:mascota];
-             
-            [self.timer invalidartimer];
-             
-         }
-         
-         [self Ordenar];
-         [weakself.table_pet reloadData];
-         
-       
-     }
-     
-                                  failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      NSString * errores = [error localizedDescription];
-                                      UIAlertView * alerta =[[UIAlertView alloc]initWithTitle:@"Error" message:errores delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:  nil ];[alerta show];
-                                  }
-     ];
-    
- 
+    self.service =[[TNetworkService alloc]init] ;
+    [self.service getAllEvents:[self getSucces] failure:[self getFailure]];
 }
+
+-(Success)getSucces
+{
+    return ^(NSMutableArray * array) {
+        __weak ViewControllerRanking * weakself = self;
+        NSArray * responseDict = array;
+        NSLog(@"JSON array: %@", responseDict);
+        weakself.array_pet = [[NSMutableArray alloc]init];
+        [Mascotas borrarTodo];
+        for (NSDictionary * dic in array) {
+            Mascotas* mascota =[[Mascotas alloc]initWithDici:dic];
+            [Mascotas insertCoreData:mascota];
+            [weakself.array_pet addObject:mascota];
+            [self.timer invalidartimer];
+        }
+        [self Ordenar];
+        [weakself.table_pet reloadData];
+        self.service=nil;
+    };
+}
+
+-(Failure)getFailure
+{
+    return ^(NSError *error) {
+        NSString * errores = [error localizedDescription];
+        UIAlertView * alerta =[[UIAlertView alloc]initWithTitle:@"Error" message:errores delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:  nil ];[alerta show];
+        self.service=nil;
+    };
+}
+
 
 -(NSArray *)Ordenar
 {

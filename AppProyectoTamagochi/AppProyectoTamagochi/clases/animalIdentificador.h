@@ -11,10 +11,10 @@
 typedef enum
 {
     
-    animal_gato = 0,
+    animal_ciervo = 0,
+    animal_gato ,
     animal_leon ,
-    animal_jirafa ,
-    animal_ciervo 
+    animal_jirafa
 } animalIdentificador;
 
 typedef enum

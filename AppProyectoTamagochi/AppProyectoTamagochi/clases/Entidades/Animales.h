@@ -33,7 +33,7 @@ extern NSString * const code;
 -(NSNumber *)menosEnergia;
 -(NSNumber *)masEnergia: (int)valor;
 -(BOOL)puedeejercitar;
--(NSNumber *)devolverEnergia;
+-(int)devolverEnergia;
 -(NSNumber *)aumentarExperiencia:(int)valor;
 -(NSNumber *)subirNivel : (NSNumber *)experiencia;
 -(NSNumber *)devolverExperiencia;
@@ -41,8 +41,8 @@ extern NSString * const code;
 -(void)decodificardic:(NSDictionary*)diccionario;
 -(NSDictionary *)devolverMascota;
 -(void)PushRemoto;
--(void)update;
+-(void)updates;
 +(void)saveDataToDisk;
--(Animales *)devolverUnaMascota:(NSString *)porCodigo;
+
 
 @end

@@ -56,7 +56,10 @@
     self.ImagenComida.image = nil;
     self.animal=[[Animales sharedInstance] tipoAnimal];
      self.ImagenMascota.image = [CargarImagenes Cargarimagen:[self.animal intValue]];
-    
+    int valor =[[Animales sharedInstance] devolverEnergia];
+    valor  = valor  / 100;
+    [self.Progressbar setProgress:valor animated:YES];
+
   
 }
 
@@ -74,9 +77,6 @@
     
     self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:button, nil];
     
-    int valor =[[[Animales sharedInstance] devolverEnergia] intValue];
-    valor  = valor  / 100;
-    [self.Progressbar setProgress:valor animated:YES];
     
    
 }
@@ -153,8 +153,8 @@
                          }];
         [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:[self.animal intValue] estado:[self.estado intValue]]];
 
-        NSNumber * valor = [[Animales sharedInstance]devolverEnergia];
-        if ([valor intValue] !=100) {
+       int  valor = [[Animales sharedInstance]devolverEnergia];
+        if (valor  !=100) {
             [self.ImagenMascota setAnimationDuration:0.5];
             [self.ImagenMascota setAnimationRepeatCount:2];
             [self.ImagenMascota startAnimating];
@@ -208,8 +208,8 @@
    
     if ([[Animales sharedInstance] puedeejercitar]) {
         [[Animales sharedInstance] menosEnergia];
-        int  valor =[[[Animales sharedInstance] devolverEnergia ] intValue];
-              valor = valor /100;
+        int  valor =[[Animales sharedInstance] devolverEnergia];
+              valor = valor/100;
         [self.Progressbar setProgress:valor animated:YES];
         
 
@@ -249,7 +249,7 @@
         
         [[Animales sharedInstance]setAltitude:[NSNumber numberWithDouble: self.locacion.coordinate.latitude ]];
         [[Animales sharedInstance]setLongitud:[NSNumber numberWithDouble: self.locacion.coordinate.longitude]];
-        [[Animales sharedInstance]update];
+        [[Animales sharedInstance]updates];
     }
 }
 

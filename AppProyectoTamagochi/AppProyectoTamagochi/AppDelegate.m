@@ -14,9 +14,10 @@
 #import "Animales.h"
 #import <Parse/Parse.h>
 #import "ViewControllerDetalle.h"
-#import "TamagochiNetwork.h"
-@interface AppDelegate ()
+#import "TNetworkService.h"
 
+@interface AppDelegate ()
+@property (nonatomic,strong) TNetworkService * service;
 @end
 
 @implementation AppDelegate
@@ -145,25 +146,33 @@
 
 -(void)devolverUnaMascota:(NSString *)porCodigo
 {
-    Animales * animal = [[Animales alloc] init];
-    AppDelegate * __weak weakself = self;
-    NSString * codigo= [NSString stringWithFormat:@"/pet/%@",porCodigo];
-    [[TamagochiNetwork sharedInstance]GET:codigo
-                               parameters:nil
-                                  success:^(NSURLSessionDataTask *task, id responseObject)
-     {
+    self.service =[[TNetworkService alloc]init];
+    [self.service getOneEvents:[self getSucces] failure:[self getFailure] codigo:porCodigo];
+}
+
+-(Success)getSucces
+{
+    return ^(NSMutableArray * array) {
+        AppDelegate * __weak weakself = self;
+        Animales * animal = [[Animales alloc] init];
+        animal.animalNombre=  [array valueForKey:@"name"];
+        animal.tipoAnimal=  [array valueForKey:@"pet_type"];
+        animal.nivel = [array valueForKey:@"level"];
+        animal.energia = [array valueForKey:@"energia"];
         
-         animal.animalNombre=  [responseObject valueForKey:@"name"];
-         animal.tipoAnimal=  [responseObject valueForKey:@"pet_type"];
-         animal.nivel = [responseObject valueForKey:@"level"];
-         animal.energia = [responseObject valueForKey:@"energia"];
-         
-         ViewControllerDetalle * controldetalle = [[ViewControllerDetalle alloc]initWithNibName:@"ViewControllerDetalle" bundle:[NSBundle mainBundle] nombre:animal.animalNombre nivel:animal.nivel energia:animal.energia tipoanimal:animal.tipoAnimal];
-         weakself.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:controldetalle];
-     }
-                                  failure:^(NSURLSessionDataTask *task, NSError *error) {
-                                      NSLog(@"Error: %@", error);}
-     ];
-   }
+        ViewControllerDetalle * controldetalle = [[ViewControllerDetalle alloc]initWithNibName:@"ViewControllerDetalle" bundle:[NSBundle mainBundle] nombre:animal.animalNombre nivel:animal.nivel energia:animal.energia tipoanimal:animal.tipoAnimal];
+        weakself.window.rootViewController =  [[UINavigationController alloc]initWithRootViewController:controldetalle];
+        self.service=nil;
+    };
+}
+
+-(Failure)getFailure
+{
+    return ^(NSError *error) {
+     NSLog(@"Error: %@", error);
+        self.service=nil;
+    };
+}
+
 
 @end
