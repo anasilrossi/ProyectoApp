@@ -111,12 +111,15 @@ NSString  * const  code =@"AR7666";
     int formula = 100 * valor;
     if ([self.experiencia intValue]>= formula)
     {
-        self.nivel =[NSNumber numberWithInt: +1];
+        int aux1 = [self.nivel intValue]+1;
+        self.nivel = [NSNumber numberWithInt:aux1];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"REFRESCAR_NIVEL" object:nil];
          [self update];
         // Send a notification to all devices subscribed to the "Giants" channel.
         [self PushRemoto];
-        self.experiencia=0;
+        int aux= [self.experiencia intValue];
+        aux = aux - formula;
+        self.experiencia = [NSNumber numberWithInt:aux] ;
     }
     return  self.nivel;
 }
@@ -168,6 +171,9 @@ NSString  * const  code =@"AR7666";
         NSLog(@"Error: %@", error);
     }];
 }
+
+
+
 -(void)decodificardic:(NSDictionary*)diccionario
 {
     self.energia = [diccionario valueForKey:@"energy"];

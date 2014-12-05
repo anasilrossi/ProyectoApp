@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A449C21F1A20E8BF0026B08C /* Animales.m in Sources */ = {isa = PBXBuildFile; fileRef = A449C21B1A20E8BF0026B08C /* Animales.m */; };
 		A449C2201A20E8BF0026B08C /* CargarImagenes.m in Sources */ = {isa = PBXBuildFile; fileRef = A449C21E1A20E8BF0026B08C /* CargarImagenes.m */; };
+		A44CF5931A321F2900E33054 /* TestAsincronicos.m in Sources */ = {isa = PBXBuildFile; fileRef = A44CF5921A321F2900E33054 /* TestAsincronicos.m */; };
 		A44E59101A1E5E6F00611E4D /* Comida.m in Sources */ = {isa = PBXBuildFile; fileRef = A44E58FF1A1E5E6F00611E4D /* Comida.m */; };
 		A44E59111A1E5E6F00611E4D /* ViewControllerComida.m in Sources */ = {isa = PBXBuildFile; fileRef = A44E59021A1E5E6F00611E4D /* ViewControllerComida.m */; };
 		A44E59121A1E5E6F00611E4D /* ViewControllerComida.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44E59031A1E5E6F00611E4D /* ViewControllerComida.xib */; };
@@ -92,6 +93,7 @@
 		A449C21B1A20E8BF0026B08C /* Animales.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animales.m; sourceTree = "<group>"; };
 		A449C21D1A20E8BF0026B08C /* CargarImagenes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CargarImagenes.h; sourceTree = "<group>"; };
 		A449C21E1A20E8BF0026B08C /* CargarImagenes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CargarImagenes.m; sourceTree = "<group>"; };
+		A44CF5921A321F2900E33054 /* TestAsincronicos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAsincronicos.m; sourceTree = "<group>"; };
 		A44E58FE1A1E5E6F00611E4D /* Comida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comida.h; sourceTree = "<group>"; };
 		A44E58FF1A1E5E6F00611E4D /* Comida.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comida.m; sourceTree = "<group>"; };
 		A44E59011A1E5E6F00611E4D /* ViewControllerComida.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerComida.h; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 		A47B3A601A1BCA950099B9B2 /* AppProyectoTamagochiTests */ = {
 			isa = PBXGroup;
 			children = (
+				A44CF5921A321F2900E33054 /* TestAsincronicos.m */,
 				A47B3A631A1BCA950099B9B2 /* AppProyectoTamagochiTests.m */,
 				A47B3A611A1BCA950099B9B2 /* Supporting Files */,
 			);
@@ -693,6 +696,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A44CF5931A321F2900E33054 /* TestAsincronicos.m in Sources */,
 				A47B3A641A1BCA950099B9B2 /* AppProyectoTamagochiTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
