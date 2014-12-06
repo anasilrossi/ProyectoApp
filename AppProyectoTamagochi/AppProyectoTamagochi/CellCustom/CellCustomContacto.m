@@ -30,9 +30,11 @@
     // Configure the view for the selected state
 }
 
--(void)configurarCelda
+-(void)configurarCelda:(Contact *)contacto
 {
-    
+    self.nombreContacto.text= contacto.name;
+    self.telefonoContacto.text =contacto.phone;
+    self.emailContacto.text = contacto.email;
 }
 
 @end

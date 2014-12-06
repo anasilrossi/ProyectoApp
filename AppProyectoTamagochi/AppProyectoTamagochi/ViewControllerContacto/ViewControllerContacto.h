@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AddressBook/AddressBook.h>
 
-@interface ViewControllerContacto : UIViewController <UITableViewDataSource,UITabBarDelegate>
+@interface ViewControllerContacto : UIViewController <UITableViewDataSource>
 
 @end

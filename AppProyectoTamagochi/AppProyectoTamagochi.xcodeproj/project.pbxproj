@@ -33,6 +33,7 @@
 		A4536C011A2A0D1700CB0823 /* ViewControllerRanking.m in Sources */ = {isa = PBXBuildFile; fileRef = A4536BFF1A2A0D1700CB0823 /* ViewControllerRanking.m */; };
 		A4536C021A2A0D1700CB0823 /* ViewControllerRanking.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4536C001A2A0D1700CB0823 /* ViewControllerRanking.xib */; };
 		A4536C051A2A10C800CB0823 /* TNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = A4536C041A2A10C800CB0823 /* TNetworkService.m */; };
+		A456FAD71A33AEE8007675D9 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = A456FAD61A33AEE8007675D9 /* Contact.m */; };
 		A45BF6801A237ABA0099C994 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A45BF67F1A237ABA0099C994 /* MessageUI.framework */; };
 		A46496241A2F6555001F0DE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A46496221A2F6555001F0DE6 /* Model.xcdatamodeld */; };
 		A4749A111A2E137400348881 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A4749A101A2E137400348881 /* CustomAnnotation.m */; };
@@ -134,6 +135,8 @@
 		A4536C001A2A0D1700CB0823 /* ViewControllerRanking.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerRanking.xib; sourceTree = "<group>"; };
 		A4536C031A2A10C800CB0823 /* TNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNetworkService.h; sourceTree = "<group>"; };
 		A4536C041A2A10C800CB0823 /* TNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNetworkService.m; sourceTree = "<group>"; };
+		A456FAD51A33AEE8007675D9 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		A456FAD61A33AEE8007675D9 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		A45BF67F1A237ABA0099C994 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A46496231A2F6555001F0DE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A4749A0F1A2E137400348881 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				A4536C041A2A10C800CB0823 /* TNetworkService.m */,
 				A49707C91A2F60E200C8CCAF /* Helper.h */,
 				A49707CA1A2F60E300C8CCAF /* Helper.m */,
+				A456FAD51A33AEE8007675D9 /* Contact.h */,
+				A456FAD61A33AEE8007675D9 /* Contact.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -718,6 +723,7 @@
 				A44E59151A1E5E6F00611E4D /* ViewControllerInicio.m in Sources */,
 				A4D6DC3D1A26400A00F9F91C /* NetworkManager.m in Sources */,
 				A4749A141A2E138600348881 /* Mascotas.m in Sources */,
+				A456FAD71A33AEE8007675D9 /* Contact.m in Sources */,
 				A44CF59D1A324FCB00E33054 /* CellCustomContacto.m in Sources */,
 				A4536C011A2A0D1700CB0823 /* ViewControllerRanking.m in Sources */,
 				A44E59171A1E5E6F00611E4D /* ViewControllerSeleccion.m in Sources */,
@@ -833,6 +839,7 @@
 				INFOPLIST_FILE = AppProyectoTamagochi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "50f6aa4a-7d13-4042-8199-da736ae2508d";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -852,6 +859,7 @@
 				INFOPLIST_FILE = AppProyectoTamagochi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "50f6aa4a-7d13-4042-8199-da736ae2508d";
 				TARGETED_DEVICE_FAMILY = 1;

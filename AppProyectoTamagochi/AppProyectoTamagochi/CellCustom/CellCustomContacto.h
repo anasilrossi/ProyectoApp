@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Contact.h"
 
 @interface CellCustomContacto : UITableViewCell
-
+-(void)configurarCelda:(Contact *)contacto;
 @end
