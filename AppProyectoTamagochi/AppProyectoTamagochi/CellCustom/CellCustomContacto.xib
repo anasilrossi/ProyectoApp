@@ -37,12 +37,18 @@
                         <state key="normal" backgroundImage="mail">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="emails:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="waH-2F-N6P"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0x-ab-SJ9">
                         <rect key="frame" x="15" y="103" width="58" height="34"/>
                         <state key="normal" backgroundImage="tel">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="llamadas:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cQe-xY-gbg"/>
+                        </connections>
                     </button>
                 </subviews>
             </tableViewCellContentView>

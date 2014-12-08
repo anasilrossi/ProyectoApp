@@ -8,7 +8,8 @@
 
 #import "ViewControllerContacto.h"
 #import "Contact.h"
-#import "CellCustomContacto.h"
+#import "Animales.h"
+
 
 @interface ViewControllerContacto ()
 
@@ -117,21 +118,68 @@ ABAddressBookRef addressBook ;
      CellCustomContacto * cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (!cell) {
         //Si la celda no existe, la creamos.
-        cell = [[CellCustomContacto alloc] init];
+        cell=[[CellCustomContacto alloc]init];
     }
+    cell.delegate = self;
     [cell configurarCelda:[self.arrayContactos objectAtIndex:indexPath.row]];
     return cell;
 }
 
-#pragma mark-UITableViewDelegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (void)llamadas:(NSString *)numero
 {
-    Contact * cont = [self.arrayContactos objectAtIndex:indexPath.row];
-    NSString * phoneNumber = cont.phone;
+    NSString * phoneNumber = self.obj.phone;
     NSURL *cleanPhoneNumber = [NSURL URLWithString:[NSString stringWithFormat:@"%@", phoneNumber]];
     [[UIApplication sharedApplication] openURL:cleanPhoneNumber];
     UIAlertView * alerta = [[UIAlertView alloc]initWithTitle:@"Tel" message:[NSString stringWithFormat:@"Comprate un device, con este simulador barato no podes hacer llamadas.El numero es: %@",phoneNumber] delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];[alerta show];
+    
 }
+
+-(void)emails:(NSString *)mail
+{
+    NSString * name = [[Animales sharedInstance] animalNombre];
+     NSString * const body = [NSString stringWithFormat:@ "Buenas! Soy %@, cómo va? Quería comentarte que estuve usando la App Tamagochi para comerme todo y está genial. Bajatela YA!!   Saludos!",name ];
+     
+     //creacion del msj
+     MFMailComposeViewController * composer = [[MFMailComposeViewController alloc]init ];
+     
+     composer.mailComposeDelegate= self;
+     [composer setSubject:@"Que app copada"];
+     [composer setMessageBody:body isHTML:NO];
+    [composer setRestorationIdentifier:mail];
+     
+     
+     //crear present
+     [self presentViewController:composer animated:YES completion:nil];
+     
+     
+}
+     
+     - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+     {
+     UIAlertView * alerta = nil;
+     switch (result) {
+     case MFMailComposeResultCancelled:
+     
+     alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton Cancelar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+     [alerta show];
+     break;
+     case MFMailComposeResultSaved:
+     alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton guardar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+     [alerta show];
+     break;
+     case MFMailComposeResultFailed:
+     alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"Hubo un problema" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+     [alerta show];
+     break;
+     case MFMailComposeResultSent:
+     alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario Envio el mensaje" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+     [alerta show];
+     break;
+     }
+     [self dismissViewControllerAnimated:YES completion:nil];
+     
+     }
 
 
 @end

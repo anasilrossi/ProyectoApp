@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Contact.h"
+@class CellCustomContacto;
+@protocol MyCustomCellDelegate <NSObject>
+- (void)llamadas:(NSString *)numero;
+-(void)emails:(NSString *)mail;
+@end
 
 @interface CellCustomContacto : UITableViewCell
+@property (nonatomic, assign) id<MyCustomCellDelegate> delegate;
 -(void)configurarCelda:(Contact *)contacto;
+
 @end

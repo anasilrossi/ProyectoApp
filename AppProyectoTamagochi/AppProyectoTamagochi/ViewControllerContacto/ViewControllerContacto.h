@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <AddressBook/AddressBook.h>
+#import "CellCustomContacto.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ViewControllerContacto : UIViewController <UITableViewDataSource>
+@interface ViewControllerContacto : UIViewController <UITableViewDataSource,MyCustomCellDelegate,MFMailComposeViewControllerDelegate>
 
 @end
