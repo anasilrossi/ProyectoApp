@@ -166,7 +166,7 @@
                     <exclude reference="wPS-ly-Rd4"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="61.5" y="115.5"/>
+            <point key="canvasLocation" x="-79.5" y="115.5"/>
         </view>
         <tapGestureRecognizer id="5KA-3d-TZD"/>
     </objects>

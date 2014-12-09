@@ -15,8 +15,8 @@
 @interface ViewControllerElegida : UIViewController <Foot,UIGestureRecognizerDelegate, CLLocationManagerDelegate>
 
 @property (strong,nonatomic) NSString * Nombremascota;
-@property (assign,nonatomic) NSNumber * animal;
-@property (assign,nonatomic) NSNumber * estado ;
+@property (strong,nonatomic) NSNumber * animal;
+@property (strong,nonatomic) NSNumber * estado ;
 
 
 @end

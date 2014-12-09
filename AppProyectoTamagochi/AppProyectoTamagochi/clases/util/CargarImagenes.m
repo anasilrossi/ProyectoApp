@@ -60,9 +60,9 @@
 {
     NSMutableArray* Listaimagenes = [[NSMutableArray alloc] init];
     
-    NSString* formato = @"%@_%@_%d";
-    NSString* nombreimagen;
-    NSString* estado;
+    NSString * formato = @"%@_%@_%d";
+    NSString * nombreimagen = nil;
+    NSString * estado = nil;
     
     switch (tipoanimal)
     {
@@ -92,15 +92,20 @@
         case animal_ejercitando:
             estado = @"ejercicio";
             break;
+        default:
+            estado=@"comiendo";
+            
+            
     }
-    const int ammountOfImages = estadoAnimal == animal_ejercitando ? 5 : 4;
+    int ammountOfImages = estadoAnimal == animal_ejercitando ? 5 : 4;
     for(int i = 1; i <= ammountOfImages; ++i)
     {
-        NSString* nombre = [NSString stringWithFormat:formato, nombreimagen, estado, i];
+        NSString* nombre = [NSString stringWithFormat:formato, nombreimagen, estado, i] ;
         [Listaimagenes addObject:[UIImage imageNamed:nombre]];
     }
     
     NSArray* petAnimationImages = [[NSArray alloc] initWithArray:Listaimagenes];
+
     return petAnimationImages;
 }
 

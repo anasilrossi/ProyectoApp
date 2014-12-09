@@ -17,10 +17,11 @@
 @property (strong,nonatomic) NSNumber * cantidad;
 @property (strong,nonatomic) Contact * obj;
 @property (strong,nonatomic)NSMutableArray * arrayContactos;
+@property (assign,nonatomic)ABAddressBookRef addressBook ;
 @end
 
 @implementation ViewControllerContacto
-ABAddressBookRef addressBook ;
+
 
 
 - (void)viewDidLoad {
@@ -42,11 +43,12 @@ ABAddressBookRef addressBook ;
 -(void)permisosContactos
 {
     // Solicitamos al usuario acceso a los contactos (no funciona en el Simulador)
-    addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    CFErrorRef* error;
+    self.addressBook = ABAddressBookCreateWithOptions(NULL, error);
     
     // Comprobamos el estado de permisos de usuario
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
-        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+        ABAddressBookRequestAccessWithCompletion(self.addressBook, ^(bool granted, CFErrorRef error) {
             // Es la primera vez que accedemos a dichos contactos
             NSLog(@"Primer vez");
             [self obtenerContactos];
@@ -56,6 +58,10 @@ ABAddressBookRef addressBook ;
         // El usuario ya nos había autorizado previamente el acceso
         NSLog(@"Segundas veces");
         [self obtenerContactos];
+    }
+    else if (error)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"No se pudo traer los contactos!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
     }
     else {
         // El usuario ya nos había denegado previamente el acceso
@@ -70,10 +76,10 @@ ABAddressBookRef addressBook ;
     self.arrayContactos = [[NSMutableArray alloc]init];
     
     // Obtenemos todos los contactos del usuario en base a la referencia obtenida
-    CFArrayRef all = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFArrayRef all = ABAddressBookCopyArrayOfAllPeople(self.addressBook);
     
     // Obtenemos el total de contactos encontrados
-    CFIndex n = ABAddressBookGetPersonCount(addressBook);
+    CFIndex n = ABAddressBookGetPersonCount(self.addressBook);
     
     self.cantidad= [NSNumber numberWithLong:n];
     
@@ -83,18 +89,19 @@ ABAddressBookRef addressBook ;
     {
         // Obtenemos el contacto
         ABRecordRef ref = CFArrayGetValueAtIndex(all, i);
-        // Obtenemos el nombre del contacto
-        NSString * firstName = (__bridge NSString *)ABRecordCopyValue(ref, kABPersonFirstNameProperty);
+        // Obtenemos la info del contacto
+        
         ABMultiValueRef phones = ABRecordCopyValue(ref, kABPersonPhoneProperty);
         NSString * phoneNumber = (__bridge NSString *) ABMultiValueCopyValueAtIndex(phones, 0);
+        
         ABMultiValueRef emailProperty = ABRecordCopyValue(ref, kABPersonEmailProperty);
         NSString * emails = (__bridge NSString*)ABMultiValueCopyValueAtIndex(emailProperty,0);
         
-        if(phoneNumber != nil && emails != nil)
+        if(phoneNumber != nil || emails != nil)
         {
             
             self.obj = [[Contact alloc]init];
-            self.obj.name = firstName;
+            self.obj.name = (__bridge NSString *)ABRecordCopyValue(ref, kABPersonFirstNameProperty);;
             self.obj.phone = phoneNumber;
             self.obj.email = emails;
             [self.arrayContactos addObject:self.obj];
@@ -128,10 +135,23 @@ ABAddressBookRef addressBook ;
 
 - (void)llamadas:(NSString *)numero
 {
-    NSString * phoneNumber = self.obj.phone;
-    NSURL *cleanPhoneNumber = [NSURL URLWithString:[NSString stringWithFormat:@"%@", phoneNumber]];
-    [[UIApplication sharedApplication] openURL:cleanPhoneNumber];
-    UIAlertView * alerta = [[UIAlertView alloc]initWithTitle:@"Tel" message:[NSString stringWithFormat:@"Comprate un device, con este simulador barato no podes hacer llamadas.El numero es: %@",phoneNumber] delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];[alerta show];
+    if (self.puedeLlamar) {
+        NSString * phoneNumber = self.obj.phone;
+        NSURL *cleanPhoneNumber = [NSURL URLWithString:[NSString stringWithFormat:@"%@", phoneNumber]];
+        [[UIApplication sharedApplication] openURL:cleanPhoneNumber];
+
+    }
+    else
+    {
+       UIAlertView * alerta = [[UIAlertView alloc]initWithTitle:@"Tel" message:@"Comprate un device, con este simulador barato no podes hacer llamadas." delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];[alerta show];
+    }
+}
+
+-(BOOL)puedeLlamar {
+    
+    return [[UIApplication sharedApplication]
+            
+            canOpenURL:[NSURL URLWithString:@"tel://"]];
     
 }
 
@@ -146,7 +166,7 @@ ABAddressBookRef addressBook ;
      composer.mailComposeDelegate= self;
      [composer setSubject:@"Que app copada"];
      [composer setMessageBody:body isHTML:NO];
-    [composer setRestorationIdentifier:mail];
+    [composer setToRecipients:[NSArray arrayWithObject:mail]];
      
      
      //crear present
@@ -157,26 +177,37 @@ ABAddressBookRef addressBook ;
      
      - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
      {
+         
      UIAlertView * alerta = nil;
+         
      switch (result) {
+             
      case MFMailComposeResultCancelled:
      
-     alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton Cancelar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-     [alerta show];
+             alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton Cancelar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+             [alerta show];
      break;
+             
      case MFMailComposeResultSaved:
-     alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton guardar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-     [alerta show];
+             
+             alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton guardar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+             [alerta show];
      break;
+             
      case MFMailComposeResultFailed:
-     alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"Hubo un problema" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-     [alerta show];
+             
+             alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"Hubo un problema" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+             [alerta show];
      break;
+             
      case MFMailComposeResultSent:
-     alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario Envio el mensaje" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-     [alerta show];
+             
+             alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario Envio el mensaje" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
+             [alerta show];
      break;
+             
      }
+         
      [self dismissViewControllerAnimated:YES completion:nil];
      
      }

@@ -51,32 +51,37 @@ NSString  * const  code =@"AR7666";
     return self;
 }
 
--(NSNumber*)menosEnergia
+-(NSNumber *)menosEnergia
 {
-
-    self.energia  = [NSNumber numberWithInt:[self.energia intValue] - 10 ];
+    int aux = [self.energia intValue];
+    aux = aux-10;
+    self.energia =[NSNumber numberWithInt:aux];
+    if ([self.energia intValue]<=0 ) {
+        self.energia =[NSNumber numberWithInt:0];}
     NSLog(@"%@",self.energia);
     return self.energia;
 }
 
 -(NSNumber *)masEnergia: (int)valor
 {
-   self.energia  = [NSNumber numberWithInt:[self.energia intValue] + valor];
+    self.energia  = [NSNumber numberWithInt:[self.energia intValue] + valor];
+    if ([self.energia intValue]>=100){
+        self.energia = [NSNumber numberWithInt:100];}
     NSLog(@"%@",self.energia);
     return self.energia;
-       
+    
 }
 
 -(BOOL)puedeejercitar
 {
     BOOL consulta ;
-    if (self.energia != 0 )
+    if ([self.energia isEqualToNumber:[NSNumber numberWithInt:0]])
     {
-        return  consulta = YES;
+        return  consulta = NO;
     }
     else
     {
-        return consulta = NO;
+        return consulta = YES;
     }
 }
 
@@ -91,7 +96,7 @@ NSString  * const  code =@"AR7666";
     if (self.energia!=0) {
         self.experiencia = [NSNumber numberWithInt: valor + [self.experiencia intValue]];
         self.nivel =[self subirNivel:self.experiencia];
-       // NSLog([NSString stringWithFormat:@"experiencia:%d nivel:%d ",self.experiencia, self.nivel]);
+        NSLog([NSString stringWithFormat:@"experiencia:%d nivel:%d ",self.experiencia, self.nivel]);
        
     }
    return self.experiencia;

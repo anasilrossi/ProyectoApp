@@ -58,8 +58,7 @@
     self.animal=[[Animales sharedInstance] tipoAnimal];
      self.ImagenMascota.image = [CargarImagenes Cargarimagen:[self.animal intValue]];
     int valor =[[Animales sharedInstance] devolverEnergia];
-    valor  = valor  / 100;
-    [self.Progressbar setProgress:valor animated:YES];
+    [self.Progressbar setProgress:valor/100.0f animated:YES];
 
   
 }
@@ -209,9 +208,8 @@
    
     if ([[Animales sharedInstance] puedeejercitar]) {
         [[Animales sharedInstance] menosEnergia];
-        int  valor =[[Animales sharedInstance] devolverEnergia];
-              valor = valor/100;
-        [self.Progressbar setProgress:valor animated:YES];
+        int  valor =[[Animales sharedInstance] devolverEnergia] ;
+        [self.Progressbar setProgress:valor/100.0f animated:YES];
         
 
     }
@@ -286,53 +284,11 @@
     [self.navigationController pushViewController:controlcontac animated:YES];
 
 }
-    /*
-     NSString * const body = @ "Buenas! Soy <Nombre_de_mi _mascota>, cómo va? Quería comentarte que estuve usando la App <Nombre_de_la_app> para comerme todo y está genial. Bajatela YA!!   Saludos!";
-
-    //creacion del msj
-    MFMailComposeViewController * composer = [[MFMailComposeViewController alloc]init ];
-    
-    composer.mailComposeDelegate= self;
-    [composer setSubject:@"Que app copada"];
-    [composer setMessageBody:body isHTML:NO];
-    
-    
-    //crear present
-    [self presentViewController:composer animated:YES completion:nil];
-
-    
-}
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
-    UIAlertView * alerta = nil;
-    switch (result) {
-        case MFMailComposeResultCancelled:
-            
-           alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton Cancelar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-            [alerta show];
-            break;
-        case MFMailComposeResultSaved:
-            alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario apreto el boton guardar" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-            [alerta show];
-            break;
-            case MFMailComposeResultFailed:
-            alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"Hubo un problema" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-            [alerta show];
-            break;
-            case MFMailComposeResultSent:
-            alerta = [[UIAlertView alloc] initWithTitle:@"Mail" message:@"El usuario Envio el mensaje" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:@"Cancelar", nil];
-            [alerta show];
-            break;
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.timer invalidartimer];
 }
-*/
+
 
 @end
