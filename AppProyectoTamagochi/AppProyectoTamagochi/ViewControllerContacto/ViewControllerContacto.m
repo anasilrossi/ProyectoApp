@@ -43,7 +43,7 @@
 -(void)permisosContactos
 {
     // Solicitamos al usuario acceso a los contactos (no funciona en el Simulador)
-    CFErrorRef* error;
+    CFErrorRef* error ;
     self.addressBook = ABAddressBookCreateWithOptions(NULL, error);
     
     // Comprobamos el estado de permisos de usuario
@@ -53,6 +53,7 @@
             NSLog(@"Primer vez");
             [self obtenerContactos];
         });
+        
     }
     else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         // El usuario ya nos había autorizado previamente el acceso
@@ -68,6 +69,7 @@
         NSLog(@"Permiso denegado");
         [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Permiso denegado!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
     }
+    
 }
 
 -(void)obtenerContactos

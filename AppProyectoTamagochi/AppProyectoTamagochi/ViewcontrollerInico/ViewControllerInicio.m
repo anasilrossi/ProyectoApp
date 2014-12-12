@@ -52,6 +52,7 @@
 {
     //lo que hace cuando termina una vista
     [self setTitle:@""];
+    [super viewDidDisappear:YES];
 }
 
 - (void)didReceiveMemoryWarning {

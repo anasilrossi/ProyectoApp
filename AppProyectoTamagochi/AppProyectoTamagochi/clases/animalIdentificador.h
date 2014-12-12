@@ -24,6 +24,8 @@ typedef enum
     animal_comiendo ,
     animal_ejercitando,
     animal_exhauto,
+    animal_sucio,
+    animal_limpio,
     animal_estado_final = animal_exhauto
     
 } animalEstado;

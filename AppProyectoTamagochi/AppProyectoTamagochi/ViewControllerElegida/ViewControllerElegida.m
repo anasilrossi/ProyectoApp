@@ -15,6 +15,7 @@
 #import "NSTimer+TimerSafeInvalidate.h"
 #import "ViewControllerRanking.h"
 #import "ViewControllerContacto.h"
+#import "TNetworkService.h"
 
 
 @interface ViewControllerElegida ()
@@ -27,6 +28,7 @@
 @property (strong,nonatomic) NSTimer * timer;
 @property (nonatomic) BOOL estadoEjercicio;
 @property (nonatomic) CGPoint tapLocation;
+@property (nonatomic) CGPoint origin;
 @property (nonatomic) CGPoint locacionImagen;
 @property (assign,nonatomic) int valor;
 @property (strong,nonatomic) Comidas * comidaActual;
@@ -34,7 +36,13 @@
 @property (nonatomic, retain) CLLocationManager * locationManager;
 @property (weak, nonatomic) IBOutlet UIButton *PRUEBA;
 @property (weak, nonatomic) IBOutlet UIButton *bRanking;
-
+@property (weak, nonatomic) IBOutlet UILabel *nivelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *experienciaLabel;
+@property (nonatomic,strong) TNetworkService * service;
+@property(nonatomic,strong) NSTimer *tiempoSucio;
+@property (weak, nonatomic) IBOutlet UIImageView *suciedadImagen;
+@property (weak, nonatomic) IBOutlet UIImageView *suciedad2Imagen;
+@property (weak, nonatomic) IBOutlet UIImageView *jabonButton;
 
 @end
 
@@ -42,11 +50,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [Animales sharedInstance];
-    self.estadoEjercicio=YES;
-    self.locacionImagen = self.ImagenComida.center;
-    self.Nombremascota = [[Animales sharedInstance] animalNombre];
-    self.NombreMascota.text =self.Nombremascota;
     [self setTitle:@"Energia de su mascota"];
     
     UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(darDeComer:)];
@@ -54,13 +57,75 @@
     recognizer.delegate = self;
     //Lo agregamos a la Vista donde debe detectar el tap
     [self.view addGestureRecognizer:recognizer];
-    self.ImagenComida.image = nil;
-    self.animal=[[Animales sharedInstance] tipoAnimal];
-     self.ImagenMascota.image = [CargarImagenes Cargarimagen:[self.animal intValue]];
-    int valor =[[Animales sharedInstance] devolverEnergia];
-    [self.Progressbar setProgress:valor/100.0f animated:YES];
+    
+    UIPanGestureRecognizer * recognizere = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(limpiar:)];
+    //Le asignamos el delegate
+    recognizere.delegate = self;
+    //Lo agregamos a la Vista donde debe detectar el tap
+    [self.jabonButton addGestureRecognizer:recognizere];
 
-  
+    
+    self.ImagenComida.image = nil;
+    self.service =[[TNetworkService alloc]init];
+    [self.service getOneEvents:[self getSucces] failure:[self getFailure] codigo:code];
+    self.tiempoSucio= [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(cambiarEstado) userInfo:nil repeats:YES];
+    self.origin = self.suciedadImagen.center;
+}
+
+-(Success)getSucces
+{
+    return ^(NSMutableArray * array) {
+        
+        ViewControllerElegida * __weak weakself = self;
+        [Animales sharedInstance];
+        weakself.estadoEjercicio=YES;
+        weakself.locacionImagen = weakself.ImagenComida.center;
+        weakself.NombreMascota.text =[array valueForKey:@"name"];;
+        weakself.animal=[array valueForKey:@"pet_type"];
+        weakself.ImagenMascota.image = [CargarImagenes Cargarimagen:[weakself.animal intValue]];
+        int valor =((NSNumber *)[array valueForKey:@"energia"]).intValue;
+        [weakself.Progressbar setProgress:valor/100.0f animated:YES];
+        weakself.nivelLabel.text=[NSString stringWithFormat:@"Nivel:%@",[array valueForKey:@"level"]];
+        weakself.experienciaLabel.text=[NSString stringWithFormat:@"Experiencia:%@",[array valueForKey:@"experience"]];
+
+        
+        self.service=nil;
+    };
+}
+
+-(Failure)getFailure
+{
+    return ^(NSError *error) {
+        NSLog(@"Error: %@", error);
+        self.service=nil;
+    };
+}
+
+-(void)cambiarEstado
+{
+    if (animal_limpio) {
+        [UIView animateWithDuration:12
+                              delay:0.0
+                            options:UIViewAnimationOptionAllowAnimatedContent
+                         animations:^{ self.suciedadImagen.alpha = 1;
+                                       self.suciedad2Imagen.alpha=1;}
+                         completion:^(BOOL finished) {
+                             [[Animales sharedInstance] setTipoAnimal:[NSNumber numberWithInt:animal_sucio]];
+                             NSLog(@"sucioooo");
+                         }];
+    }
+
+}
+
+-(IBAction)limpiar:(UIPanGestureRecognizer *) recognizer
+{
+    if ((recognizer.state == UIGestureRecognizerStateChanged) ||
+        (recognizer.state == UIGestureRecognizerStateEnded)) {
+        CGPoint translation = [recognizer translationInView:self.jabonButton];
+        UIView * vista = [self.view hitTest:self.origin withEvent:nil];
+        self.origin = CGPointMake(self.origin.x+translation.x, self.origin.y+translation.y);
+        [recognizer setTranslation:CGPointZero inView:vista];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -210,6 +275,8 @@
         [[Animales sharedInstance] menosEnergia];
         int  valor =[[Animales sharedInstance] devolverEnergia] ;
         [self.Progressbar setProgress:valor/100.0f animated:YES];
+         self.nivelLabel.text=[NSString stringWithFormat:@"Nivel:%@",[[Animales sharedInstance]devolverNivel]];
+         self.experienciaLabel.text=[NSString stringWithFormat:@"Experiencia:%@",[[Animales sharedInstance]devolverExperiencia]];
         
 
     }
@@ -288,6 +355,9 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.timer invalidartimer];
+    [self.tiempoSucio invalidartimer];
+     [super viewWillDisappear:YES];
+    
 }
 
 

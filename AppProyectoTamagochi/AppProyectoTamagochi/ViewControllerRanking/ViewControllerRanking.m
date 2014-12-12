@@ -60,11 +60,8 @@
         cell = [[CellCustomRanking alloc] init];
     }
     [cell configurarCelda:[self.sortedArray objectAtIndex:indexPath.row]];
-   NSString * codigo = [[NSString alloc]init];
-    
-    codigo = [((Animales *)self.sortedArray[indexPath.row]) codigoAnimal];
+    NSString * codigo = [((Animales *)self.sortedArray[indexPath.row]) codigoAnimal];
     [cell configurarColor:codigo];
-    
     return cell;
 }
 
@@ -143,9 +140,7 @@
 #pragma mark-UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Mascotas * mascotaElegida =[[Mascotas alloc] init];
-
-   mascotaElegida=[self.sortedArray objectAtIndex:indexPath.row];
+    Mascotas * mascotaElegida = [self.sortedArray objectAtIndex:indexPath.row];
     
     ViewControllerMap * controlmap = [[ViewControllerMap alloc]initWithNibName:@"ViewControllerMap" bundle:[NSBundle mainBundle] ];
     [controlmap setMascotaActual:mascotaElegida];
@@ -155,7 +150,8 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-   // [self.timer invalidartimer];
+    [self.timer invalidartimer];
+    [super viewWillDisappear:YES];
 }
 
 @end
