@@ -56,6 +56,7 @@
 		A4840EC41A28E763008FA35B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4840EC31A28E763008FA35B /* QuartzCore.framework */; };
 		A4840EC61A28E777008FA35B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4840EC51A28E777008FA35B /* Security.framework */; };
 		A4840ECA1A28E78E008FA35B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4840EC91A28E78E008FA35B /* SystemConfiguration.framework */; };
+		A48E6D991A3F1B2F009F5BCA /* Eating-Sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = A48E6D981A3F1B2E009F5BCA /* Eating-Sound.wav */; };
 		A49707C81A2F606300C8CCAF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A49707C71A2F606300C8CCAF /* CoreData.framework */; };
 		A49707CB1A2F60E300C8CCAF /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = A49707CA1A2F60E300C8CCAF /* Helper.m */; };
 		A4B6A16A1A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B6A1691A251AD1006405A8 /* NSTimer+TimerSafeInvalidate.m */; };
@@ -166,6 +167,7 @@
 		A4840EC31A28E763008FA35B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A4840EC51A28E777008FA35B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A4840EC91A28E78E008FA35B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A48E6D981A3F1B2E009F5BCA /* Eating-Sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Eating-Sound.wav"; sourceTree = "<group>"; };
 		A49707C71A2F606300C8CCAF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A49707C91A2F60E200C8CCAF /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
 		A49707CA1A2F60E300C8CCAF /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		A449C21C1A20E8BF0026B08C /* util */ = {
 			isa = PBXGroup;
 			children = (
+				A48E6D971A3F1B00009F5BCA /* Sonidos */,
 				A4749A0F1A2E137400348881 /* CustomAnnotation.h */,
 				A4749A101A2E137400348881 /* CustomAnnotation.m */,
 				A449C21D1A20E8BF0026B08C /* CargarImagenes.h */,
@@ -480,6 +483,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A48E6D971A3F1B00009F5BCA /* Sonidos */ = {
+			isa = PBXGroup;
+			children = (
+				A48E6D981A3F1B2E009F5BCA /* Eating-Sound.wav */,
+			);
+			path = Sonidos;
+			sourceTree = "<group>";
+		};
 		A4D6DC031A262AD200F9F91C /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +678,7 @@
 				A44E59181A1E5E6F00611E4D /* ViewControllerSeleccion.xib in Resources */,
 				A452D38E1A30FFF00067F6FF /* ViewControllerDetalle.xib in Resources */,
 				A4536BFC1A2A0B4C00CB0823 /* CellCustomRanking.xib in Resources */,
+				A48E6D991A3F1B2F009F5BCA /* Eating-Sound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

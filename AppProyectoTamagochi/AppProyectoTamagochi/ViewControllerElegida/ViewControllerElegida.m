@@ -16,6 +16,7 @@
 #import "ViewControllerRanking.h"
 #import "ViewControllerContacto.h"
 #import "TNetworkService.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 
 @interface ViewControllerElegida ()
@@ -58,18 +59,20 @@
     //Lo agregamos a la Vista donde debe detectar el tap
     [self.view addGestureRecognizer:recognizer];
     
-    UIPanGestureRecognizer * recognizere = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(limpiar:)];
-    //Le asignamos el delegate
-    recognizere.delegate = self;
-    //Lo agregamos a la Vista donde debe detectar el tap
-    [self.jabonButton addGestureRecognizer:recognizere];
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(limpiar:)];
+    
+    panRecognizer.delegate= self;
+
+    [self.view addGestureRecognizer:panRecognizer];
+
 
     
     self.ImagenComida.image = nil;
     self.service =[[TNetworkService alloc]init];
     [self.service getOneEvents:[self getSucces] failure:[self getFailure] codigo:code];
     self.tiempoSucio= [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(cambiarEstado) userInfo:nil repeats:YES];
-    self.origin = self.suciedadImagen.center;
+    self.origin = self.jabonButton.center;
 }
 
 -(Success)getSucces
@@ -119,13 +122,40 @@
 
 -(IBAction)limpiar:(UIPanGestureRecognizer *) recognizer
 {
-    if ((recognizer.state == UIGestureRecognizerStateChanged) ||
-        (recognizer.state == UIGestureRecognizerStateEnded)) {
-        CGPoint translation = [recognizer translationInView:self.jabonButton];
-        UIView * vista = [self.view hitTest:self.origin withEvent:nil];
-        self.origin = CGPointMake(self.origin.x+translation.x, self.origin.y+translation.y);
-        [recognizer setTranslation:CGPointZero inView:vista];
+    
+    self.origin = [recognizer locationInView:self.view];
+    UIView * vistaImagen = [self.view hitTest:self.origin withEvent:nil];
+   // CGPoint centroImagen = self.suciedadImagen.center;
+    CGPoint centroImagen2 = self.suciedad2Imagen.center;
+    if ([self.suciedadImagen isEqual:vistaImagen]) {
+    [UIView animateWithDuration:12
+                          delay:0.0
+                        options:UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{ [self.jabonButton setCenter:self.origin];}
+                     completion:^(BOOL finished) {
+                             self.suciedadImagen.alpha=0;
+                         self.suciedadImagen.hidden= YES;}
+     
+                     ];
+
     }
+    else if(CGPointEqualToPoint (centroImagen2 ,self.origin))
+    {
+        [UIView animateWithDuration:12
+                              delay:0.0
+                            options:UIViewAnimationOptionAllowAnimatedContent
+                         animations:^{ [self.jabonButton setCenter:self.origin];}
+                         completion:^(BOOL finished) {
+                             self.suciedad2Imagen.alpha=0;}
+         
+         ];
+
+    }
+    else
+    {
+        [self.jabonButton setCenter:self.origin];
+    }
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -151,20 +181,9 @@
     [super viewWillAppear: animated];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(refrescarNivel)
-                                                 name:@"REFRESCAR_NIVEL"
+                                                 name:@"PUSHLOCAL"
                                                object:nil];
      [self locacionMascota];
-}
-
--(void)refrescarNivel
-{
-   // int valor =[[Animales sharedInstance] devolverNivel];
-    [self pushLocal];
-    /*
-    NSString * mensaje = [NSString stringWithFormat: @"Su mascota llego a nivel %d",valor];
-    UIAlertView * alerta =[[UIAlertView alloc] initWithTitle:@"Mascota Virtual" message:mensaje delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil, nil];
-    [alerta show];
-     */
 }
 
 -(void)pushLocal
@@ -203,6 +222,10 @@
         [self.ImagenMascota setImage:[CargarImagenes Cargarimagen:[self.animal intValue]]];
          self.tapLocation = [sender locationInView: self.view];
         self.estado  = [NSNumber numberWithInt: animal_comiendo];
+            
+            //********************************************************
+            //Animacion de llevar la comida
+            //////////////////////////////////////////////////////////
         [UIView animateWithDuration:0.2
                               delay:0.0
                             options:UIViewAnimationOptionAllowAnimatedContent
@@ -216,6 +239,9 @@
                                  [self.ImagenComida startAnimating];
                                  }
                          }];
+            //********************************************************
+            //Animacion mascota comiendo
+            //////////////////////////////////////////////////////////
         [self.ImagenMascota setAnimationImages:[CargarImagenes Cargararray:[self.animal intValue] estado:[self.estado intValue]]];
 
        int  valor = [[Animales sharedInstance]devolverEnergia];
@@ -224,6 +250,17 @@
             [self.ImagenMascota setAnimationRepeatCount:2];
             [self.ImagenMascota startAnimating];
             
+            //********************************************************
+            //Sonido De comer
+            //////////////////////////////////////////////////////////
+            NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"Eating-Sound" ofType:@"wav"];
+            SystemSoundID soundID;
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
+            AudioServicesPlaySystemSound (soundID);
+            
+            //********************************************************
+            //Aumentar Progressbar
+            //////////////////////////////////////////////////////////
             NSNumber * valor =[[Animales sharedInstance] masEnergia:self.comidaActual.valor];
           
             [self.Progressbar setProgress:[valor intValue]/100.0f animated:YES];
